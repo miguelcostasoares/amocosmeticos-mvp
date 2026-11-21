@@ -13,19 +13,16 @@
 
 <!-- NAVBAR -->
 <nav class="nav" id="nav">
-  <a href="#" class="nav-brand">
-    <span class="nav-monogram">Ca</span>
-    <span class="nav-name">
-      <span class="nav-name-top">amo</span>
-      <span class="nav-name-bottom">cosméticos</span>
-    </span>
+  <!-- LOGO: a imagem é definida pela variável --logo-src em css/style.css -->
+  <a href="#" class="nav-brand" aria-label="Amo Cosméticos — ir para o início">
+    <span class="nav-logo" role="img" aria-label="Amo Cosméticos"></span>
   </a>
   <ul class="nav-center">
     <li><a href="#">Início</a></li>
-    <li><a href="#">Produtos</a></li>
+    <li><a href="#">Catálogo</a></li>
     <li><a href="#">Categorias</a></li>
     <li><a href="#">Ofertas</a></li>
-    <li><a href="#">Contato</a></li>
+    <li><a href="#">Sobre nós</a></li>
   </ul>
   <div class="nav-right">
     <button class="nav-btn" aria-label="Buscar">
@@ -68,10 +65,10 @@
   <div class="hero-scrim"></div>
   <div class="hero-content">
     <h1 class="hero-headline">Beleza que<br>você <i>ama</i></h1>
-    <p class="hero-desc">Cosméticos selecionados com carinho para realçar o que você tem de mais bonito. Qualidade, preço justo e entrega para todo o Brasil.</p>
+    <p class="hero-desc">Skincare, maquiagem e cuidados selecionados um a um — marcas originais, preço honesto e entrega para todo o Brasil. Cuidar de você nunca foi tão simples.</p>
     <div class="hero-buttons">
-      <button class="btn-hero-primary">Ver produtos</button>
-      <button class="btn-hero-ghost">Ofertas da semana</button>
+      <button class="btn-hero-primary">Explorar produtos</button>
+      <button class="btn-hero-ghost">Ver ofertas da semana</button>
     </div>
   </div>
   <div class="hero-indicators" id="heroIndicators">
@@ -103,39 +100,72 @@
 
 <!-- CATEGORIAS -->
 <section class="categories">
-  <div class="section-header">
-    <h2 class="section-title">Explore por categoria</h2>
-    <a href="#" class="section-link">Ver todas</a>
+  <div class="categories-intro">
+    <span class="categories-eyebrow">Categorias</span>
+    <h2 class="section-title">O ritual começa<br>pela <i>escolha certa</i></h2>
+    <p class="categories-sub">Quatro essenciais para transformar sua rotina capilar — selecionados com a mesma atenção que você dedica a si mesma.</p>
   </div>
   <div class="cat-grid">
-    <div class="cat-card cat-1">
-      <div class="cat-card-bg"><span class="cat-emoji">✨</span></div>
-      <div class="cat-card-info">
-        <div class="cat-card-name">Skincare</div>
-        <div class="cat-card-count">42 produtos</div>
+    <a href="#" class="cat-card cat-1">
+      <div class="cat-card-media">
+        <img src="" alt="Shampoo" class="cat-card-img" loading="lazy">
       </div>
-    </div>
-    <div class="cat-card cat-2">
-      <div class="cat-card-bg"><span class="cat-emoji">💄</span></div>
+      <div class="cat-card-overlay"></div>
+      <div class="cat-card-index">01</div>
       <div class="cat-card-info">
-        <div class="cat-card-name">Maquiagem</div>
-        <div class="cat-card-count">86 produtos</div>
+        <div class="cat-card-name">Shampoo</div>
+        <div class="cat-card-divider"></div>
+        <div class="cat-card-count">Limpeza &amp; nutrição</div>
       </div>
-    </div>
-    <div class="cat-card cat-3">
-      <div class="cat-card-bg"><span class="cat-emoji">🌿</span></div>
+      <div class="cat-card-arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </div>
+    </a>
+    <a href="#" class="cat-card cat-2">
+      <div class="cat-card-media">
+        <img src="" alt="Óleos" class="cat-card-img" loading="lazy">
+      </div>
+      <div class="cat-card-overlay"></div>
+      <div class="cat-card-index">02</div>
       <div class="cat-card-info">
-        <div class="cat-card-name">Cabelos</div>
-        <div class="cat-card-count">53 produtos</div>
+        <div class="cat-card-name">Óleos</div>
+        <div class="cat-card-divider"></div>
+        <div class="cat-card-count">Brilho &amp; reparo</div>
       </div>
-    </div>
-    <div class="cat-card cat-4">
-      <div class="cat-card-bg"><span class="cat-emoji">🛁</span></div>
+      <div class="cat-card-arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </div>
+    </a>
+    <a href="#" class="cat-card cat-3">
+      <div class="cat-card-media">
+        <img src="" alt="Perfume Capilar" class="cat-card-img" loading="lazy">
+      </div>
+      <div class="cat-card-overlay"></div>
+      <div class="cat-card-index">03</div>
       <div class="cat-card-info">
-        <div class="cat-card-name">Corpo e Banho</div>
-        <div class="cat-card-count">37 produtos</div>
+        <div class="cat-card-name">Perfume Capilar</div>
+        <div class="cat-card-divider"></div>
+        <div class="cat-card-count">Fragrância &amp; cuidado</div>
       </div>
-    </div>
+      <div class="cat-card-arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </div>
+    </a>
+    <a href="#" class="cat-card cat-4">
+      <div class="cat-card-media">
+        <img src="" alt="Kits" class="cat-card-img" loading="lazy">
+      </div>
+      <div class="cat-card-overlay"></div>
+      <div class="cat-card-index">04</div>
+      <div class="cat-card-info">
+        <div class="cat-card-name">Kits</div>
+        <div class="cat-card-divider"></div>
+        <div class="cat-card-count">Rotina completa</div>
+      </div>
+      <div class="cat-card-arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </div>
+    </a>
   </div>
 </section>
 
