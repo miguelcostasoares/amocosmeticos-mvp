@@ -373,6 +373,79 @@
   }
 
   /* ════════════════════════════════════════════
+     3b. HERO — álbum de fotos (produtos passando)
+     3 fotos em leque no canto inferior direito que
+     alternam os produtos continuamente.
+     ════════════════════════════════════════════ */
+  function initHeroAlbum() {
+    const album = $('#heroAlbum');
+    if (!album) return;
+
+    const shots = $$('.album-shot', album);
+    const dots  = $$('.album-tag-dots i', album);
+    if (shots.length < 3) return;
+
+    // produtos exibidos no álbum (ordem = sequência que "passa")
+    const PRODUCTS = [
+      'assets/produtos/shampoo-belkit.jpeg',
+      'assets/produtos/oleos-newhair.jpeg',
+      'assets/produtos/perfume-capilar.jpeg',
+      'assets/produtos/kit-newhair.jpeg',
+      'assets/produtos/IMG_0425.jpg'
+    ];
+
+    const total = PRODUCTS.length;
+    const INTERVAL = 2800;   // tempo entre trocas (ms)
+    let index = 0;
+
+    // pré-carrega para troca sem "flash"
+    PRODUCTS.forEach(src => { const im = new Image(); im.src = src; });
+
+    const paint = () => {
+      // front = index, mid = index+1, back = index+2  (shots: [back, mid, front])
+      const map = [2, 1, 0]; // shots[0]=back→offset2, shots[1]=mid→offset1, shots[2]=front→offset0
+      shots.forEach((shot, i) => {
+        const src = PRODUCTS[(index + map[i]) % total];
+        shot.style.backgroundImage = 'url("' + src + '")';
+      });
+      if (dots.length) {
+        dots.forEach((d, i) => d.classList.toggle('is-on', i % dots.length === index % dots.length));
+      }
+    };
+
+    paint();
+
+    if (prefersReduced) return;  // sem autoplay: mostra 3 fotos estáticas
+
+    const front = $('.album-front', album);
+    let timer = null;
+
+    const advance = () => {
+      // fade suave nas fotos antes de trocar
+      shots.forEach(s => { s.style.opacity = '0'; });
+      setTimeout(() => {
+        index = (index + 1) % total;
+        paint();
+        shots.forEach(s => { s.style.opacity = '1'; });
+        // "pop" na carta da frente
+        if (front) {
+          front.style.transform = 'rotate(0deg) scale(1.04)';
+          setTimeout(() => { front.style.transform = ''; }, 420);
+        }
+      }, 300);
+    };
+
+    const play  = () => { if (!timer) timer = setInterval(advance, INTERVAL); };
+    const pause = () => { clearInterval(timer); timer = null; };
+
+    album.addEventListener('mouseenter', pause);
+    album.addEventListener('mouseleave', play);
+    document.addEventListener('visibilitychange', () => (document.hidden ? pause() : play()));
+
+    play();
+  }
+
+  /* ════════════════════════════════════════════
      4. NEWSLETTER
      ════════════════════════════════════════════ */
   function initNewsletter() {
@@ -386,6 +459,7 @@
     initHero();
     initNav();
     initCategories();
+    initHeroAlbum();
     initNewsletter();
   }
 

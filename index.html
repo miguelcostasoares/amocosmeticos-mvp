@@ -47,25 +47,26 @@
 <section class="hero" id="hero">
   <div class="hero-slider" id="heroSlider">
     <div class="hero-slide active">
-      <img src="assets/banners/banner-home-01.png" alt="Amo Cosméticos — banner 1" class="hero-slide-img" loading="eager">
+      <img src="assets/banners/banner-home-01.jpg" alt="Amo Cosméticos — banner 1" class="hero-slide-img" loading="eager">
     </div>
     <div class="hero-slide">
       <img src="assets/modelos/modelo-produtos-01.png" alt="Amo Cosméticos — banner 2" class="hero-slide-img" loading="lazy">
     </div>
     <div class="hero-slide">
-      <img src="assets/modelos/loja-ambiente-01.png" alt="Loja Amo Cosméticos" class="hero-slide-img" loading="lazy">
+      <img src="assets/modelos/loja-ambiente-01.jpg" alt="Loja Amo Cosméticos" class="hero-slide-img" loading="lazy">
     </div>
     <div class="hero-slide">
-      <img src="assets/modelos/loja-ambiente-02.png" alt="Loja Amo Cosméticos" class="hero-slide-img" loading="lazy">
+      <img src="assets/modelos/loja-ambiente-02.jpg" alt="Loja Amo Cosméticos" class="hero-slide-img" loading="lazy">
     </div>
   </div>
+
+  <!-- Tratamento de fundo: color-grade, vinheta, grão e scrim direcional -->
+  <div class="hero-grade" aria-hidden="true"></div>
+  <div class="hero-vignette" aria-hidden="true"></div>
+  <div class="hero-grain" aria-hidden="true"></div>
   <div class="hero-scrim"></div>
 
   <div class="hero-content" id="heroContent">
-    <span class="hero-badge" data-reveal>
-      <span class="hero-badge-dot"></span>
-      Nova coleção · Frete grátis acima de R$149
-    </span>
     <h1 class="hero-headline">
       <span class="hero-line" data-reveal><span>Beleza que</span></span>
       <span class="hero-line" data-reveal style="--d:.08s"><span>você <i>ama</i></span></span>
@@ -84,6 +85,26 @@
     </div>
   </div>
 
+  <!-- Álbum de fotos — produtos passando no canto inferior direito -->
+  <div class="hero-album" id="heroAlbum" data-reveal style="--d:.4s" aria-hidden="true">
+    <div class="album-stack">
+      <article class="album-card album-back"><div class="album-shot"></div></article>
+      <article class="album-card album-mid"><div class="album-shot"></div></article>
+      <article class="album-card album-front">
+        <div class="album-shot"></div>
+        <span class="album-heart">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </span>
+      </article>
+    </div>
+    <div class="album-tag">
+      <span class="album-tag-label">Favoritos da semana</span>
+      <span class="album-tag-dots">
+        <i class="is-on"></i><i></i><i></i><i></i>
+      </span>
+    </div>
+  </div>
+
   <div class="hero-indicators" id="heroIndicators">
     <button class="hero-ind active" data-slide="0" aria-label="Ir para o slide 1">
       <span class="hero-ind-fill"></span>
@@ -99,11 +120,6 @@
     </button>
     <span class="hero-counter" id="heroCounter">1 / 4</span>
   </div>
-
-  <a href="#" class="hero-scroll-cue" aria-label="Rolar para ver mais">
-    <span>Descubra</span>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
-  </a>
 </section>
 
 <!-- TRUST STRIP -->
