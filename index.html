@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amo Cosméticos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-brand">
+    <span class="nav-monogram">Ca</span>
+    <span class="nav-name">
+      <span class="nav-name-top">amo</span>
+      <span class="nav-name-bottom">cosméticos</span>
+    </span>
+  </a>
+  <ul class="nav-center">
+    <li><a href="#">Início</a></li>
+    <li><a href="#">Produtos</a></li>
+    <li><a href="#">Categorias</a></li>
+    <li><a href="#">Ofertas</a></li>
+    <li><a href="#">Contato</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-btn" aria-label="Buscar">
+      <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    </button>
+    <button class="nav-btn" aria-label="Minha conta">
+      <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </button>
+    <button class="nav-btn" aria-label="Sacola">
+      <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    </button>
+    <button class="nav-cta">Comprar</button>
+  </div>
+</nav>
+
+<!-- HERO SLIDER -->
+<section class="hero">
+  <div class="hero-slider" id="heroSlider">
+    <div class="hero-slide active">
+      <div class="hero-slide-placeholder slide-ph-1">
+        <span class="slide-ph-label">Foto da loja — slide 1</span>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-slide-placeholder slide-ph-2">
+        <span class="slide-ph-label">Foto da loja — slide 2</span>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-slide-placeholder slide-ph-3">
+        <span class="slide-ph-label">Foto da loja — slide 3</span>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-slide-placeholder slide-ph-4">
+        <span class="slide-ph-label">Foto da loja — slide 4</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <h1 class="hero-headline">Beleza que<br>você <i>ama</i></h1>
+    <p class="hero-desc">Cosméticos selecionados com carinho para realçar o que você tem de mais bonito. Qualidade, preço justo e entrega para todo o Brasil.</p>
+    <div class="hero-buttons">
+      <button class="btn-hero-primary">Ver produtos</button>
+      <button class="btn-hero-ghost">Ofertas da semana</button>
+    </div>
+  </div>
+  <div class="hero-indicators" id="heroIndicators">
+    <button class="hero-ind active" data-slide="0"></button>
+    <button class="hero-ind" data-slide="1"></button>
+    <button class="hero-ind" data-slide="2"></button>
+    <button class="hero-ind" data-slide="3"></button>
+    <span class="hero-counter" id="heroCounter">1 / 4</span>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-track">
+    <span class="trust-item"><span>🚚</span> Frete grátis acima de R$149</span>
+    <span class="trust-item"><span>💜</span> 100% produtos originais</span>
+    <span class="trust-item"><span>🔒</span> Pagamento seguro</span>
+    <span class="trust-item"><span>↩️</span> Troca garantida em 30 dias</span>
+    <span class="trust-item"><span>⭐</span> 4.9 de avaliação no Google</span>
+    <span class="trust-item"><span>💬</span> Atendimento via WhatsApp</span>
+    <span class="trust-item"><span>🚚</span> Frete grátis acima de R$149</span>
+    <span class="trust-item"><span>💜</span> 100% produtos originais</span>
+    <span class="trust-item"><span>🔒</span> Pagamento seguro</span>
+    <span class="trust-item"><span>↩️</span> Troca garantida em 30 dias</span>
+    <span class="trust-item"><span>⭐</span> 4.9 de avaliação no Google</span>
+    <span class="trust-item"><span>💬</span> Atendimento via WhatsApp</span>
+  </div>
+</div>
+
+<!-- CATEGORIAS -->
+<section class="categories">
+  <div class="section-header">
+    <h2 class="section-title">Explore por categoria</h2>
+    <a href="#" class="section-link">Ver todas</a>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card cat-1">
+      <div class="cat-card-bg"><span class="cat-emoji">✨</span></div>
+      <div class="cat-card-info">
+        <div class="cat-card-name">Skincare</div>
+        <div class="cat-card-count">42 produtos</div>
+      </div>
+    </div>
+    <div class="cat-card cat-2">
+      <div class="cat-card-bg"><span class="cat-emoji">💄</span></div>
+      <div class="cat-card-info">
+        <div class="cat-card-name">Maquiagem</div>
+        <div class="cat-card-count">86 produtos</div>
+      </div>
+    </div>
+    <div class="cat-card cat-3">
+      <div class="cat-card-bg"><span class="cat-emoji">🌿</span></div>
+      <div class="cat-card-info">
+        <div class="cat-card-name">Cabelos</div>
+        <div class="cat-card-count">53 produtos</div>
+      </div>
+    </div>
+    <div class="cat-card cat-4">
+      <div class="cat-card-bg"><span class="cat-emoji">🛁</span></div>
+      <div class="cat-card-info">
+        <div class="cat-card-name">Corpo e Banho</div>
+        <div class="cat-card-count">37 produtos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTOS -->
+<section class="products">
+  <div class="section-header">
+    <h2 class="section-title">Mais vendidos</h2>
+    <a href="#" class="section-link">Ver todos</a>
+  </div>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <div class="prod-img prod-1">
+        <span class="prod-img-emoji">🧴</span>
+        <span class="prod-tag">-30%</span>
+        <button class="prod-fav" aria-label="Favoritar">
+          <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="prod-info">
+        <div class="prod-brand">Vult</div>
+        <div class="prod-name">Sérum Vitamina C</div>
+        <div class="prod-price-row">
+          <span class="prod-price">R$89,90</span>
+          <span class="prod-price-old">R$129,90</span>
+        </div>
+        <div class="prod-installments">ou 3x de R$29,97</div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img prod-2">
+        <span class="prod-img-emoji">💋</span>
+        <button class="prod-fav" aria-label="Favoritar">
+          <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="prod-info">
+        <div class="prod-brand">Ruby Rose</div>
+        <div class="prod-name">Batom Matte Velvet</div>
+        <div class="prod-price-row">
+          <span class="prod-price">R$34,90</span>
+        </div>
+        <div class="prod-installments">ou 2x de R$17,45</div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img prod-3">
+        <span class="prod-img-emoji">🌸</span>
+        <button class="prod-fav" aria-label="Favoritar">
+          <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="prod-info">
+        <div class="prod-brand">Dailus</div>
+        <div class="prod-name">Hidratante Corporal Floral</div>
+        <div class="prod-price-row">
+          <span class="prod-price">R$42,90</span>
+        </div>
+        <div class="prod-installments">ou 2x de R$21,45</div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img prod-4">
+        <span class="prod-img-emoji">💆‍♀️</span>
+        <span class="prod-tag">Novo</span>
+        <button class="prod-fav" aria-label="Favoritar">
+          <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="prod-info">
+        <div class="prod-brand">Tracta</div>
+        <div class="prod-name">Máscara Capilar Reconstrução</div>
+        <div class="prod-price-row">
+          <span class="prod-price">R$56,90</span>
+          <span class="prod-price-old">R$69,90</span>
+        </div>
+        <div class="prod-installments">ou 3x de R$18,97</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOSSA HISTÓRIA -->
+<section class="brand-strip">
+  <div class="brand-strip-inner">
+    <div class="brand-strip-visual">
+      <span class="brand-strip-logo">Ca</span>
+    </div>
+    <div class="brand-strip-text">
+      <h2>Cada produto é escolhido<br>com <i>amor</i></h2>
+      <p>Na Amo Cosméticos, acreditamos que beleza não precisa custar caro. Selecionamos cada item do nosso catálogo pensando em qualidade, resultado e acessibilidade — para você se cuidar todos os dias.</p>
+      <button class="btn-brand">Conheça nossa história</button>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section class="benefits">
+  <div class="benefits-grid">
+    <div class="benefit">
+      <div class="benefit-icon">🚚</div>
+      <h4>Entrega rápida</h4>
+      <p>Enviamos para todo o Brasil com rastreamento em tempo real.</p>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">✓</div>
+      <h4>Produtos originais</h4>
+      <p>Trabalhamos direto com as marcas. Nada de réplica ou imitação.</p>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">🔒</div>
+      <h4>Compra segura</h4>
+      <p>Pix, cartão de crédito e boleto com criptografia total.</p>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">↩️</div>
+      <h4>Troca fácil</h4>
+      <p>Não gostou? Troque ou devolva em até 30 dias sem burocracia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <h2>Fique por dentro das novidades</h2>
+  <p>Receba ofertas exclusivas, lançamentos e dicas de beleza direto no seu e-mail.</p>
+  <form class="newsletter-form" id="newsletterForm">
+    <input class="newsletter-input" type="email" placeholder="Seu melhor e-mail" required>
+    <button class="newsletter-btn" type="submit">Inscrever</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="nav-monogram" style="color:var(--lilas)">Ca</span>
+      <p>Cosméticos selecionados com amor para você. Beleza acessível, de qualidade, entregue na sua porta.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Loja</h5>
+      <a href="#">Todos os produtos</a>
+      <a href="#">Ofertas</a>
+      <a href="#">Lançamentos</a>
+      <a href="#">Kits e combos</a>
+    </div>
+    <div class="footer-col">
+      <h5>Ajuda</h5>
+      <a href="#">Meus pedidos</a>
+      <a href="#">Trocas e devoluções</a>
+      <a href="#">Frete e prazos</a>
+      <a href="#">Fale conosco</a>
+    </div>
+    <div class="footer-col">
+      <h5>Institucional</h5>
+      <a href="#">Sobre nós</a>
+      <a href="#">Política de privacidade</a>
+      <a href="#">Termos de uso</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Amo Cosméticos. Todos os direitos reservados.</span>
+    <div class="footer-payments">
+      <span class="pay-badge">Pix</span>
+      <span class="pay-badge">Visa</span>
+      <span class="pay-badge">Master</span>
+      <span class="pay-badge">Elo</span>
+      <span class="pay-badge">Boleto</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<button class="whatsapp-float" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</button>
+
+<script src="/js/script.js"></script>
+</body>
+</html>
