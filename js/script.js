@@ -197,33 +197,179 @@
   }
 
   /* ════════════════════════════════════════════
-     3. CATEGORIAS — carrossel horizontal
+     3. CATEGORIAS — carrossel premium
+     Setas laterais, bolinhas sincronizadas, contador,
+     arrastar com o mouse, teclado e entrada escalonada.
      ════════════════════════════════════════════ */
   function initCategories() {
-    const grid    = $('#catGrid');
-    const prevBtn = $('.cat-nav-prev');
-    const nextBtn = $('.cat-nav-next');
-    if (!grid || !prevBtn || !nextBtn) return;
+    const section  = $('.categories');
+    const grid     = $('#catGrid');
+    const prevBtn  = $('.cat-nav-prev');
+    const nextBtn  = $('.cat-nav-next');
+    const dotsWrap = $('#catDots');
+    const curEl    = $('#catCurrent');
+    const totEl    = $('#catTotal');
+    if (!section || !grid || !prevBtn || !nextBtn) return;
 
-    function cardStep() {
-      const card = $('.cat-card', grid);
-      if (!card) return grid.clientWidth;
-      const style = getComputedStyle(grid);
-      const gap = parseFloat(style.columnGap || style.gap || '0');
-      return card.getBoundingClientRect().width + gap;
+    const cards = $$('.cat-card', grid);
+    const total = cards.length;
+    if (!total) return;
+
+    const pad   = (n) => String(n).padStart(2, '0');
+    const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
+    const behavior = prefersReduced ? 'auto' : 'smooth';
+
+    /* ── entrada escalonada ── */
+    section.classList.add('is-armed');
+    if (prefersReduced || !('IntersectionObserver' in window)) {
+      section.classList.add('is-in');
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          section.classList.add('is-in');
+          io.disconnect();
+        }
+      }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+      io.observe(section);
     }
 
-    function updateNavState() {
-      const maxScroll = grid.scrollWidth - grid.clientWidth - 2;
-      prevBtn.disabled = grid.scrollLeft <= 2;
-      nextBtn.disabled = grid.scrollLeft >= maxScroll;
+    /* ── medidas ── */
+    const padLeft  = () => parseFloat(getComputedStyle(grid).paddingLeft) || 0;
+    const padRight = () => parseFloat(getComputedStyle(grid).paddingRight) || 0;
+    const maxScroll = () => Math.max(grid.scrollWidth - grid.clientWidth, 0);
+
+    function getStep() {
+      if (cards.length > 1) return cards[1].offsetLeft - cards[0].offsetLeft;
+      return cards[0].getBoundingClientRect().width;
     }
 
-    prevBtn.addEventListener('click', () => grid.scrollBy({ left: -cardStep(), behavior: 'smooth' }));
-    nextBtn.addEventListener('click', () => grid.scrollBy({ left:  cardStep(), behavior: 'smooth' }));
-    grid.addEventListener('scroll', updateNavState, { passive: true });
-    window.addEventListener('resize', updateNavState);
-    updateNavState();
+    function goToIndex(i) {
+      const idx = clamp(i, 0, total - 1);
+      const left = Math.min(cards[idx].offsetLeft - padLeft(), maxScroll());
+      grid.scrollTo({ left: Math.max(left, 0), behavior });
+    }
+
+    /* ── bolinhas ── */
+    const dots = [];
+    if (dotsWrap) {
+      cards.forEach((card, i) => {
+        const nameEl = $('.cat-card-name', card);
+        const label  = nameEl ? nameEl.textContent.trim() : 'categoria ' + (i + 1);
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'cat-dot';
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-label', 'Ir para ' + label);
+        dot.addEventListener('click', () => goToIndex(i));
+        dotsWrap.appendChild(dot);
+        dots.push(dot);
+      });
+    }
+    if (totEl) totEl.textContent = pad(total);
+
+    /* ── estado (setas, bolinhas, contador, cards fora da vista) ── */
+    let ticking = false;
+
+    function update() {
+      ticking = false;
+      const max = maxScroll();
+      const x = grid.scrollLeft;
+      const atStart = x <= 2;
+      const atEnd = x >= max - 2;
+
+      section.classList.toggle('is-static', max <= 2);
+      prevBtn.disabled = atStart;
+      nextBtn.disabled = atEnd;
+
+      let active = Math.round(x / (getStep() || 1));
+      if (atEnd) active = total - 1;
+      if (atStart) active = 0;
+      active = clamp(active, 0, total - 1);
+
+      const vr = grid.getBoundingClientRect();
+      const viewLeft  = vr.left + padLeft();
+      const viewRight = vr.right - padRight();
+
+      cards.forEach((card, i) => {
+        const r = card.getBoundingClientRect();
+        const overlap = Math.min(r.right, viewRight) - Math.max(r.left, viewLeft);
+        const visible = overlap / r.width > 0.6;
+        card.classList.toggle('is-out', !visible);
+        if (dots[i]) {
+          dots[i].classList.toggle('is-visible', visible && i !== active);
+          dots[i].classList.toggle('is-active', i === active);
+          dots[i].setAttribute('aria-selected', String(i === active));
+        }
+      });
+
+      if (curEl) curEl.textContent = pad(active + 1);
+    }
+
+    function requestUpdate() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+
+    /* ── controles ── */
+    prevBtn.addEventListener('click', () => grid.scrollBy({ left: -getStep(), behavior }));
+    nextBtn.addEventListener('click', () => grid.scrollBy({ left:  getStep(), behavior }));
+
+    grid.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+    if ('ResizeObserver' in window) new ResizeObserver(requestUpdate).observe(grid);
+
+    grid.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); grid.scrollBy({ left:  getStep(), behavior }); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); grid.scrollBy({ left: -getStep(), behavior }); }
+    });
+
+    /* ── arrastar com o mouse (toque usa a rolagem nativa) ── */
+    let down = false, moved = false;
+    let startX = 0, startLeft = 0, lastX = 0, lastT = 0, vx = 0;
+
+    grid.addEventListener('dragstart', (e) => e.preventDefault());
+
+    grid.addEventListener('pointerdown', (e) => {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      down = true;
+      moved = false;
+      startX = lastX = e.clientX;
+      startLeft = grid.scrollLeft;
+      lastT = performance.now();
+      vx = 0;
+    });
+
+    window.addEventListener('pointermove', (e) => {
+      if (!down) return;
+      const dx = e.clientX - startX;
+      if (!moved && Math.abs(dx) > 6) {
+        moved = true;
+        grid.classList.add('is-dragging');
+      }
+      if (!moved) return;
+      const now = performance.now();
+      vx = (e.clientX - lastX) / Math.max(now - lastT, 1);
+      lastX = e.clientX;
+      lastT = now;
+      grid.scrollLeft = startLeft - dx;
+    });
+
+    window.addEventListener('pointerup', () => {
+      if (!down) return;
+      down = false;
+      if (!moved) return;
+      grid.classList.remove('is-dragging');
+      goToIndex(Math.round((grid.scrollLeft - vx * 220) / (getStep() || 1)));
+      setTimeout(() => { moved = false; }, 60);
+    });
+
+    // evita abrir o link ao soltar depois de arrastar
+    grid.addEventListener('click', (e) => {
+      if (moved) { e.preventDefault(); e.stopPropagation(); }
+    }, true);
+
+    update();
   }
 
   /* ════════════════════════════════════════════
