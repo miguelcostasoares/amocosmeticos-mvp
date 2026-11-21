@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
@@ -17,7 +18,7 @@
   <a href="#" class="nav-brand" aria-label="Amo Cosméticos — ir para o início">
     <span class="nav-logo" role="img" aria-label="Amo Cosméticos"></span>
   </a>
-  <ul class="nav-center">
+  <ul class="nav-center" id="navCenter">
     <li><a href="#">Início</a></li>
     <li><a href="#">Catálogo</a></li>
     <li><a href="#">Categorias</a></li>
@@ -31,15 +32,19 @@
     <button class="nav-btn" aria-label="Minha conta">
       <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
     </button>
-    <button class="nav-btn" aria-label="Sacola">
+    <button class="nav-btn nav-bag" aria-label="Sacola">
       <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="nav-bag-count">2</span>
     </button>
     <button class="nav-cta">Comprar</button>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navCenter">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
 <!-- HERO SLIDER -->
-<section class="hero">
+<section class="hero" id="hero">
   <div class="hero-slider" id="heroSlider">
     <div class="hero-slide active">
       <div class="hero-slide-placeholder slide-ph-1">
@@ -63,21 +68,50 @@
     </div>
   </div>
   <div class="hero-scrim"></div>
-  <div class="hero-content">
-    <h1 class="hero-headline">Beleza que<br>você <i>ama</i></h1>
-    <p class="hero-desc">Skincare, maquiagem e cuidados selecionados um a um — marcas originais, preço honesto e entrega para todo o Brasil. Cuidar de você nunca foi tão simples.</p>
-    <div class="hero-buttons">
-      <button class="btn-hero-primary">Explorar produtos</button>
+
+  <div class="hero-content" id="heroContent">
+    <span class="hero-badge" data-reveal>
+      <span class="hero-badge-dot"></span>
+      Nova coleção · Frete grátis acima de R$149
+    </span>
+    <h1 class="hero-headline">
+      <span class="hero-line" data-reveal><span>Beleza que</span></span>
+      <span class="hero-line" data-reveal style="--d:.08s"><span>você <i>ama</i></span></span>
+    </h1>
+    <p class="hero-desc" data-reveal style="--d:.16s">Skincare, maquiagem e cuidados selecionados um a um — marcas originais, preço honesto e entrega para todo o Brasil. Cuidar de você nunca foi tão simples.</p>
+    <div class="hero-buttons" data-reveal style="--d:.24s">
+      <button class="btn-hero-primary">
+        Explorar produtos
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
       <button class="btn-hero-ghost">Ver ofertas da semana</button>
     </div>
+    <div class="hero-proof" data-reveal style="--d:.32s">
+      <div class="hero-stars" aria-label="4,9 de 5 estrelas">★★★★★</div>
+      <span class="hero-proof-text"><strong>+2.000</strong> clientes apaixonadas · nota 4,9</span>
+    </div>
   </div>
+
   <div class="hero-indicators" id="heroIndicators">
-    <button class="hero-ind active" data-slide="0"></button>
-    <button class="hero-ind" data-slide="1"></button>
-    <button class="hero-ind" data-slide="2"></button>
-    <button class="hero-ind" data-slide="3"></button>
+    <button class="hero-ind active" data-slide="0" aria-label="Ir para o slide 1">
+      <span class="hero-ind-fill"></span>
+    </button>
+    <button class="hero-ind" data-slide="1" aria-label="Ir para o slide 2">
+      <span class="hero-ind-fill"></span>
+    </button>
+    <button class="hero-ind" data-slide="2" aria-label="Ir para o slide 3">
+      <span class="hero-ind-fill"></span>
+    </button>
+    <button class="hero-ind" data-slide="3" aria-label="Ir para o slide 4">
+      <span class="hero-ind-fill"></span>
+    </button>
     <span class="hero-counter" id="heroCounter">1 / 4</span>
   </div>
+
+  <a href="#" class="hero-scroll-cue" aria-label="Rolar para ver mais">
+    <span>Descubra</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+  </a>
 </section>
 
 <!-- TRUST STRIP -->
@@ -100,7 +134,6 @@
 
 <!-- CATEGORIAS -->
 <section class="categories">
-  <div class="categories-glow" aria-hidden="true"></div>
   <div class="categories-intro">
     <span class="categories-eyebrow">Categorias</span>
     <h2 class="section-title">O ritual começa<br>pela <i>escolha certa</i></h2>
@@ -115,74 +148,62 @@
     <div class="cat-grid" id="catGrid">
       <a href="#" class="cat-card cat-1">
         <div class="cat-card-media">
-          <img src="assets/produto1.jpeg" alt="Shampoo" class="cat-card-img" loading="lazy">
-        </div>
-        <div class="cat-card-overlay"></div>
-        <div class="cat-card-index">01</div>
-        <div class="cat-card-arrow" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </div>
-        <div class="cat-card-info">
-          <div class="cat-card-name">Shampoo</div>
-          <div class="cat-card-divider"></div>
-          <div class="cat-card-count">Limpeza &amp; nutrição</div>
-        </div>
-        <div class="cat-card-footer">
-          <p class="cat-card-desc">A base de todo ritual: uma limpeza que respeita o fio e devolve o movimento natural dos cabelos.</p>
+          <img src="assets/shampoo-belkit.jpeg" alt="Shampoo" class="cat-card-img" loading="lazy">
+          <div class="cat-card-overlay"></div>
+          <div class="cat-card-index">01</div>
+          <div class="cat-card-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </div>
+          <div class="cat-card-info">
+            <div class="cat-card-name">Shampoos</div>
+            <div class="cat-card-divider"></div>
+            <div class="cat-card-count">Limpeza &amp; nutrição</div>
+          </div>
         </div>
       </a>
       <a href="#" class="cat-card cat-2">
         <div class="cat-card-media">
-          <img src="assets/produto2.jpeg" alt="Óleos" class="cat-card-img" loading="lazy">
-        </div>
-        <div class="cat-card-overlay"></div>
-        <div class="cat-card-index">02</div>
-        <div class="cat-card-arrow" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </div>
-        <div class="cat-card-info">
-          <div class="cat-card-name">Óleos</div>
-          <div class="cat-card-divider"></div>
-          <div class="cat-card-count">Brilho &amp; reparo</div>
-        </div>
-        <div class="cat-card-footer">
-          <p class="cat-card-desc">Gotas concentradas que selam, nutrem e devolvem aquele brilho de quem acabou de sair do salão.</p>
+          <img src="assets/oleos-newhair.jpeg" alt="Óleos" class="cat-card-img" loading="lazy">
+          <div class="cat-card-overlay"></div>
+          <div class="cat-card-index">02</div>
+          <div class="cat-card-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </div>
+          <div class="cat-card-info">
+            <div class="cat-card-name">Óleos</div>
+            <div class="cat-card-divider"></div>
+            <div class="cat-card-count">Brilho &amp; reparo</div>
+          </div>
         </div>
       </a>
       <a href="#" class="cat-card cat-3">
         <div class="cat-card-media">
-          <img src="assets/produto3.jpeg" alt="Perfume Capilar" class="cat-card-img" loading="lazy">
-        </div>
-        <div class="cat-card-overlay"></div>
-        <div class="cat-card-index">03</div>
-        <div class="cat-card-arrow" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </div>
-        <div class="cat-card-info">
-          <div class="cat-card-name">Perfume Capilar</div>
-          <div class="cat-card-divider"></div>
-          <div class="cat-card-count">Fragrância &amp; cuidado</div>
-        </div>
-        <div class="cat-card-footer">
-          <p class="cat-card-desc">Uma assinatura olfativa que fica no ar depois que você passa — sutil, envolvente, inesquecível.</p>
+          <img src="assets/perfume-capilar.jpeg" alt="Perfume Capilar" class="cat-card-img" loading="lazy">
+          <div class="cat-card-overlay"></div>
+          <div class="cat-card-index">03</div>
+          <div class="cat-card-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </div>
+          <div class="cat-card-info">
+            <div class="cat-card-name">Perfumes</div>
+            <div class="cat-card-divider"></div>
+            <div class="cat-card-count">Fragrância capilar</div>
+          </div>
         </div>
       </a>
       <a href="#" class="cat-card cat-4">
         <div class="cat-card-media">
-          <img src="assets/produto4.jpeg" alt="Kits" class="cat-card-img" loading="lazy">
-        </div>
-        <div class="cat-card-overlay"></div>
-        <div class="cat-card-index">04</div>
-        <div class="cat-card-arrow" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </div>
-        <div class="cat-card-info">
-          <div class="cat-card-name">Kits</div>
-          <div class="cat-card-divider"></div>
-          <div class="cat-card-count">Rotina completa</div>
-        </div>
-        <div class="cat-card-footer">
-          <p class="cat-card-desc">Combinações pensadas a dedo para cada etapa do cuidado — do shampoo ao toque final.</p>
+          <img src="assets/kit-newhair.jpeg" alt="Kits" class="cat-card-img" loading="lazy">
+          <div class="cat-card-overlay"></div>
+          <div class="cat-card-index">04</div>
+          <div class="cat-card-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </div>
+          <div class="cat-card-info">
+            <div class="cat-card-name">Kits</div>
+            <div class="cat-card-divider"></div>
+            <div class="cat-card-count">Rotina completa</div>
+          </div>
         </div>
       </a>
     </div>
