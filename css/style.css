@@ -44,7 +44,7 @@
   --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* ►►► LOGO — troque o arquivo aqui para mudar a logo da navbar ◄◄◄ */
-  --logo-src: url('/assets/logo-amo.png');
+  --logo-src: url('/assets/logos/logo-amo-principal.png');
   --logo-color: var(--plum);   /* cor em    que a logo é exibida */
 }
 
@@ -313,7 +313,8 @@ body {
   opacity: 1;
 }
 
-.hero-slide-bg {
+.hero-slide-bg,
+.hero-slide-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
