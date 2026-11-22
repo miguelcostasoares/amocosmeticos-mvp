@@ -47,16 +47,10 @@
 <section class="hero" id="hero">
   <div class="hero-slider" id="heroSlider">
     <div class="hero-slide active">
-      <img src="assets/banners/banner-home-01.jpg" alt="Amo Cosméticos — banner 1" class="hero-slide-img" loading="eager">
+      <img src="assets/modelos/loja-ambiente-01.png" alt="Loja Amo Cosméticos" class="hero-slide-img" loading="eager">
     </div>
     <div class="hero-slide">
-      <img src="assets/modelos/modelo-produtos-01.png" alt="Amo Cosméticos — banner 2" class="hero-slide-img" loading="lazy">
-    </div>
-    <div class="hero-slide">
-      <img src="assets/modelos/loja-ambiente-01.jpg" alt="Loja Amo Cosméticos" class="hero-slide-img" loading="lazy">
-    </div>
-    <div class="hero-slide">
-      <img src="assets/modelos/loja-ambiente-02.jpg" alt="Loja Amo Cosméticos" class="hero-slide-img" loading="lazy">
+      <img src="assets/modelos/modelo-produtos-01.png" alt="Amo Cosméticos — modelo com produtos" class="hero-slide-img" loading="lazy">
     </div>
   </div>
 
@@ -69,7 +63,7 @@
   <div class="hero-content" id="heroContent">
     <h1 class="hero-headline">
       <span class="hero-line" data-reveal><span>Beleza que</span></span>
-      <span class="hero-line" data-reveal style="--d:.08s"><span>você <i>ama</i></span></span>
+      <span class="hero-line" data-reveal style="--d:.08s"><span>você <i>ama</i><span class="hero-heart" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span></span></span>
     </h1>
     <p class="hero-desc" data-reveal style="--d:.16s">Skincare, maquiagem e cuidados selecionados um a um — marcas originais, preço honesto e entrega para todo o Brasil. Cuidar de você nunca foi tão simples.</p>
     <div class="hero-buttons" data-reveal style="--d:.24s">
@@ -77,7 +71,13 @@
         Explorar produtos
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
-      <button class="btn-hero-ghost">Ver ofertas da semana</button>
+      <button class="btn-hero-ghost">
+        <span class="ghost-heart" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </span>
+        <span class="ghost-label">Ver ofertas da semana</span>
+        <span class="ghost-sparks" aria-hidden="true"><i></i><i></i><i></i></span>
+      </button>
     </div>
     <div class="hero-proof" data-reveal style="--d:.32s">
       <div class="hero-stars" aria-label="4,9 de 5 estrelas">★★★★★</div>
@@ -85,40 +85,94 @@
     </div>
   </div>
 
-  <!-- Álbum de fotos — produtos passando no canto inferior direito -->
-  <div class="hero-album" id="heroAlbum" data-reveal style="--d:.4s" aria-hidden="true">
-    <div class="album-stack">
-      <article class="album-card album-back"><div class="album-shot"></div></article>
-      <article class="album-card album-mid"><div class="album-shot"></div></article>
-      <article class="album-card album-front">
-        <div class="album-shot"></div>
-        <span class="album-heart">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-        </span>
-      </article>
-    </div>
-    <div class="album-tag">
-      <span class="album-tag-label">Favoritos da semana</span>
-      <span class="album-tag-dots">
-        <i class="is-on"></i><i></i><i></i><i></i>
-      </span>
-    </div>
-  </div>
+  <!-- Deck de cards — categorias em destaque (canto inferior direito) -->
+  <div class="hero-deck" id="heroDeck" data-reveal style="--d:.4s">
+    <div class="deck-cards" id="deckCards">
 
-  <div class="hero-indicators" id="heroIndicators">
-    <button class="hero-ind active" data-slide="0" aria-label="Ir para o slide 1">
-      <span class="hero-ind-fill"></span>
-    </button>
-    <button class="hero-ind" data-slide="1" aria-label="Ir para o slide 2">
-      <span class="hero-ind-fill"></span>
-    </button>
-    <button class="hero-ind" data-slide="2" aria-label="Ir para o slide 3">
-      <span class="hero-ind-fill"></span>
-    </button>
-    <button class="hero-ind" data-slide="3" aria-label="Ir para o slide 4">
-      <span class="hero-ind-fill"></span>
-    </button>
-    <span class="hero-counter" id="heroCounter">1 / 4</span>
+      <!-- Card 1 — Melhores da semana -->
+      <article class="deck-card dc-best" data-card="0" tabindex="0" role="button" aria-label="Melhores produtos da semana">
+        <span class="dc-gloss" aria-hidden="true"></span>
+        <header class="dc-top">
+          <span class="dc-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.88-5-4.87 7.1-1.01z"/></svg> Melhores da semana</span>
+          <button class="dc-fav" type="button" aria-label="Favoritar" tabindex="-1">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </header>
+        <div class="dc-media">
+          <img src="assets/produtos/perfume-capilar.jpeg" alt="Perfume capilar" loading="lazy" draggable="false">
+          <span class="dc-shine" aria-hidden="true"></span>
+        </div>
+        <div class="dc-body">
+          <span class="dc-brand">New Hair</span>
+          <h3 class="dc-name">Perfume Capilar Encanto</h3>
+          <div class="dc-meta">
+            <span class="dc-stars" aria-label="4,9 de 5">★★★★★ <b>4,9</b></span>
+          </div>
+          <div class="dc-foot">
+            <span class="dc-price">R$39,90</span>
+            <span class="dc-cta">Ver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 — Em oferta -->
+      <article class="deck-card dc-sale" data-card="1" tabindex="0" role="button" aria-label="Produtos em oferta">
+        <span class="dc-gloss" aria-hidden="true"></span>
+        <header class="dc-top">
+          <span class="dc-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.41 11.58l-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9a2 2 0 0 0 2.82 0l7-7a2 2 0 0 0 0-2.84zM6.5 8A1.5 1.5 0 1 1 8 6.5 1.5 1.5 0 0 1 6.5 8z"/></svg> Oferta · -32%</span>
+          <button class="dc-fav" type="button" aria-label="Favoritar" tabindex="-1">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </header>
+        <div class="dc-media">
+          <img src="assets/produtos/kit-newhair.jpeg" alt="Kit New Hair" loading="lazy" draggable="false">
+          <span class="dc-shine" aria-hidden="true"></span>
+        </div>
+        <div class="dc-body">
+          <span class="dc-brand">New Hair</span>
+          <h3 class="dc-name">Kit Completo New Hair</h3>
+          <div class="dc-meta">
+            <span class="dc-stars" aria-label="4,8 de 5">★★★★★ <b>4,8</b></span>
+          </div>
+          <div class="dc-foot">
+            <span class="dc-price">R$129,90 <s>R$189,90</s></span>
+            <span class="dc-cta">Ver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3 — Ritual de cuidado (categoria criada) -->
+      <article class="deck-card dc-ritual" data-card="2" tabindex="0" role="button" aria-label="Ritual de cuidado">
+        <span class="dc-gloss" aria-hidden="true"></span>
+        <header class="dc-top">
+          <span class="dc-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C9 6 7 9 7 13a5 5 0 0 0 10 0c0-4-2-7-5-11z"/></svg> Ritual de cuidado</span>
+          <button class="dc-fav" type="button" aria-label="Favoritar" tabindex="-1">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </header>
+        <div class="dc-media">
+          <img src="assets/produtos/oleos-newhair.jpeg" alt="Óleo reparador New Hair" loading="lazy" draggable="false">
+          <span class="dc-shine" aria-hidden="true"></span>
+        </div>
+        <div class="dc-body">
+          <span class="dc-brand">New Hair</span>
+          <h3 class="dc-name">Óleo Reparador Noturno</h3>
+          <div class="dc-meta">
+            <span class="dc-stars" aria-label="5 de 5">★★★★★ <b>5,0</b></span>
+          </div>
+          <div class="dc-foot">
+            <span class="dc-price">R$54,90</span>
+            <span class="dc-cta">Ver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <div class="deck-dots" id="deckDots" role="tablist" aria-label="Alternar destaques">
+      <button class="deck-dot is-on" type="button" data-go="0" role="tab" aria-label="Melhores da semana"></button>
+      <button class="deck-dot" type="button" data-go="1" role="tab" aria-label="Em oferta"></button>
+      <button class="deck-dot" type="button" data-go="2" role="tab" aria-label="Ritual de cuidado"></button>
+    </div>
   </div>
 </section>
 

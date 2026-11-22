@@ -10,52 +10,36 @@
   const $$ = (sel, ctx) => Array.from((ctx || document).querySelectorAll(sel));
 
   /* ════════════════════════════════════════════
-     1. HERO — slider cinematográfico
-     Autoplay com barra de progresso, pausa no hover
-     e quando a aba sai de foco, navegação por teclado,
-     gesto de arrastar (swipe) e parallax na rolagem.
+     1. HERO — slider de fundo (crossfade)
+     Autoplay simples com 2 fotos. Pausa apenas
+     quando a aba sai de foco (sem pausar no hover).
+     Navegação por teclado, swipe e parallax na rolagem.
      ════════════════════════════════════════════ */
   function initHero() {
     const hero    = $('#hero');
     if (!hero) return;
 
     const slides  = $$('.hero-slide', hero);
-    const inds     = $$('.hero-ind', hero);
-    const fills    = $$('.hero-ind-fill', hero);
-    const counter  = $('#heroCounter');
-    const content  = $('#heroContent');
-    const total    = slides.length;
+    const content = $('#heroContent');
+    const total   = slides.length;
     if (!total) return;
 
     const DURATION = 6000;           // tempo de cada slide (ms)
-    let current    = 0;
-    let paused     = false;
-    let elapsed    = 0;
-    let last       = 0;
-    let rafId      = null;
-
-    // o progresso é desenhado quadro a quadro via JS (pausa/retoma de verdade)
-    fills.forEach(f => { f.style.transition = 'none'; });
-    hero.style.setProperty('--autoplay', DURATION + 'ms');
+    let current = 0, paused = false, elapsed = 0, last = 0, rafId = null;
 
     function render(i) {
       slides[current].classList.remove('active');
-      inds[current].classList.remove('active');
-      fills[current].style.width = '0%';
-
       current = (i + total) % total;
 
-      // re-dispara o Ken Burns do slide que entra
-      const ph = $('.hero-slide-placeholder', slides[current]);
-      if (ph && !prefersReduced) {
-        ph.style.animation = 'none';
-        void ph.offsetWidth;          // força reflow
-        ph.style.animation = '';
+      // re-dispara o Ken Burns da imagem que entra
+      const img = $('.hero-slide-img', slides[current]);
+      if (img && !prefersReduced) {
+        img.style.animation = 'none';
+        void img.offsetWidth;          // força reflow
+        img.style.animation = '';
       }
 
       slides[current].classList.add('active');
-      inds[current].classList.add('active');
-      if (counter) counter.textContent = (current + 1) + ' / ' + total;
     }
 
     function goTo(i) { elapsed = 0; render(i); }
@@ -69,9 +53,7 @@
 
       if (!paused) {
         elapsed += dt;
-        const pct = Math.min(elapsed / DURATION, 1);
-        if (fills[current]) fills[current].style.width = (pct * 100) + '%';
-        if (pct >= 1) { elapsed = 0; render(current + 1); }
+        if (elapsed >= DURATION) { elapsed = 0; render(current + 1); }
       }
       rafId = requestAnimationFrame(tick);
     }
@@ -83,14 +65,7 @@
       rafId = requestAnimationFrame(tick);
     }
 
-    // controles ──────────────────────────────
-    inds.forEach((btn, i) => btn.addEventListener('click', () => goTo(i)));
-
-    // pausa ao passar o mouse / tocar
-    hero.addEventListener('mouseenter', () => { paused = true; });
-    hero.addEventListener('mouseleave', () => { paused = false; });
-
-    // pausa quando a aba perde o foco (economiza bateria e evita "pulos")
+    // pausa somente quando a aba perde o foco (economiza bateria)
     document.addEventListener('visibilitychange', () => {
       paused = document.hidden;
       last = 0;
@@ -107,16 +82,14 @@
     // swipe / arrastar (mouse e toque via Pointer Events)
     let startX = null;
     hero.addEventListener('pointerdown', (e) => {
-      if (e.target.closest('.hero-content, .hero-indicators, .hero-scroll-cue')) return;
+      if (e.target.closest('.hero-content, .hero-deck')) return;
       startX = e.clientX;
-      paused = true;
     });
     window.addEventListener('pointerup', (e) => {
       if (startX === null) return;
       const dx = e.clientX - startX;
       if (Math.abs(dx) > 50) (dx < 0 ? next() : prev());
       startX = null;
-      paused = false;
     });
 
     // parallax suave do conteúdo ao rolar
@@ -373,74 +346,83 @@
   }
 
   /* ════════════════════════════════════════════
-     3b. HERO — álbum de fotos (produtos passando)
-     3 fotos em leque no canto inferior direito que
-     alternam os produtos continuamente.
+     3b. HERO — deck de cards (destaques em "cartas")
+     3 cards de categoria em leque no canto inferior
+     direito que alternam entre si. Clicáveis (trazem
+     a carta para a frente) e com entrada "distribuída".
      ════════════════════════════════════════════ */
-  function initHeroAlbum() {
-    const album = $('#heroAlbum');
-    if (!album) return;
+  function initHeroDeck() {
+    const deck = $('#heroDeck');
+    if (!deck) return;
 
-    const shots = $$('.album-shot', album);
-    const dots  = $$('.album-tag-dots i', album);
-    if (shots.length < 3) return;
+    const cards = $$('.deck-card', deck);
+    const dots  = $$('.deck-dot', deck);
+    const total = cards.length;
+    if (!total) return;
 
-    // produtos exibidos no álbum (ordem = sequência que "passa")
-    const PRODUCTS = [
-      'assets/produtos/shampoo-belkit.jpeg',
-      'assets/produtos/oleos-newhair.jpeg',
-      'assets/produtos/perfume-capilar.jpeg',
-      'assets/produtos/kit-newhair.jpeg',
-      'assets/produtos/IMG_0425.jpg'
-    ];
-
-    const total = PRODUCTS.length;
-    const INTERVAL = 2800;   // tempo entre trocas (ms)
-    let index = 0;
-
-    // pré-carrega para troca sem "flash"
-    PRODUCTS.forEach(src => { const im = new Image(); im.src = src; });
-
-    const paint = () => {
-      // front = index, mid = index+1, back = index+2  (shots: [back, mid, front])
-      const map = [2, 1, 0]; // shots[0]=back→offset2, shots[1]=mid→offset1, shots[2]=front→offset0
-      shots.forEach((shot, i) => {
-        const src = PRODUCTS[(index + map[i]) % total];
-        shot.style.backgroundImage = 'url("' + src + '")';
-      });
-      if (dots.length) {
-        dots.forEach((d, i) => d.classList.toggle('is-on', i % dots.length === index % dots.length));
-      }
-    };
-
-    paint();
-
-    if (prefersReduced) return;  // sem autoplay: mostra 3 fotos estáticas
-
-    const front = $('.album-front', album);
+    const INTERVAL = 3800;   // tempo entre trocas (ms)
+    let front = 0;
     let timer = null;
 
-    const advance = () => {
-      // fade suave nas fotos antes de trocar
-      shots.forEach(s => { s.style.opacity = '0'; });
-      setTimeout(() => {
-        index = (index + 1) % total;
-        paint();
-        shots.forEach(s => { s.style.opacity = '1'; });
-        // "pop" na carta da frente
-        if (front) {
-          front.style.transform = 'rotate(0deg) scale(1.04)';
-          setTimeout(() => { front.style.transform = ''; }, 420);
-        }
-      }, 300);
-    };
+    function layout() {
+      cards.forEach((card, i) => {
+        const pos = (i - front + total) % total;   // 0 = frente
+        card.classList.remove('pos-0', 'pos-1', 'pos-2');
+        card.classList.add('pos-' + pos);
+        card.setAttribute('aria-hidden', String(pos !== 0));
+      });
+      dots.forEach((d, i) => {
+        d.classList.toggle('is-on', i === front);
+        d.setAttribute('aria-selected', String(i === front));
+      });
+    }
 
-    const play  = () => { if (!timer) timer = setInterval(advance, INTERVAL); };
-    const pause = () => { clearInterval(timer); timer = null; };
+    function goTo(i, byUser) {
+      front = ((i % total) + total) % total;
+      layout();
+      if (byUser) restart();
+    }
+    const advance = () => goTo(front + 1);
 
-    album.addEventListener('mouseenter', pause);
-    album.addEventListener('mouseleave', play);
+    const play    = () => { if (!timer && !prefersReduced) timer = setInterval(advance, INTERVAL); };
+    const pause   = () => { clearInterval(timer); timer = null; };
+    const restart = () => { pause(); play(); };
+
+    // clique/teclado no card → traz para a frente (sem link por enquanto)
+    cards.forEach((card, i) => {
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('.dc-fav')) return;   // favoritar não navega
+        goTo(i, true);
+      });
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goTo(i, true); }
+      });
+    });
+
+    // favoritar (coração) sem disparar a navegação da carta
+    $$('.dc-fav', deck).forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        btn.classList.toggle('is-liked');
+      });
+    });
+
+    // bolinhas
+    dots.forEach((d, i) => d.addEventListener('click', () => goTo(i, true)));
+
+    // pausa ao passar o mouse (para dar tempo de ler/clicar) e ao sair da aba
+    deck.addEventListener('mouseenter', pause);
+    deck.addEventListener('mouseleave', play);
     document.addEventListener('visibilitychange', () => (document.hidden ? pause() : play()));
+
+    layout();
+
+    // "distribuir as cartas" — entrada do leque
+    if (prefersReduced) {
+      deck.classList.add('is-dealt');
+    } else {
+      setTimeout(() => deck.classList.add('is-dealt'), 650);
+    }
 
     play();
   }
@@ -459,7 +441,7 @@
     initHero();
     initNav();
     initCategories();
-    initHeroAlbum();
+    initHeroDeck();
     initNewsletter();
   }
 
