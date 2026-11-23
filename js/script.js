@@ -436,13 +436,248 @@
     form.addEventListener('submit', (e) => e.preventDefault());
   }
 
+  /* ════════════════════════════════════════════
+     3c. NOSSA HISTÓRIA — entrada no scroll e
+     parallax/tilt sutil da foto (só desktop com mouse)
+     ════════════════════════════════════════════ */
+  function initBrandStory() {
+    const section = $('.story');
+    const visual  = $('#storyVisual');
+    if (!section) return;
+
+    /* ── entrada no scroll ── */
+    section.classList.add('is-armed');
+    if (prefersReduced || !('IntersectionObserver' in window)) {
+      section.classList.add('is-in');
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          section.classList.add('is-in');
+          io.disconnect();
+        }
+      }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
+      io.observe(section);
+    }
+
+    /* ── parallax das camadas + tilt contido da foto ── */
+    if (!visual || prefersReduced) return;
+
+    const fine = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 961px)');
+    let rafId = null, tx = 0, ty = 0;
+
+    function apply() {
+      visual.style.setProperty('--px', tx.toFixed(3));
+      visual.style.setProperty('--py', ty.toFixed(3));
+      rafId = null;
+    }
+
+    visual.addEventListener('pointermove', (e) => {
+      if (!fine.matches || e.pointerType !== 'mouse') return;
+      const r = visual.getBoundingClientRect();
+      tx = ((e.clientX - r.left) / r.width  - 0.5) * 2;
+      ty = ((e.clientY - r.top)  / r.height - 0.5) * 2;
+      if (!rafId) rafId = requestAnimationFrame(apply);
+    });
+
+    visual.addEventListener('pointerleave', () => {
+      tx = 0;
+      ty = 0;
+      if (!rafId) rafId = requestAnimationFrame(apply);
+    });
+  }
+
+    /* ════════════════════════════════════════════
+     5. PRODUTOS — troca de abas (queridinhos/vendidos/ofertas)
+     ════════════════════════════════════════════ */
+  function initProductTabs() {
+    const section = $('.products');
+    if (!section) return;
+    const tabs   = $$('.prod-tab', section);
+    const panels = $$('.prod-panel', section);
+    if (!tabs.length) return;
+
+    function activate(name) {
+      tabs.forEach((t) => {
+        const on = t.dataset.tab === name;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      panels.forEach((p) => {
+        const on = p.dataset.panel === name;
+        p.classList.toggle('is-active', on);
+        p.hidden = !on;
+      });
+    }
+    tabs.forEach((t) => t.addEventListener('click', () => activate(t.dataset.tab)));
+  }
+
+  /* ════════════════════════════════════════════
+     6. QUERIDINHOS — contagem regressiva semanal
+     Conta até a próxima segunda 00h e reinicia sozinha.
+     ════════════════════════════════════════════ */
+  function initWeekCountdown() {
+    const root = $('[data-countdown]');
+    if (!root) return;
+    const out = { d: $('[data-cd="d"]', root), h: $('[data-cd="h"]', root), m: $('[data-cd="m"]', root), s: $('[data-cd="s"]', root) };
+    const pad = (n) => String(n).padStart(2, '0');
+
+    function nextMonday() {
+      const d = new Date();
+      d.setHours(0, 0, 0, 0);
+      const add = ((8 - d.getDay()) % 7) || 7;
+      d.setDate(d.getDate() + add);
+      return d;
+    }
+    let target = nextMonday();
+
+    function tick() {
+      let diff = target - Date.now();
+      if (diff <= 0) { target = nextMonday(); diff = target - Date.now(); }
+      const s = Math.floor(diff / 1000);
+      if (out.d) out.d.textContent = pad(Math.floor(s / 86400));
+      if (out.h) out.h.textContent = pad(Math.floor((s % 86400) / 3600));
+      if (out.m) out.m.textContent = pad(Math.floor((s % 3600) / 60));
+      if (out.s) out.s.textContent = pad(s % 60);
+    }
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  /* ════════════════════════════════════════════
+     7. Barra de popularidade/estoque — anima ao carregar
+     ════════════════════════════════════════════ */
+  function initStockBars() {
+    $$('[data-fill]').forEach((bar) => {
+      const pct = Math.max(0, Math.min(100, parseFloat(bar.dataset.fill) || 0));
+      requestAnimationFrame(() => requestAnimationFrame(() => { bar.style.width = pct + '%'; }));
+    });
+  }
+
+  /* ════════════════════════════════════════════
+     8. Favoritar (coração) nos cards
+     ════════════════════════════════════════════ */
+  function initProductFav() {
+    $$('.pcard-fav').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault(); e.stopPropagation();
+        btn.classList.toggle('is-fav');
+      });
+    });
+  }
+
+    /* ════════════════════════════════════════════
+     9. QUERIDINHOS: palco interativo
+     Clique no seletor troca o produto em destaque.
+     Avança sozinho a cada 7s (pausa com o mouse em cima).
+     Os dados vêm dos data-* de cada botão .fav-pick.
+     ════════════════════════════════════════════ */
+  function initFavorites() {
+    const root = $('#favStage');
+    if (!root) return;
+
+    const main  = $('#favMain', root);
+    const picks = $$('.fav-pick', root);
+    if (!main || !picks.length) return;
+
+    const el = {
+      img:       $('#favImg', root),
+      rank:      $('#favRank', root),
+      brand:     $('#favBrand', root),
+      name:      $('#favName', root),
+      desc:      $('#favDesc', root),
+      perks:     $('#favPerks', root),
+      now:       $('#favNow', root),
+      old:       $('#favOld', root),
+      save:      $('#favSave', root),
+      soldLabel: $('#favSoldLabel', root),
+      soldPct:   $('#favSoldPct', root),
+      soldFill:  $('#favSoldFill', root)
+    };
+
+    // anima a barra de "já vendido" do produto inicial
+    setTimeout(() => {
+      el.soldFill.style.width = (parseFloat(el.soldFill.dataset.fill) || 0) + '%';
+    }, 120);
+
+    const CHECK = '<span class="perk-ico"><svg class="ico"><use href="#i-check"/></svg></span>';
+    let current = 0;
+    let swapTimer = null;
+
+    function render(p) {
+      const d = p.dataset;
+      el.img.src = d.img;
+      el.img.alt = d.alt || d.name || '';
+      el.rank.textContent  = d.rank || '';
+      el.brand.textContent = d.brand || '';
+      el.name.textContent  = d.name || '';
+      el.desc.textContent  = d.desc || '';
+
+      el.perks.textContent = '';
+      (d.perks || '').split('|').forEach((txt) => {
+        if (!txt.trim()) return;
+        const li = document.createElement('li');
+        li.innerHTML = CHECK;
+        const span = document.createElement('span');
+        span.textContent = txt.trim();
+        li.appendChild(span);
+        el.perks.appendChild(li);
+      });
+
+      el.now.textContent  = d.price || '';
+      el.old.textContent  = d.old || '';   el.old.hidden  = !d.old;
+      el.save.textContent = d.save || '';  el.save.hidden = !d.save;
+
+      const sold = Math.max(0, Math.min(100, parseFloat(d.sold) || 0));
+      el.soldLabel.textContent = d.soldLabel || '';
+      el.soldPct.textContent   = sold + '%';
+      el.soldFill.style.width  = '0%';
+      setTimeout(() => { el.soldFill.style.width = sold + '%'; }, 60);
+    }
+
+    function goTo(i) {
+      if (i === current) return;
+      picks[current].classList.remove('is-active');
+      picks[current].setAttribute('aria-current', 'false');
+      current = i;
+      picks[current].classList.add('is-active');
+      picks[current].setAttribute('aria-current', 'true');
+
+      clearTimeout(swapTimer);
+      if (prefersReduced) { render(picks[current]); return; }
+      main.classList.add('is-swapping');
+      swapTimer = setTimeout(() => {
+        render(picks[current]);
+        main.classList.remove('is-swapping');
+      }, 260);
+    }
+
+    picks.forEach((p, i) => p.addEventListener('click', () => goTo(i)));
+
+    // a barra de progresso (CSS) termina → próximo produto
+    root.addEventListener('animationend', (e) => {
+      if (e.animationName === 'favProgress') goTo((current + 1) % picks.length);
+    });
+
+    // só roda o autoplay enquanto a seção está visível
+    if (!prefersReduced && 'IntersectionObserver' in window) {
+      new IntersectionObserver((entries) => {
+        root.classList.toggle('is-playing', entries[0].isIntersecting);
+      }, { threshold: 0.35 }).observe(root);
+    }
+  }
+
   /* ── bootstrap ── */
   function init() {
     initHero();
     initNav();
     initCategories();
     initHeroDeck();
-    initNewsletter();
+    initBrandStory();
+    initNewsletter();     
+    initWeekCountdown();   
+    initStockBars();       
+    initProductFav();
+    initFavorites(); 
   }
 
   if (document.readyState === 'loading') {

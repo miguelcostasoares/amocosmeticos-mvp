@@ -89,17 +89,43 @@
   <div class="hero-deck" id="heroDeck" data-reveal style="--d:.4s">
     <div class="deck-cards" id="deckCards">
 
-      <!-- Card 1 — Melhores da semana -->
-      <article class="deck-card dc-best" data-card="0" tabindex="0" role="button" aria-label="Melhores produtos da semana">
+      <!-- Card 1 — Queridinhos da semana -->
+      <article class="deck-card dc-fav-week" data-card="0" tabindex="0" role="button" aria-label="Queridinhos da semana">
         <span class="dc-gloss" aria-hidden="true"></span>
         <header class="dc-top">
-          <span class="dc-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.88-5-4.87 7.1-1.01z"/></svg> Melhores da semana</span>
+          <span class="dc-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg> Queridinhos da semana</span>
           <button class="dc-fav" type="button" aria-label="Favoritar" tabindex="-1">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </button>
         </header>
         <div class="dc-media">
-          <img src="assets/produtos/perfume-capilar.jpeg" alt="Perfume capilar" loading="lazy" draggable="false">
+          <img src="assets/produtos/kit-newhair.jpeg" alt="Kit Completo New Hair" loading="lazy" draggable="false">
+          <span class="dc-shine" aria-hidden="true"></span>
+        </div>
+        <div class="dc-body">
+          <span class="dc-brand">New Hair</span>
+          <h3 class="dc-name">Kit Completo New Hair</h3>
+          <div class="dc-meta">
+            <span class="dc-stars" aria-label="4,9 de 5">★★★★★ <b>4,9</b></span>
+          </div>
+          <div class="dc-foot">
+            <span class="dc-price">R$129,90 <s>R$189,90</s></span>
+            <span class="dc-cta">Ver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 — Mais vendidos -->
+      <article class="deck-card dc-top-sellers" data-card="1" tabindex="0" role="button" aria-label="Mais vendidos">
+        <span class="dc-gloss" aria-hidden="true"></span>
+        <header class="dc-top">
+          <span class="dc-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-1.8 11H4.8z"/></svg> Mais vendidos</span>
+          <button class="dc-fav" type="button" aria-label="Favoritar" tabindex="-1">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </header>
+        <div class="dc-media">
+          <img src="assets/produtos/perfume-capilar.jpeg" alt="Perfume Capilar Encanto" loading="lazy" draggable="false">
           <span class="dc-shine" aria-hidden="true"></span>
         </div>
         <div class="dc-body">
@@ -115,43 +141,17 @@
         </div>
       </article>
 
-      <!-- Card 2 — Em oferta -->
-      <article class="deck-card dc-sale" data-card="1" tabindex="0" role="button" aria-label="Produtos em oferta">
+      <!-- Card 3 — Em oferta -->
+      <article class="deck-card dc-on-sale" data-card="2" tabindex="0" role="button" aria-label="Produtos em oferta">
         <span class="dc-gloss" aria-hidden="true"></span>
         <header class="dc-top">
-          <span class="dc-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.41 11.58l-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9a2 2 0 0 0 2.82 0l7-7a2 2 0 0 0 0-2.84zM6.5 8A1.5 1.5 0 1 1 8 6.5 1.5 1.5 0 0 1 6.5 8z"/></svg> Oferta · -32%</span>
+          <span class="dc-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.41 11.58l-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9a2 2 0 0 0 2.82 0l7-7a2 2 0 0 0 0-2.84zM6.5 8A1.5 1.5 0 1 1 8 6.5 1.5 1.5 0 0 1 6.5 8z"/></svg> Em oferta · -18%</span>
           <button class="dc-fav" type="button" aria-label="Favoritar" tabindex="-1">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </button>
         </header>
         <div class="dc-media">
-          <img src="assets/produtos/kit-newhair.jpeg" alt="Kit New Hair" loading="lazy" draggable="false">
-          <span class="dc-shine" aria-hidden="true"></span>
-        </div>
-        <div class="dc-body">
-          <span class="dc-brand">New Hair</span>
-          <h3 class="dc-name">Kit Completo New Hair</h3>
-          <div class="dc-meta">
-            <span class="dc-stars" aria-label="4,8 de 5">★★★★★ <b>4,8</b></span>
-          </div>
-          <div class="dc-foot">
-            <span class="dc-price">R$129,90 <s>R$189,90</s></span>
-            <span class="dc-cta">Ver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 3 — Ritual de cuidado (categoria criada) -->
-      <article class="deck-card dc-ritual" data-card="2" tabindex="0" role="button" aria-label="Ritual de cuidado">
-        <span class="dc-gloss" aria-hidden="true"></span>
-        <header class="dc-top">
-          <span class="dc-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C9 6 7 9 7 13a5 5 0 0 0 10 0c0-4-2-7-5-11z"/></svg> Ritual de cuidado</span>
-          <button class="dc-fav" type="button" aria-label="Favoritar" tabindex="-1">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-        </header>
-        <div class="dc-media">
-          <img src="assets/produtos/oleos-newhair.jpeg" alt="Óleo reparador New Hair" loading="lazy" draggable="false">
+          <img src="assets/produtos/oleos-newhair.jpeg" alt="Óleo Reparador Noturno" loading="lazy" draggable="false">
           <span class="dc-shine" aria-hidden="true"></span>
         </div>
         <div class="dc-body">
@@ -161,7 +161,7 @@
             <span class="dc-stars" aria-label="5 de 5">★★★★★ <b>5,0</b></span>
           </div>
           <div class="dc-foot">
-            <span class="dc-price">R$54,90</span>
+            <span class="dc-price">R$44,90 <s>R$54,90</s></span>
             <span class="dc-cta">Ver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </div>
@@ -169,28 +169,46 @@
 
     </div>
     <div class="deck-dots" id="deckDots" role="tablist" aria-label="Alternar destaques">
-      <button class="deck-dot is-on" type="button" data-go="0" role="tab" aria-label="Melhores da semana"></button>
-      <button class="deck-dot" type="button" data-go="1" role="tab" aria-label="Em oferta"></button>
-      <button class="deck-dot" type="button" data-go="2" role="tab" aria-label="Ritual de cuidado"></button>
+      <button class="deck-dot is-on" type="button" data-go="0" role="tab" aria-label="Queridinhos da semana"></button>
+      <button class="deck-dot" type="button" data-go="1" role="tab" aria-label="Mais vendidos"></button>
+      <button class="deck-dot" type="button" data-go="2" role="tab" aria-label="Em oferta"></button>
     </div>
-  </div>
 </section>
 
 <!-- TRUST STRIP -->
-<div class="trust-strip">
+<div class="trust-strip" aria-label="Nossos diferenciais">
+  <span class="trust-fade trust-fade-l" aria-hidden="true"></span>
+  <span class="trust-fade trust-fade-r" aria-hidden="true"></span>
   <div class="trust-track">
-    <span class="trust-item"><span>🚚</span> Frete grátis acima de R$149</span>
-    <span class="trust-item"><span>💜</span> 100% produtos originais</span>
-    <span class="trust-item"><span>🔒</span> Pagamento seguro</span>
-    <span class="trust-item"><span>↩️</span> Troca garantida em 30 dias</span>
-    <span class="trust-item"><span>⭐</span> 4.9 de avaliação no Google</span>
-    <span class="trust-item"><span>💬</span> Atendimento via WhatsApp</span>
-    <span class="trust-item"><span>🚚</span> Frete grátis acima de R$149</span>
-    <span class="trust-item"><span>💜</span> 100% produtos originais</span>
-    <span class="trust-item"><span>🔒</span> Pagamento seguro</span>
-    <span class="trust-item"><span>↩️</span> Troca garantida em 30 dias</span>
-    <span class="trust-item"><span>⭐</span> 4.9 de avaliação no Google</span>
-    <span class="trust-item"><span>💬</span> Atendimento via WhatsApp</span>
+    <!-- O grupo abaixo é repetido 2x para o loop ficar perfeito. Edite os DOIS. -->
+    <div class="trust-group">
+      <span class="trust-item"><span class="trust-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7z"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17.5" cy="17.5" r="1.6"/></svg></span>Frete grátis acima de <b>R$149</b></span>
+      <span class="trust-sep" aria-hidden="true"></span>
+      <span class="trust-item"><span class="trust-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>100% produtos <b>originais</b></span>
+      <span class="trust-sep" aria-hidden="true"></span>
+      <span class="trust-item"><span class="trust-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>Pagamento <b>100% seguro</b></span>
+      <span class="trust-sep" aria-hidden="true"></span>
+      <span class="trust-item"><span class="trust-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h11a5 5 0 0 1 0 10H9"/><path d="M6 4 3 7l3 3"/></svg></span>Troca garantida em <b>30 dias</b></span>
+      <span class="trust-sep" aria-hidden="true"></span>
+      <span class="trust-item"><span class="trust-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.6 5.6L21 9.3l-4.5 4.3L17.7 20 12 16.8 6.3 20l1.2-6.4L3 9.3l6.4-.7z"/></svg></span><b>4,9</b> de nota no Google</span>
+      <span class="trust-sep" aria-hidden="true"></span>
+      <span class="trust-item"><span class="trust-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.3A8 8 0 1 1 20 11.5z"/></svg></span>Atendimento via <b>WhatsApp</b></span>
+      <span class="trust-sep" aria-hidden="true"></span>
+    </div>
+    <div class="trust-group" aria-hidden="true">
+      <span class="trust-item"><span class="trust-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7z"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17.5" cy="17.5" r="1.6"/></svg></span>Frete grátis acima de <b>R$149</b></span>
+      <span class="trust-sep" aria-hidden="true"></span>
+      <span class="trust-item"><span class="trust-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>100% produtos <b>originais</b></span>
+      <span class="trust-sep" aria-hidden="true"></span>
+      <span class="trust-item"><span class="trust-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>Pagamento <b>100% seguro</b></span>
+      <span class="trust-sep" aria-hidden="true"></span>
+      <span class="trust-item"><span class="trust-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h11a5 5 0 0 1 0 10H9"/><path d="M6 4 3 7l3 3"/></svg></span>Troca garantida em <b>30 dias</b></span>
+      <span class="trust-sep" aria-hidden="true"></span>
+      <span class="trust-item"><span class="trust-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.6 5.6L21 9.3l-4.5 4.3L17.7 20 12 16.8 6.3 20l1.2-6.4L3 9.3l6.4-.7z"/></svg></span><b>4,9</b> de nota no Google</span>
+      <span class="trust-sep" aria-hidden="true"></span>
+      <span class="trust-item"><span class="trust-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.3A8 8 0 1 1 20 11.5z"/></svg></span>Atendimento via <b>WhatsApp</b></span>
+      <span class="trust-sep" aria-hidden="true"></span>
+    </div>
   </div>
 </div>
 
@@ -282,95 +300,463 @@
   </div>
 </section>
 
+<!-- ÍCONES (sprite): definidos uma vez, usados com <svg class="ico"><use href="#i-nome"/></svg> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M11 3l1.9 5.1L18 10l-5.1 1.9L11 17l-1.9-5.1L4 10l5.1-1.9z"/><path d="M19 15l.7 1.8 1.8.7-1.8.7L19 20l-.7-1.8-1.8-.7 1.8-.7z"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M8.6 13.8 7 22l5-3 5 3-1.6-8.2"/></symbol>
+    <symbol id="i-crown" viewBox="0 0 24 24"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-1.8 11H4.8z"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.6" cy="7.6" r="1.2"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2 1-3.2 2-4.2.2 1.4 1 2.2 1.8 2.2C11 8.5 11 5.5 12 3z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  </defs>
+</svg>
+
+<!-- DIVISÓRIA entre CATEGORIAS e PRODUTOS -->
+<div class="section-divider" aria-hidden="true">
+  <span class="sd-line"></span>
+  <span class="sd-ornament"><svg class="ico"><use href="#i-heart"/></svg></span>
+  <span class="sd-line"></span>
+</div>
+
 <!-- PRODUTOS -->
-<section class="products">
-  <div class="section-header">
-    <h2 class="section-title">Mais vendidos</h2>
-    <a href="#" class="section-link">Ver todos</a>
+<section class="products" id="produtos" aria-labelledby="prodTitle">
+  <div class="prod-head">
+    <span class="prod-eyebrow">Nossa seleção</span>
+    <h2 class="prod-title" id="prodTitle">Produtos que você vai <i>amar</i></h2>
   </div>
-  <div class="prod-grid">
-    <div class="prod-card">
-      <div class="prod-img prod-1">
-        <span class="prod-img-emoji">🧴</span>
-        <span class="prod-tag">-30%</span>
-        <button class="prod-fav" aria-label="Favoritar">
-          <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        </button>
+
+  <!-- ░░░ QUERIDINHOS DA SEMANA ░░░
+       Para editar um produto: mude os data-* do botão .fav-pick correspondente.
+       O primeiro (is-active) também precisa estar escrito no HTML do palco. -->
+  <div class="fav" id="favStage">
+    <header class="fav-head">
+      <div>
+        <span class="fav-eyebrow"><svg class="ico"><use href="#i-sparkle"/></svg> Curadoria Amo Cosméticos</span>
+        <h3 class="fav-title">Queridinhos da <i>semana</i></h3>
       </div>
-      <div class="prod-info">
-        <div class="prod-brand">Vult</div>
-        <div class="prod-name">Sérum Vitamina C</div>
-        <div class="prod-price-row">
-          <span class="prod-price">R$89,90</span>
-          <span class="prod-price-old">R$129,90</span>
+      <div class="fav-timer" data-countdown>
+        <span class="fav-timer-label"><svg class="ico"><use href="#i-clock"/></svg> A seleção renova em</span>
+        <div class="fav-clock">
+          <span class="cd-box"><b data-cd="d">00</b><i>dias</i></span>
+          <span class="cd-colon">:</span>
+          <span class="cd-box"><b data-cd="h">00</b><i>horas</i></span>
+          <span class="cd-colon">:</span>
+          <span class="cd-box"><b data-cd="m">00</b><i>min</i></span>
+          <span class="cd-colon">:</span>
+          <span class="cd-box"><b data-cd="s">00</b><i>seg</i></span>
         </div>
-        <div class="prod-installments">ou 3x de R$29,97</div>
+      </div>
+    </header>
+
+    <div class="fav-main" id="favMain">
+      <!-- Vitrine em arco -->
+      <div class="fav-visual">
+        <div class="fav-frame">
+          <div class="fav-mat">
+            <div class="fav-photo">
+              <img id="favImg" src="assets/produtos/kit-newhair.jpeg" alt="Kit Completo New Hair" draggable="false">
+              <span class="fav-glass" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+        <span class="fav-seal" aria-hidden="true">
+          <svg class="ico"><use href="#i-crown"/></svg>
+          <b id="favRank">Nº 1</b>
+          <small>da semana</small>
+        </span>
+        <span class="fav-plinth" aria-hidden="true"></span>
+      </div>
+
+      <!-- Informações -->
+      <div class="fav-info">
+        <span class="fav-brand" id="favBrand">New Hair</span>
+        <h4 class="fav-name" id="favName">Kit Completo New Hair</h4>
+        <div class="fav-rating" aria-label="Nota 4,9 de 5">
+          <span class="fav-stars">
+            <svg class="ico ico-fill"><use href="#i-star"/></svg><svg class="ico ico-fill"><use href="#i-star"/></svg><svg class="ico ico-fill"><use href="#i-star"/></svg><svg class="ico ico-fill"><use href="#i-star"/></svg><svg class="ico ico-fill"><use href="#i-star"/></svg>
+          </span>
+          <span><b>4,9</b> · queridinho das clientes</span>
+        </div>
+        <p class="fav-desc" id="favDesc">O ritual completo para fios macios, brilhantes e perfumados: shampoo, máscara nutritiva e óleo finalizador reunidos em um só kit.</p>
+        <ul class="fav-perks" id="favPerks">
+          <li><span class="perk-ico"><svg class="ico"><use href="#i-check"/></svg></span><span>Rotina completa em um só kit</span></li>
+          <li><span class="perk-ico"><svg class="ico"><use href="#i-check"/></svg></span><span>Brilho, maciez e perfume que duram</span></li>
+          <li><span class="perk-ico"><svg class="ico"><use href="#i-check"/></svg></span><span>Mais econômico que comprar separado</span></li>
+        </ul>
+        <div class="fav-sold">
+          <div class="fav-sold-head">
+            <span><svg class="ico"><use href="#i-flame"/></svg> <span id="favSoldLabel">Quase esgotando</span></span>
+            <span><b id="favSoldPct">83%</b> já vendido</span>
+          </div>
+          <div class="fav-sold-bar"><span class="fav-sold-fill" id="favSoldFill" data-fill="83"></span></div>
+        </div>
+        <div class="fav-buy">
+          <div class="fav-price">
+            <span class="now" id="favNow">R$129,90</span>
+            <span class="old" id="favOld">R$189,90</span>
+            <span class="save" id="favSave">-32%</span>
+          </div>
+          <button class="fav-cta" type="button">Comprar agora <svg class="ico"><use href="#i-arrow"/></svg></button>
+        </div>
       </div>
     </div>
-    <div class="prod-card">
-      <div class="prod-img prod-2">
-        <span class="prod-img-emoji">💋</span>
-        <button class="prod-fav" aria-label="Favoritar">
-          <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        </button>
-      </div>
-      <div class="prod-info">
-        <div class="prod-brand">Ruby Rose</div>
-        <div class="prod-name">Batom Matte Velvet</div>
-        <div class="prod-price-row">
-          <span class="prod-price">R$34,90</span>
-        </div>
-        <div class="prod-installments">ou 2x de R$17,45</div>
-      </div>
+
+    <!-- Seletor: o clique troca o produto em destaque (e avança sozinho) -->
+    <div class="fav-picks" role="group" aria-label="Escolher queridinho">
+      <button class="fav-pick is-active" type="button" aria-current="true"
+        data-img="assets/produtos/kit-newhair.jpeg" data-alt="Kit Completo New Hair"
+        data-rank="Nº 1" data-brand="New Hair" data-name="Kit Completo New Hair"
+        data-desc="O ritual completo para fios macios, brilhantes e perfumados: shampoo, máscara nutritiva e óleo finalizador reunidos em um só kit."
+        data-perks="Rotina completa em um só kit|Brilho, maciez e perfume que duram|Mais econômico que comprar separado"
+        data-price="R$129,90" data-old="R$189,90" data-save="-32%"
+        data-sold="83" data-sold-label="Quase esgotando">
+        <span class="fav-pick-thumb"><img src="assets/produtos/kit-newhair.jpeg" alt="" loading="lazy" draggable="false"></span>
+        <span class="fav-pick-txt"><b>Kit Completo New Hair</b><i>R$129,90</i></span>
+        <span class="fav-pick-bar"><span></span></span>
+      </button>
+
+      <button class="fav-pick" type="button" aria-current="false"
+        data-img="assets/produtos/perfume-capilar.jpeg" data-alt="Perfume Capilar Encanto"
+        data-rank="Nº 2" data-brand="New Hair" data-name="Perfume Capilar Encanto"
+        data-desc="Um cheirinho irresistível que perfuma os fios e fixa por horas, sem pesar e sem deixar oleosidade."
+        data-perks="Fragrância marcante e delicada|Toque leve, sem pesar nos fios|Cabe na bolsa, perfeito para o dia a dia"
+        data-price="R$39,90" data-old="" data-save=""
+        data-sold="76" data-sold-label="Muito procurado">
+        <span class="fav-pick-thumb"><img src="assets/produtos/perfume-capilar.jpeg" alt="" loading="lazy" draggable="false"></span>
+        <span class="fav-pick-txt"><b>Perfume Capilar Encanto</b><i>R$39,90</i></span>
+        <span class="fav-pick-bar"><span></span></span>
+      </button>
+
+      <button class="fav-pick" type="button" aria-current="false"
+        data-img="assets/produtos/oleos-newhair.jpeg" data-alt="Óleo Reparador Noturno"
+        data-rank="Nº 3" data-brand="New Hair" data-name="Óleo Reparador Noturno"
+        data-desc="Tratamento noturno que nutre enquanto você dorme, controla o frizz e devolve o brilho natural dos fios."
+        data-perks="Nutrição intensa durante a noite|Controle de frizz e pontas ressecadas|Textura leve e de rápida absorção"
+        data-price="R$54,90" data-old="" data-save=""
+        data-sold="68" data-sold-label="Favorito da semana">
+        <span class="fav-pick-thumb"><img src="assets/produtos/oleos-newhair.jpeg" alt="" loading="lazy" draggable="false"></span>
+        <span class="fav-pick-txt"><b>Óleo Reparador Noturno</b><i>R$54,90</i></span>
+        <span class="fav-pick-bar"><span></span></span>
+      </button>
+
+      <button class="fav-pick" type="button" aria-current="false"
+        data-img="assets/produtos/shampoo-belkit.jpeg" data-alt="Shampoo Hidratação Intensa"
+        data-rank="Nº 4" data-brand="Belkit" data-name="Shampoo Hidratação Intensa"
+        data-desc="Limpa com suavidade e repõe a hidratação a cada lavagem, deixando os fios leves e fáceis de pentear."
+        data-perks="Limpeza suave, sem agredir|Hidratação a cada lavagem|Ideal para o uso diário"
+        data-price="R$32,90" data-old="" data-save=""
+        data-sold="59" data-sold-label="Em alta">
+        <span class="fav-pick-thumb"><img src="assets/produtos/shampoo-belkit.jpeg" alt="" loading="lazy" draggable="false"></span>
+        <span class="fav-pick-txt"><b>Shampoo Hidratação Intensa</b><i>R$32,90</i></span>
+        <span class="fav-pick-bar"><span></span></span>
+      </button>
     </div>
-    <div class="prod-card">
-      <div class="prod-img prod-3">
-        <span class="prod-img-emoji">🌸</span>
-        <button class="prod-fav" aria-label="Favoritar">
-          <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        </button>
-      </div>
-      <div class="prod-info">
-        <div class="prod-brand">Dailus</div>
-        <div class="prod-name">Hidratante Corporal Floral</div>
-        <div class="prod-price-row">
-          <span class="prod-price">R$42,90</span>
-        </div>
-        <div class="prod-installments">ou 2x de R$21,45</div>
-      </div>
+  </div>
+
+  <!-- ░░░ MAIS VENDIDOS ░░░ -->
+  <div class="prod-sub">
+    <div class="prod-sub-head">
+      <h3 class="prod-sub-title"><span class="prod-sub-ico"><svg class="ico"><use href="#i-award"/></svg></span> Mais vendidos</h3>
+      <a href="#" class="prod-sub-link">Ver todos <svg class="ico"><use href="#i-arrow"/></svg></a>
     </div>
-    <div class="prod-card">
-      <div class="prod-img prod-4">
-        <span class="prod-img-emoji">💆‍♀️</span>
-        <span class="prod-tag">Novo</span>
-        <button class="prod-fav" aria-label="Favoritar">
-          <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        </button>
-      </div>
-      <div class="prod-info">
-        <div class="prod-brand">Tracta</div>
-        <div class="prod-name">Máscara Capilar Reconstrução</div>
-        <div class="prod-price-row">
-          <span class="prod-price">R$56,90</span>
-          <span class="prod-price-old">R$69,90</span>
+    <div class="prod-grid">
+
+      <article class="pcard">
+        <div class="pcard-frame">
+          <div class="pcard-mat">
+            <div class="pcard-media">
+              <img src="assets/produtos/perfume-capilar.jpeg" alt="Perfume Capilar Encanto" loading="lazy" draggable="false">
+              <span class="pcard-glass" aria-hidden="true"></span>
+              <span class="pcard-tag"><svg class="ico"><use href="#i-award"/></svg>Nº 1</span>
+              <button class="pcard-fav" type="button" aria-label="Favoritar"><svg class="ico"><use href="#i-heart"/></svg></button>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <span class="pcard-brand">New Hair</span>
+            <h4 class="pcard-name">Perfume Capilar Encanto</h4>
+            <p class="pcard-desc">Campeão de recompra: o queridinho que todo mundo volta pra comprar.</p>
+            <div class="pcard-foot">
+              <span class="pcard-price"><span class="now">R$39,90</span></span>
+              <button class="pcard-add" type="button" aria-label="Adicionar à sacola"><svg class="ico"><use href="#i-plus"/></svg></button>
+            </div>
+          </div>
         </div>
-        <div class="prod-installments">ou 3x de R$18,97</div>
-      </div>
+      </article>
+
+      <article class="pcard">
+        <div class="pcard-frame">
+          <div class="pcard-mat">
+            <div class="pcard-media">
+              <img src="assets/produtos/kit-newhair.jpeg" alt="Kit Completo New Hair" loading="lazy" draggable="false">
+              <span class="pcard-glass" aria-hidden="true"></span>
+              <button class="pcard-fav" type="button" aria-label="Favoritar"><svg class="ico"><use href="#i-heart"/></svg></button>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <span class="pcard-brand">New Hair</span>
+            <h4 class="pcard-name">Kit Completo New Hair</h4>
+            <p class="pcard-desc">O kit mais pedido para transformar a rotina capilar de ponta a ponta.</p>
+            <div class="pcard-foot">
+              <span class="pcard-price"><span class="now">R$129,90</span></span>
+              <button class="pcard-add" type="button" aria-label="Adicionar à sacola"><svg class="ico"><use href="#i-plus"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="pcard">
+        <div class="pcard-frame">
+          <div class="pcard-mat">
+            <div class="pcard-media">
+              <img src="assets/produtos/oleos-newhair.jpeg" alt="Óleo Reparador Noturno" loading="lazy" draggable="false">
+              <span class="pcard-glass" aria-hidden="true"></span>
+              <button class="pcard-fav" type="button" aria-label="Favoritar"><svg class="ico"><use href="#i-heart"/></svg></button>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <span class="pcard-brand">New Hair</span>
+            <h4 class="pcard-name">Óleo Reparador Noturno</h4>
+            <p class="pcard-desc">Tratamento noturno que vira rotina obrigatória de cuidado.</p>
+            <div class="pcard-foot">
+              <span class="pcard-price"><span class="now">R$54,90</span></span>
+              <button class="pcard-add" type="button" aria-label="Adicionar à sacola"><svg class="ico"><use href="#i-plus"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="pcard">
+        <div class="pcard-frame">
+          <div class="pcard-mat">
+            <div class="pcard-media">
+              <img src="assets/produtos/shampoo-belkit.jpeg" alt="Shampoo Hidratação Intensa" loading="lazy" draggable="false">
+              <span class="pcard-glass" aria-hidden="true"></span>
+              <button class="pcard-fav" type="button" aria-label="Favoritar"><svg class="ico"><use href="#i-heart"/></svg></button>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <span class="pcard-brand">Belkit</span>
+            <h4 class="pcard-name">Shampoo Hidratação Intensa</h4>
+            <p class="pcard-desc">O básico que não pode faltar: limpa e hidrata no mesmo banho.</p>
+            <div class="pcard-foot">
+              <span class="pcard-price"><span class="now">R$32,90</span></span>
+              <button class="pcard-add" type="button" aria-label="Adicionar à sacola"><svg class="ico"><use href="#i-plus"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- ░░░ EM OFERTA ░░░ -->
+  <div class="prod-sub prod-sub--sale">
+    <div class="prod-sub-head">
+      <h3 class="prod-sub-title"><span class="prod-sub-ico"><svg class="ico"><use href="#i-tag"/></svg></span> Em oferta</h3>
+      <a href="#" class="prod-sub-link">Ver todas <svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="prod-grid">
+
+      <article class="pcard pcard--sale">
+        <div class="pcard-frame">
+          <div class="pcard-mat">
+            <div class="pcard-media">
+              <img src="assets/produtos/kit-newhair.jpeg" alt="Kit Completo New Hair" loading="lazy" draggable="false">
+              <span class="pcard-glass" aria-hidden="true"></span>
+              <span class="pcard-tag pcard-tag--sale"><svg class="ico"><use href="#i-tag"/></svg>-32%</span>
+              <button class="pcard-fav" type="button" aria-label="Favoritar"><svg class="ico"><use href="#i-heart"/></svg></button>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <span class="pcard-brand">New Hair</span>
+            <h4 class="pcard-name">Kit Completo New Hair</h4>
+            <p class="pcard-desc">Leve o ritual inteiro pagando bem menos — por tempo limitado.</p>
+            <div class="pcard-foot">
+              <span class="pcard-price"><span class="now">R$129,90</span><span class="old">R$189,90</span></span>
+              <button class="pcard-add" type="button" aria-label="Adicionar à sacola"><svg class="ico"><use href="#i-plus"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="pcard pcard--sale">
+        <div class="pcard-frame">
+          <div class="pcard-mat">
+            <div class="pcard-media">
+              <img src="assets/produtos/oleos-newhair.jpeg" alt="Óleo Reparador Noturno" loading="lazy" draggable="false">
+              <span class="pcard-glass" aria-hidden="true"></span>
+              <span class="pcard-tag pcard-tag--sale"><svg class="ico"><use href="#i-tag"/></svg>-18%</span>
+              <button class="pcard-fav" type="button" aria-label="Favoritar"><svg class="ico"><use href="#i-heart"/></svg></button>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <span class="pcard-brand">New Hair</span>
+            <h4 class="pcard-name">Óleo Reparador Noturno</h4>
+            <p class="pcard-desc">Nutrição noturna com desconto para você testar sem medo.</p>
+            <div class="pcard-foot">
+              <span class="pcard-price"><span class="now">R$44,90</span><span class="old">R$54,90</span></span>
+              <button class="pcard-add" type="button" aria-label="Adicionar à sacola"><svg class="ico"><use href="#i-plus"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="pcard pcard--sale">
+        <div class="pcard-frame">
+          <div class="pcard-mat">
+            <div class="pcard-media">
+              <img src="assets/produtos/perfume-capilar.jpeg" alt="Perfume Capilar Encanto" loading="lazy" draggable="false">
+              <span class="pcard-glass" aria-hidden="true"></span>
+              <span class="pcard-tag pcard-tag--sale"><svg class="ico"><use href="#i-tag"/></svg>-13%</span>
+              <button class="pcard-fav" type="button" aria-label="Favoritar"><svg class="ico"><use href="#i-heart"/></svg></button>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <span class="pcard-brand">New Hair</span>
+            <h4 class="pcard-name">Perfume Capilar Encanto</h4>
+            <p class="pcard-desc">O cheirinho favorito das clientes, agora com precinho especial.</p>
+            <div class="pcard-foot">
+              <span class="pcard-price"><span class="now">R$34,90</span><span class="old">R$39,90</span></span>
+              <button class="pcard-add" type="button" aria-label="Adicionar à sacola"><svg class="ico"><use href="#i-plus"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="pcard pcard--sale">
+        <div class="pcard-frame">
+          <div class="pcard-mat">
+            <div class="pcard-media">
+              <img src="assets/produtos/shampoo-belkit.jpeg" alt="Shampoo Hidratação Intensa" loading="lazy" draggable="false">
+              <span class="pcard-glass" aria-hidden="true"></span>
+              <span class="pcard-tag pcard-tag--sale"><svg class="ico"><use href="#i-tag"/></svg>-15%</span>
+              <button class="pcard-fav" type="button" aria-label="Favoritar"><svg class="ico"><use href="#i-heart"/></svg></button>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <span class="pcard-brand">Belkit</span>
+            <h4 class="pcard-name">Shampoo Hidratação Intensa</h4>
+            <p class="pcard-desc">Reabasteça seu banho gastando menos neste mês.</p>
+            <div class="pcard-foot">
+              <span class="pcard-price"><span class="now">R$27,90</span><span class="old">R$32,90</span></span>
+              <button class="pcard-add" type="button" aria-label="Adicionar à sacola"><svg class="ico"><use href="#i-plus"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
 
 <!-- NOSSA HISTÓRIA -->
-<section class="brand-strip">
-  <div class="brand-strip-inner">
-    <div class="brand-strip-visual">
-      <span class="brand-strip-logo">Ca</span>
+<section class="story" id="nossa-historia" aria-labelledby="storyTitle">
+  <div class="story-inner">
+
+    <!-- Lado visual — camadas -->
+    <div class="story-visual" id="storyVisual">
+      <span class="story-glow" aria-hidden="true"></span>
+
+      <figure class="story-photo">
+        <span class="story-frame" aria-hidden="true"></span>
+        <div class="story-photo-media">
+          <!-- ►►► FOTO: troque o src pelo caminho da imagem (ideal: vertical 4:5, ~1200×1500px) ◄◄◄ -->
+          <img
+            src="assets/modelos/modelo-produtos-02.jpeg"
+            alt="Fundadora da Amo Cosméticos segurando produtos selecionados por ela"
+            class="story-photo-img"
+            width="1200"
+            height="1500"
+            loading="lazy"
+            decoding="async"
+            draggable="false">
+          <span class="story-photo-tint" aria-hidden="true"></span>
+        </div>
+      </figure>
+
+      <!-- Selo giratório -->
+      <div class="story-seal" aria-hidden="true">
+        <div class="story-seal-inner">
+          <svg class="story-seal-ring" viewBox="0 0 100 100">
+            <defs>
+              <path id="storySealPath" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/>
+            </defs>
+            <text>
+              <textPath href="#storySealPath" textLength="236" lengthAdjust="spacing">AMO COSMÉTICOS · BELEZA COM CARINHO · </textPath>
+            </text>
+          </svg>
+          <span class="story-seal-heart">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </span>
+        </div>
+      </div>
+
+      <!-- Medalhão com o monograma da marca -->
+      <div class="story-badge" aria-hidden="true">
+        <div class="story-badge-inner">
+          <img
+            src="assets/logos/logo-amo-minimalista.jpeg"
+            alt=""
+            class="story-badge-logo"
+            width="314"
+            height="243"
+            loading="lazy"
+            decoding="async"
+            draggable="false">
+        </div>
+      </div>
+
+      <!-- Mini card glass -->
+      <div class="story-card" aria-hidden="true">
+        <div class="story-card-inner">
+          <span class="story-card-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </span>
+          <span class="story-card-text">
+            <strong>Seleção cuidadosa</strong>
+            <small>Item por item, com carinho</small>
+          </span>
+        </div>
+      </div>
     </div>
-    <div class="brand-strip-text">
-      <h2>Cada produto é escolhido<br>com <i>amor</i></h2>
-      <p>Na Amo Cosméticos, acreditamos que beleza não precisa custar caro. Selecionamos cada item do nosso catálogo pensando em qualidade, resultado e acessibilidade — para você se cuidar todos os dias.</p>
-      <button class="btn-brand">Conheça nossa história</button>
+
+    <!-- Lado texto -->
+    <div class="story-text">
+      <span class="story-eyebrow" data-story-reveal style="--d:.1s">Nossa história</span>
+      <h2 class="story-title" id="storyTitle" data-story-reveal style="--d:.2s">Cada produto é escolhido<br>com <i>amor</i></h2>
+      <p class="story-lead" data-story-reveal style="--d:.3s">Beleza de verdade não precisa custar caro.</p>
+      <p class="story-body" data-story-reveal style="--d:.4s">Na Amo Cosméticos, cada item do catálogo é escolhido a dedo, pensando em qualidade, resultado e preço justo — para que se cuidar seja parte do seu dia a dia, e não um luxo.</p>
+
+      <div class="story-stats" data-story-reveal style="--d:.5s">
+        <div class="story-stat">
+          <span class="story-stat-num">+2.000</span>
+          <span class="story-stat-label">clientes apaixonadas</span>
+        </div>
+        <div class="story-stat">
+          <span class="story-stat-num">100%</span>
+          <span class="story-stat-label">produtos originais</span>
+        </div>
+        <div class="story-stat">
+          <span class="story-stat-num">4,9</span>
+          <span class="story-stat-label">avaliação no Google</span>
+        </div>
+      </div>
+
+      <a href="#" class="story-btn" data-story-reveal style="--d:.6s">
+        <span class="story-btn-label">Conheça nossa história</span>
+        <span class="story-btn-icon" aria-hidden="true">
+          <svg class="arr-a" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <svg class="arr-b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
     </div>
+
   </div>
 </section>
 
