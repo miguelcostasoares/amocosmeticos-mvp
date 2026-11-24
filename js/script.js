@@ -133,8 +133,14 @@
       const y = window.scrollY;
       nav.classList.toggle('scrolled', y > 50);
 
-      // só esconde se o menu mobile estiver fechado
-      if (!nav.classList.contains('nav-open')) {
+      // TRAVA DA SACOLA: se houver item no carrinho (cart.js marca
+      // body.cart-has-items), a navbar NÃO some ao descer — só encolhe.
+      // Sem item, mantém o comportamento original (esconde ao descer).
+      const cartLocked = document.body.classList.contains('cart-has-items');
+
+      if (cartLocked) {
+        nav.classList.remove('nav-hidden');
+      } else if (!nav.classList.contains('nav-open')) {
         if (y > lastY && y > 320) nav.classList.add('nav-hidden');
         else                      nav.classList.remove('nav-hidden');
       }

@@ -109,8 +109,8 @@ body {
 
 .nav-logo {
   display: block;
-  width: 196px;
-  height: 58px;
+  width: 240px;
+  height: 72px;
   background-color: var(--logo-color);
   -webkit-mask: var(--logo-src) left center / contain no-repeat;
           mask: var(--logo-src) left center / contain no-repeat;
@@ -118,8 +118,8 @@ body {
 }
 
 .nav.scrolled .nav-logo {
-  width: 188px;
-  height: 56px;
+  width: 220px;
+  height: 66px;
 }
 
 .nav-brand:hover .nav-logo {
@@ -1896,7 +1896,7 @@ body {
 .fav {
   position: relative; isolation: isolate; overflow: hidden;
   border-radius: 36px; color: #fff;
-  padding: clamp(22px, 3.6vw, 56px);
+  padding: clamp(18px, 2.6vw, 36px);
   background:
     radial-gradient(760px 460px at 6% -8%, rgba(180, 142, 183, .50), transparent 62%),
     radial-gradient(640px 420px at 104% 108%, rgba(201, 130, 138, .34), transparent 62%),
@@ -1923,8 +1923,8 @@ body {
 
 .fav-head {
   display: flex; align-items: flex-end; justify-content: space-between;
-  flex-wrap: wrap; gap: 24px;
-  margin-bottom: clamp(26px, 3.4vw, 46px);
+  flex-wrap: wrap; gap: 16px;
+  margin-bottom: clamp(16px, 2vw, 28px);
 }
 .fav-eyebrow {
   display: inline-flex; align-items: center; gap: 9px;
@@ -1933,8 +1933,8 @@ body {
 }
 .fav-eyebrow .ico { font-size: 15px; fill: currentColor; }
 .fav-title {
-  font-family: var(--serif); font-size: clamp(36px, 5vw, 64px); font-weight: 500;
-  line-height: 1; letter-spacing: -1.2px; margin-top: 14px;
+  font-family: var(--serif); font-size: clamp(28px, 3.8vw, 50px); font-weight: 500;
+  line-height: 1; letter-spacing: -1.2px; margin-top: 10px;
 }
 .fav-title i {
   font-weight: 500;
@@ -1973,7 +1973,7 @@ body {
 .fav-main.is-swapping { opacity: 0; transform: translateY(8px); }
 
 /* ░ Vitrine em arco ░ */
-.fav-visual { position: relative; width: 100%; max-width: 430px; margin-inline: auto; padding-bottom: 30px; }
+.fav-visual { position: relative; width: 100%; max-width: 340px; margin-inline: auto; padding-bottom: 20px; }
 .fav-visual::before {          /* facho de luz vindo de cima */
   content: ""; position: absolute; z-index: 0; pointer-events: none;
   top: -70px; left: 50%; width: 120%; height: 70%; transform: translateX(-50%);
@@ -2998,55 +2998,216 @@ body {
 
 
 /* ══════════════════════════════════════════════
-   BENEFITS
+   DEPOIMENTOS — marquee infinito estilo Google
    ══════════════════════════════════════════════ */
-.benefits {
-  padding: clamp(64px, 10vw, 100px) clamp(24px, 5vw, 80px);
-  max-width: 1280px;
+.testi {
+  padding: clamp(64px, 9vw, 110px) 0 clamp(80px, 10vw, 130px);
+  max-width: 1440px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-}
-
-.benefit {
+.testi-head {
   text-align: center;
+  max-width: 640px;
+  margin: 0 auto clamp(40px, 5vw, 64px);
+  padding: 0 24px;
 }
 
-.benefit-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--lilas-whisper);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 16px;
-  font-size: 24px;
-  transition: background 0.3s;
-}
-
-.benefit:hover .benefit-icon {
-  background: var(--lilas-ghost);
-}
-
-.benefit h4 {
-  font-family: var(--serif);
-  font-size: 17px;
-  font-weight: 500;
-  color: var(--ink);
-  margin-bottom: 6px;
-}
-
-.benefit p {
+.testi-eyebrow {
+  position: relative;
+  display: inline-block;
+  padding-left: 44px;
+  margin-bottom: 22px;
   font-family: var(--sans);
   font-size: 13px;
-  font-weight: 300;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--lilas-deep);
+}
+
+.testi-eyebrow::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 30px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--lilas-deep), var(--lilas-light));
+  transform: translateY(-50%);
+}
+
+.testi-title {
+  font-family: var(--serif);
+  font-size: clamp(34px, 4.6vw, 54px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.8px;
+  color: var(--ink);
+  margin-bottom: 18px;
+}
+
+.testi-title i {
+  font-weight: 500;
+  background: linear-gradient(100deg, var(--lilas-deep), var(--lilas) 60%, var(--rose));
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.testi-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink-secondary);
+}
+
+.testi-stars {
+  color: var(--gold);
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+.testi-rating-text b { color: var(--ink); font-weight: 600; }
+
+/* ── fita ── */
+.testi-strip {
+  position: relative;
+}
+
+.testi-fade {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: clamp(40px, 10vw, 160px);
+  z-index: 2;
+  pointer-events: none;
+}
+.testi-fade-l { left: 0;  background: linear-gradient(90deg,  var(--white), rgba(255,255,255,0)); }
+.testi-fade-r { right: 0; background: linear-gradient(270deg, var(--white), rgba(255,255,255,0)); }
+
+.testi-track {
+  display: flex;
+  width: max-content;
+  animation: testi-scroll 48s linear infinite;
+}
+.testi-strip:hover .testi-track { animation-play-state: paused; }
+
+.testi-group {
+  display: flex;
+  gap: 22px;
+  padding-right: 22px;
+}
+
+@keyframes testi-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── card estilo Google review ── */
+.testi-card {
+  flex: 0 0 340px;
+  padding: 26px;
+  border-radius: 22px;
+  background: var(--white);
+  border: 1px solid var(--lilas-ghost);
+  box-shadow: 0 2px 0 rgba(45, 33, 48, 0.02), 0 18px 36px -26px rgba(45, 33, 48, 0.2);
+  transition: box-shadow 0.4s cubic-bezier(.16,1,.3,1), transform 0.4s cubic-bezier(.16,1,.3,1), border-color 0.4s ease;
+}
+
+.testi-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--lilas-light);
+  box-shadow: 0 34px 60px -28px rgba(150, 111, 154, 0.38);
+}
+
+.testi-social { flex: none; display: flex; }
+.testi-social svg { width: 22px; height: 22px; }
+.testi-social--wa svg { filter: drop-shadow(0 2px 5px rgba(37, 211, 102, 0.35)); }
+.testi-social--ig svg { filter: drop-shadow(0 2px 5px rgba(200, 55, 171, 0.3)); }
+
+.testi-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.testi-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: none;
+  box-shadow: 0 0 0 2px var(--white), 0 0 0 3px var(--lilas-light);
+}
+
+.testi-who {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  flex: 1;
+}
+
+.testi-name {
+  font-family: var(--sans);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.testi-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--sans);
+  font-size: 11.5px;
+  font-weight: 400;
   color: var(--ink-muted);
-  line-height: 1.5;
+}
+
+.testi-verified svg { width: 13px; height: 13px; color: #4CAF50; flex: none; }
+
+
+
+.testi-stars-row {
+  color: var(--gold);
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.testi-text {
+  font-family: var(--sans);
+  font-size: 14.5px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ink-secondary);
+}
+
+@media (max-width: 560px) {
+  .testi-card {
+    flex-basis: 280px;
+    padding: 20px;
+  }
+
+  .testi-text {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testi-track {
+    animation: none;
+  }
 }
 
 
@@ -3317,8 +3478,8 @@ body {
   }
 
   .nav-logo {
-    width: 180px;
-    height: 56px;
+    width: 210px;
+    height: 64px;
   }
 
   .categories-intro {
@@ -3396,8 +3557,8 @@ body {
   }
 
   .nav-logo {
-    width: 150px;
-    height: 46px;
+    width: 180px;
+    height: 54px;
   }
 
   .cat-grid {
