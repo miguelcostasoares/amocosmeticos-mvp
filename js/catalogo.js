@@ -223,6 +223,8 @@
     const cat = params.get('cat');
     if (cat && PRODUCTS.some((p) => p.cat === cat)) filters.cat = cat;
     if (params.get('ofertas') === '1') filters.saleOnly = true;
+    const q = params.get('q');
+    if (q) filters.search = q;
   }
 
   function init() {
@@ -230,6 +232,7 @@
     renderCategories();
     bind();
     if (filters.saleOnly) $('#filterSale').checked = true;
+    if (filters.search) { const s = $('#catalogSearch'); if (s) s.value = filters.search; }
     render();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

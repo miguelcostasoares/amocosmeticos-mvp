@@ -27,12 +27,12 @@
     <li><a href="#">Sobre nós</a></li>
   </ul>
   <div class="nav-right">
-    <button class="nav-btn" aria-label="Buscar">
-      <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-    </button>
-    <button class="nav-btn" aria-label="Minha conta">
-      <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-    </button>
+    <button class="nav-btn" id="navSearchTrigger" aria-label="Buscar" aria-expanded="false">
+  <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+</button>
+    <button class="nav-btn" id="navAccountTrigger" aria-label="Minha conta">
+  <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+</button>
     <button class="nav-btn nav-bag" aria-label="Sacola">
       <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
       <span class="nav-bag-count is-zero">0</span>
@@ -41,6 +41,18 @@
     <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navCenter">
       <span></span><span></span><span></span>
     </button>
+  </div>
+    <!-- BUSCA EXPANSÍVEL -->
+  <div class="nav-search" id="navSearch" role="search">
+    <svg class="nav-search-ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="search" id="navSearchInput" class="nav-search-input" placeholder="Buscar produtos, categorias, marcas…" aria-label="Buscar" autocomplete="off">
+    <button type="button" class="nav-search-clear" id="navSearchClear" aria-label="Limpar" hidden>
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <button type="button" class="nav-search-close" id="navSearchClose" aria-label="Fechar busca">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <div class="search-panel" id="searchPanel" role="listbox" aria-label="Sugestões de busca"></div>
   </div>
 </nav>
 
@@ -971,14 +983,183 @@
   </div>
 </section>
 
-<!-- NEWSLETTER -->
-<section class="newsletter">
-  <h2>Fique por dentro das novidades</h2>
-  <p>Receba ofertas exclusivas, lançamentos e dicas de beleza direto no seu e-mail.</p>
-  <form class="newsletter-form" id="newsletterForm">
-    <input class="newsletter-input" type="email" placeholder="Seu melhor e-mail" required>
-    <button class="newsletter-btn" type="submit">Inscrever</button>
-  </form>
+<!-- INSTAGRAM -->
+<section class="insta" id="instagram" aria-labelledby="instaTitle">
+
+  <!-- sprite local: ícone do Instagram com o gradiente oficial -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="instaGrad" gradientUnits="userSpaceOnUse" x1="3" y1="21" x2="21" y2="3">
+        <stop offset="0" stop-color="#FFDC80"/>
+        <stop offset=".22" stop-color="#FCAF45"/>
+        <stop offset=".42" stop-color="#F77737"/>
+        <stop offset=".6" stop-color="#E1306C"/>
+        <stop offset=".8" stop-color="#C13584"/>
+        <stop offset="1" stop-color="#833AB4"/>
+      </linearGradient>
+      <symbol id="i-ig-grad" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="18" height="18" rx="5.5" fill="none" stroke="url(#instaGrad)" stroke-width="1.8"/>
+        <circle cx="12" cy="12" r="4.1" fill="none" stroke="url(#instaGrad)" stroke-width="1.8"/>
+        <circle cx="17.3" cy="6.7" r="1.15" fill="url(#instaGrad)"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="insta-inner">
+
+    <!-- Lado texto -->
+    <div class="insta-text">
+      <span class="insta-eyebrow" data-insta-reveal style="--d:.05s">No Instagram</span>
+      <h2 class="insta-title" id="instaTitle" data-insta-reveal style="--d:.15s">Inspire-se no<br>nosso <i>feed</i></h2>
+      <p class="insta-lead" data-insta-reveal style="--d:.25s">Todo dia tem novidade, dica e carinho.</p>
+      <p class="insta-body" data-insta-reveal style="--d:.35s">Lançamentos, bastidores e dicas de cabelo em primeira mão — direto do nosso perfil para a sua rotina de cuidados.</p>
+
+      <ul class="insta-tags" data-insta-reveal style="--d:.45s" aria-label="O que você encontra no perfil">
+        <li>Lançamentos</li>
+        <li>Bastidores</li>
+        <li>Dicas de cabelo</li>
+        <li>Sorteios</li>
+      </ul>
+
+      <a href="https://www.instagram.com/amocosmeticossc/" target="_blank" rel="noopener noreferrer" class="insta-profile" data-insta-reveal style="--d:.55s" aria-label="Abrir o perfil @amocosmeticossc no Instagram (abre em nova aba)">
+        <span class="insta-avatar" aria-hidden="true">
+          <span class="insta-avatar-in">
+            <img src="assets/logos/logo-amo-minimalista.jpeg" alt="" width="314" height="243" loading="lazy" decoding="async" draggable="false">
+          </span>
+        </span>
+        <span class="insta-profile-txt">
+          <b>@amocosmeticossc</b>
+          <small>Cosméticos &amp; cuidados capilares</small>
+        </span>
+        <span class="insta-profile-follow">Seguir</span>
+      </a>
+
+      <a href="https://www.instagram.com/amocosmeticossc/" target="_blank" rel="noopener noreferrer" class="insta-btn" data-insta-reveal style="--d:.65s">
+        <span class="insta-btn-label">Ver perfil completo</span>
+        <span class="insta-btn-icon" aria-hidden="true">
+          <svg class="arr-a" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <svg class="arr-b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+    </div>
+
+    <!-- Lado feed: 3 colunas escalonadas -->
+    <div class="insta-feed" id="instaFeed">
+
+      <span class="insta-live" data-insta-reveal style="--d:.9s" aria-hidden="true">
+        <i></i>Novidades toda semana
+      </span>
+
+      <div class="insta-col">
+
+        <a href="https://www.instagram.com/amocosmeticossc/" target="_blank" rel="noopener noreferrer" class="insta-post insta-post--tall insta-post--arch" data-insta-reveal style="--i:1" aria-label="Rotina de brilho: ver no Instagram (abre em nova aba)">
+          <span class="insta-post-media">
+            <img src="assets/modelos/reel01.jpeg" alt="Publicação do Instagram: nossos produtos favoritos na mão" loading="lazy" decoding="async" draggable="false">
+            <span class="insta-post-tint" aria-hidden="true"></span>
+          </span>
+          <span class="insta-post-type" aria-hidden="true">
+            <svg class="ico" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M10 8.5v7l5.5-3.5z" fill="currentColor" stroke="none"/></svg>
+          </span>
+          <span class="insta-post-ig" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><use href="#i-ig-grad"/></svg>
+          </span>
+          <span class="insta-post-cap">
+            <span class="insta-post-txt"><small>Reels</small><b>Rotina de brilho</b></span>
+            <span class="insta-post-go" aria-hidden="true"><svg class="ico"><use href="#i-arrow"/></svg></span>
+          </span>
+        </a>
+
+        <a href="https://www.instagram.com/amocosmeticossc/" target="_blank" rel="noopener noreferrer" class="insta-post insta-post--sq" data-insta-reveal style="--i:4" aria-label="Kit completo: ver no Instagram (abre em nova aba)">
+          <span class="insta-post-media">
+            <img src="assets/modelos/post02.jpeg" alt="Publicação do Instagram: Kit Completo New Hair" loading="lazy" decoding="async" draggable="false">
+            <span class="insta-post-tint" aria-hidden="true"></span>
+          </span>
+          <span class="insta-post-type" aria-hidden="true">
+            <svg class="ico" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="3"/><path d="M16 4H7a3 3 0 0 0-3 3v9"/></svg>
+          </span>
+          <span class="insta-post-ig" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><use href="#i-ig-grad"/></svg>
+          </span>
+          <span class="insta-post-cap">
+            <span class="insta-post-txt"><small>Carrossel</small><b>Kit completo</b></span>
+            <span class="insta-post-go" aria-hidden="true"><svg class="ico"><use href="#i-arrow"/></svg></span>
+          </span>
+        </a>
+
+      </div>
+
+      <div class="insta-col">
+
+        <a href="https://www.instagram.com/amocosmeticossc/" target="_blank" rel="noopener noreferrer" class="insta-post insta-post--sq" data-insta-reveal style="--i:2" aria-label="Um dia na loja: ver no Instagram (abre em nova aba)">
+          <span class="insta-post-media">
+            <img src="assets/modelos/post03.jpeg" alt="Publicação do Instagram: um dia na loja Amo Cosméticos" loading="lazy" decoding="async" draggable="false">
+            <span class="insta-post-tint" aria-hidden="true"></span>
+          </span>
+          <span class="insta-post-ig" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><use href="#i-ig-grad"/></svg>
+          </span>
+          <span class="insta-post-cap">
+            <span class="insta-post-txt"><small>Foto</small><b>Um dia na loja</b></span>
+            <span class="insta-post-go" aria-hidden="true"><svg class="ico"><use href="#i-arrow"/></svg></span>
+          </span>
+        </a>
+
+        <a href="https://www.instagram.com/amocosmeticossc/" target="_blank" rel="noopener noreferrer" class="insta-post insta-post--tall" data-insta-reveal style="--i:5" aria-label="Cheirinho que gruda: ver no Instagram (abre em nova aba)">
+          <span class="insta-post-media">
+            <img src="assets/modelos/post04.jpeg" alt="Publicação do Instagram: Perfume Capilar Encanto" loading="lazy" decoding="async" draggable="false">
+            <span class="insta-post-tint" aria-hidden="true"></span>
+          </span>
+          <span class="insta-post-type" aria-hidden="true">
+            <svg class="ico" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M10 8.5v7l5.5-3.5z" fill="currentColor" stroke="none"/></svg>
+          </span>
+          <span class="insta-post-ig" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><use href="#i-ig-grad"/></svg>
+          </span>
+          <span class="insta-post-cap">
+            <span class="insta-post-txt"><small>Reels</small><b>Cheirinho que gruda</b></span>
+            <span class="insta-post-go" aria-hidden="true"><svg class="ico"><use href="#i-arrow"/></svg></span>
+          </span>
+        </a>
+
+      </div>
+
+      <div class="insta-col">
+
+        <a href="https://www.instagram.com/amocosmeticossc/" target="_blank" rel="noopener noreferrer" class="insta-post insta-post--tall" data-insta-reveal style="--i:3" aria-label="Nutrição noturna: ver no Instagram (abre em nova aba)">
+          <span class="insta-post-media">
+            <img src="assets/modelos/post04.jpeg" alt="Publicação do Instagram: Óleo Reparador Noturno" loading="lazy" decoding="async" draggable="false">
+            <span class="insta-post-tint" aria-hidden="true"></span>
+          </span>
+          <span class="insta-post-type" aria-hidden="true">
+            <svg class="ico" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="3"/><path d="M16 4H7a3 3 0 0 0-3 3v9"/></svg>
+          </span>
+          <span class="insta-post-ig" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><use href="#i-ig-grad"/></svg>
+          </span>
+          <span class="insta-post-cap">
+            <span class="insta-post-txt"><small>Carrossel</small><b>Nutrição noturna</b></span>
+            <span class="insta-post-go" aria-hidden="true"><svg class="ico"><use href="#i-arrow"/></svg></span>
+          </span>
+        </a>
+
+        <a href="https://www.instagram.com/amocosmeticossc/" target="_blank" rel="noopener noreferrer" class="insta-post insta-post--sq" data-insta-reveal style="--i:6" aria-label="Bastidores: ver no Instagram (abre em nova aba)">
+          <span class="insta-post-media">
+            <img src="assets/modelos/reel02.jpeg" alt="Publicação do Instagram: bastidores com os produtos" loading="lazy" decoding="async" draggable="false">
+            <span class="insta-post-tint" aria-hidden="true"></span>
+          </span>
+          <span class="insta-post-ig" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><use href="#i-ig-grad"/></svg>
+          </span>
+          <span class="insta-post-cap">
+            <span class="insta-post-txt"><small>Foto</small><b>Bastidores</b></span>
+            <span class="insta-post-go" aria-hidden="true"><svg class="ico"><use href="#i-arrow"/></svg></span>
+          </span>
+        </a>
+
+      </div>
+
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -1028,5 +1209,7 @@
 
 <script src="/js/script.js"></script>
 <script src="/js/cart.js"></script>  
+<script src="/js/search.js" defer></script>
+<script src="/js/account.js" defer></script>
 </body>
 </html>

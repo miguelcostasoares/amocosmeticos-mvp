@@ -199,6 +199,20 @@
     msg += `%0APagamento: ${payLabel}`;
     if (state.payment === 'pix') msg += `%0ATotal no Pix: ${BRL(pixTotal())}`;
     else msg += `%0ATotal: ${BRL(total())}`;
+    
+        // registra o pedido em "Minha conta"
+    if (window.AmoUser) {
+      const totalPago = state.payment === 'pix' ? pixTotal() : total();
+      window.AmoUser.recordOrder({
+        total: BRL(totalPago),
+        count: count(),
+        items: state.items.map((i) => ({
+          id: i.id, name: i.name, brand: i.brand,
+          price: i.price, old: i.old, img: i.img, qty: i.qty
+        }))
+      });
+    }
+    
     window.open(`https://wa.me/${CONFIG.whatsapp}?text=${msg}`, '_blank');
   }
 

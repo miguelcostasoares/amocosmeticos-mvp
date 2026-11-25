@@ -434,16 +434,7 @@
   }
 
   /* ════════════════════════════════════════════
-     4. NEWSLETTER
-     ════════════════════════════════════════════ */
-  function initNewsletter() {
-    const form = $('#newsletterForm');
-    if (!form) return;
-    form.addEventListener('submit', (e) => e.preventDefault());
-  }
-
-  /* ════════════════════════════════════════════
-     3c. NOSSA HISTÓRIA — entrada no scroll e
+     4. NOSSA HISTÓRIA — entrada no scroll +
      parallax/tilt sutil da foto (só desktop com mouse)
      ════════════════════════════════════════════ */
   function initBrandStory() {
@@ -672,6 +663,85 @@
     }
   }
 
+  /* ════════════════════════════════════════════
+     10. INSTAGRAM — entrada escalonada, parallax suave
+     das colunas e microinteração magnética nos posts
+     ════════════════════════════════════════════ */
+  function initInstagram() {
+    const section = $('#instagram');
+    if (!section) return;
+
+    section.classList.add('is-armed');
+    if (prefersReduced || !('IntersectionObserver' in window)) {
+      section.classList.add('is-in');
+      return;
+    }
+
+    const io = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        section.classList.add('is-in');
+        io.disconnect();
+      }
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    io.observe(section);
+
+    /* ── parallax suave entre as colunas ── */
+    const feed = $('#instaFeed', section);
+    if (feed) {
+      let inView = false;
+      let ticking = false;
+
+      const update = () => {
+        ticking = false;
+        const r  = feed.getBoundingClientRect();
+        const vh = window.innerHeight || 1;
+        const p  = ((r.top + r.height / 2) - vh / 2) / vh;
+        feed.style.setProperty('--par', Math.max(-1, Math.min(1, p)).toFixed(3));
+      };
+
+      const onScroll = () => {
+        if (!inView || ticking) return;
+        ticking = true;
+        requestAnimationFrame(update);
+      };
+
+      new IntersectionObserver((entries) => {
+        inView = entries[0].isIntersecting;
+        if (inView) update();
+      }, { rootMargin: '20% 0px' }).observe(feed);
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+    }
+
+    /* ── microinteração magnética (somente mouse) ── */
+    const fine = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+    $$('.insta-post', section).forEach((post) => {
+      let rafId = null, mx = 0, my = 0;
+
+      const apply = () => {
+        post.style.setProperty('--mx', mx.toFixed(3));
+        post.style.setProperty('--my', my.toFixed(3));
+        rafId = null;
+      };
+
+      post.addEventListener('pointermove', (e) => {
+        if (!fine.matches || e.pointerType !== 'mouse') return;
+        const r = post.getBoundingClientRect();
+        mx = ((e.clientX - r.left) / r.width  - 0.5) * 2;
+        my = ((e.clientY - r.top)  / r.height - 0.5) * 2;
+        if (!rafId) rafId = requestAnimationFrame(apply);
+      });
+
+      post.addEventListener('pointerleave', () => {
+        mx = 0;
+        my = 0;
+        if (!rafId) rafId = requestAnimationFrame(apply);
+      });
+    });
+  }
+
   /* ── bootstrap ── */
   function init() {
     initHero();
@@ -679,11 +749,11 @@
     initCategories();
     initHeroDeck();
     initBrandStory();
-    initNewsletter();     
-    initWeekCountdown();   
-    initStockBars();       
+    initWeekCountdown();
+    initStockBars();
     initProductFav();
-    initFavorites(); 
+    initFavorites();
+    initInstagram();
   }
 
   if (document.readyState === 'loading') {
