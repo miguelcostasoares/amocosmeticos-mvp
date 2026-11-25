@@ -342,7 +342,8 @@
 <section class="products" id="produtos" aria-labelledby="prodTitle">
   <div class="prod-head">
     <span class="prod-eyebrow">Nossa seleção</span>
-    <h2 class="prod-title" id="prodTitle">Produtos que você vai <i>amar</i></h2>
+    <h2 class="prod-title" id="prodTitle">Produtos que você<br>vai <i>amar</i></h2>
+    <p class="prod-lead">Os favoritos das nossas clientes, escolhidos a dedo para a sua rotina de cuidado.</p>
   </div>
 
   <!-- ░░░ QUERIDINHOS DA SEMANA ░░░
@@ -1043,118 +1044,195 @@
       </a>
     </div>
 
-    <!-- Lado feed: 3 colunas escalonadas -->
+    <!-- ═══════════════════════════════════════════════════════════
+         FEED DO INSTAGRAM  (3 colunas escalonadas)
+
+         Coluna 1:  [REEL 1 — moldura em arco]
+                    [POST 1 — quadrado]
+         Coluna 2:  [POST 2 — quadrado]
+                    [REEL 2 — moldura vertical]
+         Coluna 3:  [POST 3 — quadrado]
+                    [POST 4 — quadrado]
+
+         COMO EDITAR (em cada item abaixo, só 2 coisas):
+           1) href="..."  → LINK da publicação no Instagram
+           2) src="..."   → CAMINHO do print (imagem)
+         Opcional: o título da legenda (<b>…</b>) e o alt da imagem.
+
+         Formato ideal dos prints:
+           • REEL → vertical (4:5 ou 9:16)
+           • POST → quadrado 1:1  (ex.: 1080×1080)
+         ═══════════════════════════════════════════════════════════ -->
     <div class="insta-feed" id="instaFeed">
 
       <span class="insta-live" data-insta-reveal style="--d:.9s" aria-hidden="true">
         <i></i>Novidades toda semana
       </span>
 
+      <!-- ░░░░░░░░░░░░░░░ COLUNA 1 ░░░░░░░░░░░░░░░ -->
       <div class="insta-col">
 
-        <a href="https://www.instagram.com/amocosmeticossc/" target="_blank" rel="noopener noreferrer" class="insta-post insta-post--tall insta-post--arch" data-insta-reveal style="--i:1" aria-label="Rotina de brilho: ver no Instagram (abre em nova aba)">
+        <!-- ╔═══════════════ REEL 1 ═══════════════╗ -->
+        <a class="insta-post insta-post--tall insta-post--arch" data-insta-reveal style="--i:1"
+           target="_blank" rel="noopener noreferrer"
+
+           href="https://www.instagram.com/p/Df2MxxMxwsE/"
+           
+
+           aria-label="Reel 1: ver no Instagram (abre em nova aba)">
           <span class="insta-post-media">
-            <img src="assets/modelos/reel01.jpeg" alt="Publicação do Instagram: nossos produtos favoritos na mão" loading="lazy" decoding="async" draggable="false">
+
+            <img src="assets/modelos/reel01.jpeg"
+                 
+                 alt="Reel 1 do Instagram da Amo Cosméticos" loading="lazy" decoding="async" draggable="false">
+
             <span class="insta-post-tint" aria-hidden="true"></span>
           </span>
           <span class="insta-post-type" aria-hidden="true">
             <svg class="ico" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M10 8.5v7l5.5-3.5z" fill="currentColor" stroke="none"/></svg>
           </span>
-          <span class="insta-post-ig" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><use href="#i-ig-grad"/></svg>
-          </span>
+          <span class="insta-post-ig" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-ig-grad"/></svg></span>
           <span class="insta-post-cap">
-            <span class="insta-post-txt"><small>Reels</small><b>Rotina de brilho</b></span>
+            <span class="insta-post-txt"><small>Reels</small><b>Título do Reel 1</b></span>
             <span class="insta-post-go" aria-hidden="true"><svg class="ico"><use href="#i-arrow"/></svg></span>
           </span>
         </a>
+        <!-- ╚═════════════ FIM REEL 1 ═════════════╝ -->
 
-        <a href="https://www.instagram.com/amocosmeticossc/" target="_blank" rel="noopener noreferrer" class="insta-post insta-post--sq" data-insta-reveal style="--i:4" aria-label="Kit completo: ver no Instagram (abre em nova aba)">
+        <!-- ╔═══════════════ POST 1 ═══════════════╗ -->
+        <a class="insta-post insta-post--sq" data-insta-reveal style="--i:4"
+           target="_blank" rel="noopener noreferrer"
+
+           href="https://www.instagram.com/p/DfrzY8hFdiB/?img_index=1"
+           
+
+           aria-label="Post 1: ver no Instagram (abre em nova aba)">
           <span class="insta-post-media">
-            <img src="assets/modelos/post02.jpeg" alt="Publicação do Instagram: Kit Completo New Hair" loading="lazy" decoding="async" draggable="false">
+
+            <img src="assets/modelos/post01.jpeg"
+                 
+                 alt="Post 1 do Instagram da Amo Cosméticos" loading="lazy" decoding="async" draggable="false">
+
             <span class="insta-post-tint" aria-hidden="true"></span>
           </span>
-          <span class="insta-post-type" aria-hidden="true">
-            <svg class="ico" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="3"/><path d="M16 4H7a3 3 0 0 0-3 3v9"/></svg>
-          </span>
-          <span class="insta-post-ig" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><use href="#i-ig-grad"/></svg>
-          </span>
+          <span class="insta-post-ig" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-ig-grad"/></svg></span>
           <span class="insta-post-cap">
-            <span class="insta-post-txt"><small>Carrossel</small><b>Kit completo</b></span>
+            <span class="insta-post-txt"><small>Post</small><b>Título do Post 1</b></span>
             <span class="insta-post-go" aria-hidden="true"><svg class="ico"><use href="#i-arrow"/></svg></span>
           </span>
         </a>
+        <!-- ╚═════════════ FIM POST 1 ═════════════╝ -->
 
       </div>
 
+
+      <!-- ░░░░░░░░░░░░░░░ COLUNA 2 ░░░░░░░░░░░░░░░ -->
       <div class="insta-col">
 
-        <a href="https://www.instagram.com/amocosmeticossc/" target="_blank" rel="noopener noreferrer" class="insta-post insta-post--sq" data-insta-reveal style="--i:2" aria-label="Um dia na loja: ver no Instagram (abre em nova aba)">
+        <!-- ╔═══════════════ POST 2 ═══════════════╗ -->
+        <a class="insta-post insta-post--sq" data-insta-reveal style="--i:2"
+           target="_blank" rel="noopener noreferrer"
+
+           href="https://www.instagram.com/p/DfIQodkFXbW/?img_index=1"
+           
+
+           aria-label="Post 2: ver no Instagram (abre em nova aba)">
           <span class="insta-post-media">
-            <img src="assets/modelos/post03.jpeg" alt="Publicação do Instagram: um dia na loja Amo Cosméticos" loading="lazy" decoding="async" draggable="false">
+
+            <img src="assets/modelos/post02.jpeg"
+                 
+                 alt="Post 2 do Instagram da Amo Cosméticos" loading="lazy" decoding="async" draggable="false">
+
             <span class="insta-post-tint" aria-hidden="true"></span>
           </span>
-          <span class="insta-post-ig" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><use href="#i-ig-grad"/></svg>
-          </span>
+          <span class="insta-post-ig" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-ig-grad"/></svg></span>
           <span class="insta-post-cap">
-            <span class="insta-post-txt"><small>Foto</small><b>Um dia na loja</b></span>
+            <span class="insta-post-txt"><small>Post</small><b>Título do Post 2</b></span>
             <span class="insta-post-go" aria-hidden="true"><svg class="ico"><use href="#i-arrow"/></svg></span>
           </span>
         </a>
+        <!-- ╚═════════════ FIM POST 2 ═════════════╝ -->
 
-        <a href="https://www.instagram.com/amocosmeticossc/" target="_blank" rel="noopener noreferrer" class="insta-post insta-post--tall" data-insta-reveal style="--i:5" aria-label="Cheirinho que gruda: ver no Instagram (abre em nova aba)">
+        <!-- ╔═══════════════ REEL 2 ═══════════════╗ -->
+        <a class="insta-post insta-post--tall" data-insta-reveal style="--i:5"
+           target="_blank" rel="noopener noreferrer"
+
+           href="https://www.instagram.com/p/Dfud1rqxvDJ/"
+           
+
+           aria-label="Reel 2: ver no Instagram (abre em nova aba)">
           <span class="insta-post-media">
-            <img src="assets/modelos/post04.jpeg" alt="Publicação do Instagram: Perfume Capilar Encanto" loading="lazy" decoding="async" draggable="false">
+
+            <img src="assets/modelos/reel02.jpeg"
+                 
+                 alt="Reel 2 do Instagram da Amo Cosméticos" loading="lazy" decoding="async" draggable="false">
+
             <span class="insta-post-tint" aria-hidden="true"></span>
           </span>
           <span class="insta-post-type" aria-hidden="true">
             <svg class="ico" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M10 8.5v7l5.5-3.5z" fill="currentColor" stroke="none"/></svg>
           </span>
-          <span class="insta-post-ig" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><use href="#i-ig-grad"/></svg>
-          </span>
+          <span class="insta-post-ig" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-ig-grad"/></svg></span>
           <span class="insta-post-cap">
-            <span class="insta-post-txt"><small>Reels</small><b>Cheirinho que gruda</b></span>
+            <span class="insta-post-txt"><small>Reels</small><b>Título do Reel 2</b></span>
             <span class="insta-post-go" aria-hidden="true"><svg class="ico"><use href="#i-arrow"/></svg></span>
           </span>
         </a>
+        <!-- ╚═════════════ FIM REEL 2 ═════════════╝ -->
 
       </div>
 
+
+      <!-- ░░░░░░░░░░░░░░░ COLUNA 3 ░░░░░░░░░░░░░░░ -->
       <div class="insta-col">
 
-        <a href="https://www.instagram.com/amocosmeticossc/" target="_blank" rel="noopener noreferrer" class="insta-post insta-post--tall" data-insta-reveal style="--i:3" aria-label="Nutrição noturna: ver no Instagram (abre em nova aba)">
-          <span class="insta-post-media">
-            <img src="assets/modelos/post04.jpeg" alt="Publicação do Instagram: Óleo Reparador Noturno" loading="lazy" decoding="async" draggable="false">
-            <span class="insta-post-tint" aria-hidden="true"></span>
-          </span>
-          <span class="insta-post-type" aria-hidden="true">
-            <svg class="ico" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="3"/><path d="M16 4H7a3 3 0 0 0-3 3v9"/></svg>
-          </span>
-          <span class="insta-post-ig" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><use href="#i-ig-grad"/></svg>
-          </span>
-          <span class="insta-post-cap">
-            <span class="insta-post-txt"><small>Carrossel</small><b>Nutrição noturna</b></span>
-            <span class="insta-post-go" aria-hidden="true"><svg class="ico"><use href="#i-arrow"/></svg></span>
-          </span>
-        </a>
+        <!-- ╔═══════════════ POST 3 ═══════════════╗ -->
+        <a class="insta-post insta-post--sq" data-insta-reveal style="--i:3"
+           target="_blank" rel="noopener noreferrer"
 
-        <a href="https://www.instagram.com/amocosmeticossc/" target="_blank" rel="noopener noreferrer" class="insta-post insta-post--sq" data-insta-reveal style="--i:6" aria-label="Bastidores: ver no Instagram (abre em nova aba)">
+           href="https://www.instagram.com/p/DfAKIGOx9qf/"
+           
+
+           aria-label="Post 3: ver no Instagram (abre em nova aba)">
           <span class="insta-post-media">
-            <img src="assets/modelos/reel02.jpeg" alt="Publicação do Instagram: bastidores com os produtos" loading="lazy" decoding="async" draggable="false">
+
+            <img src="assets/modelos/post03.jpeg"
+                 
+                 alt="Post 3 do Instagram da Amo Cosméticos" loading="lazy" decoding="async" draggable="false">
+
             <span class="insta-post-tint" aria-hidden="true"></span>
           </span>
-          <span class="insta-post-ig" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><use href="#i-ig-grad"/></svg>
-          </span>
+          <span class="insta-post-ig" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-ig-grad"/></svg></span>
           <span class="insta-post-cap">
-            <span class="insta-post-txt"><small>Foto</small><b>Bastidores</b></span>
+            <span class="insta-post-txt"><small>Post</small><b>Título do Post 3</b></span>
             <span class="insta-post-go" aria-hidden="true"><svg class="ico"><use href="#i-arrow"/></svg></span>
           </span>
         </a>
+        <!-- ╚═════════════ FIM POST 3 ═════════════╝ -->
+
+        <!-- ╔═══════════════ POST 4 ═══════════════╗ -->
+        <a class="insta-post insta-post--sq" data-insta-reveal style="--i:6"
+           target="_blank" rel="noopener noreferrer"
+
+           href="https://www.instagram.com/p/DerlG5EERDj/?img_index=1"
+           
+
+           aria-label="Post 4: ver no Instagram (abre em nova aba)">
+          <span class="insta-post-media">
+
+            <img src="assets/modelos/post04.jpeg"
+                 
+                 alt="Post 4 do Instagram da Amo Cosméticos" loading="lazy" decoding="async" draggable="false">
+
+            <span class="insta-post-tint" aria-hidden="true"></span>
+          </span>
+          <span class="insta-post-ig" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-ig-grad"/></svg></span>
+          <span class="insta-post-cap">
+            <span class="insta-post-txt"><small>Post</small><b>Título do Post 4</b></span>
+            <span class="insta-post-go" aria-hidden="true"><svg class="ico"><use href="#i-arrow"/></svg></span>
+          </span>
+        </a>
+        <!-- ╚═════════════ FIM POST 4 ═════════════╝ -->
 
       </div>
 
