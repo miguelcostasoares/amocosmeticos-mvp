@@ -10,30 +10,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/cart.css">
+<link rel="stylesheet" href="/css/card.css">
 <link rel="stylesheet" href="/css/catalogo.css">
 <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
-<!-- NAVBAR (igual à da home; "Catálogo" ativo) -->
+<!-- NAVBAR (igual à da home, com a busca; "Catálogo" ativo) -->
 <nav class="nav" id="nav">
+  <!-- LOGO: a imagem é definida pela variável --logo-src em css/style.css -->
   <a href="/index.html" class="nav-brand" aria-label="Amo Cosméticos — ir para o início">
     <span class="nav-logo" role="img" aria-label="Amo Cosméticos"></span>
   </a>
   <ul class="nav-center" id="navCenter">
     <li><a href="/index.html">Início</a></li>
     <li><a href="/catalogo.html" aria-current="page">Catálogo</a></li>
-    <li><a href="/catalogo.html">Categorias</a></li>
+    <li><a href="/index.html#categorias">Categorias</a></li>
     <li><a href="/catalogo.html?ofertas=1">Ofertas</a></li>
     <li><a href="/index.html#nossa-historia">Sobre nós</a></li>
   </ul>
   <div class="nav-right">
-    <button class="nav-btn" aria-label="Buscar">
-      <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-    </button>
-    <button class="nav-btn" aria-label="Minha conta">
-      <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-    </button>
+    <button class="nav-btn" id="navSearchTrigger" aria-label="Buscar" aria-expanded="false">
+  <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+</button>
+    <button class="nav-btn" id="navAccountTrigger" aria-label="Minha conta">
+  <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+</button>
     <button class="nav-btn nav-bag" aria-label="Sacola">
       <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
       <span class="nav-bag-count is-zero">0</span>
@@ -42,6 +44,18 @@
     <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navCenter">
       <span></span><span></span><span></span>
     </button>
+  </div>
+    <!-- BUSCA EXPANSÍVEL -->
+  <div class="nav-search" id="navSearch" role="search">
+    <svg class="nav-search-ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="search" id="navSearchInput" class="nav-search-input" placeholder="Buscar produtos, categorias, marcas…" aria-label="Buscar" autocomplete="off">
+    <button type="button" class="nav-search-clear" id="navSearchClear" aria-label="Limpar" hidden>
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <button type="button" class="nav-search-close" id="navSearchClose" aria-label="Fechar busca">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <div class="search-panel" id="searchPanel" role="listbox" aria-label="Sugestões de busca"></div>
   </div>
 </nav>
 
@@ -157,52 +171,84 @@
 
 <!-- FOOTER (igual à home) -->
 <footer class="footer">
-  <div class="footer-top">
-    <div class="footer-brand">
-      <span class="nav-monogram" style="color:var(--lilas)">Ca</span>
-      <p>Cosméticos selecionados com amor para você. Beleza acessível, de qualidade, entregue na sua porta.</p>
+  <div class="ft-inner">
+
+    <div class="ft-top">
+      <div class="ft-brand">
+        <a href="/index.html" class="ft-logo" aria-label="Amo Cosméticos — ir para o início"></a>
+        <p class="ft-tagline">Cosméticos selecionados com amor para você. Beleza acessível, de qualidade, entregue na sua porta.</p>
+        <a href="https://www.instagram.com/amocosmeticossc/" target="_blank" rel="noopener noreferrer" class="ft-social" aria-label="Instagram @amocosmeticossc (abre em nova aba)">
+          <span class="ft-social-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.1"/><circle class="ft-social-dot" cx="17.3" cy="6.7" r="1.1"/></svg>
+          </span>
+          <span>@amocosmeticossc</span>
+        </a>
+      </div>
+
+      <nav class="ft-col" aria-label="Loja">
+        <h3 class="ft-title">Loja</h3>
+        <ul class="ft-links">
+          <li><a href="/catalogo.html">Todos os produtos</a></li>
+          <li><a href="/catalogo.html?ofertas=1">Ofertas</a></li>
+          <li><a href="/catalogo.html">Lançamentos</a></li>
+          <li><a href="/catalogo.html?cat=Kits">Kits e combos</a></li>
+        </ul>
+      </nav>
+
+      <nav class="ft-col" aria-label="Ajuda">
+        <h3 class="ft-title">Ajuda</h3>
+        <ul class="ft-links">
+          <li><a href="#">Meus pedidos</a></li>
+          <li><a href="#">Trocas e devoluções</a></li>
+          <li><a href="#">Frete e prazos</a></li>
+          <li><a href="#">Fale conosco</a></li>
+        </ul>
+      </nav>
+
+      <nav class="ft-col" aria-label="Institucional">
+        <h3 class="ft-title">Institucional</h3>
+        <ul class="ft-links">
+          <li><a href="/index.html#nossa-historia">Sobre nós</a></li>
+          <li><a href="#">Política de privacidade</a></li>
+          <li><a href="#">Termos de uso</a></li>
+        </ul>
+      </nav>
     </div>
-    <div class="footer-col">
-      <h5>Loja</h5>
-      <a href="/catalogo.html">Todos os produtos</a>
-      <a href="/catalogo.html?ofertas=1">Ofertas</a>
-      <a href="/catalogo.html">Lançamentos</a>
-      <a href="/catalogo.html?cat=Kits">Kits e combos</a>
+
+    <div class="ft-bottom">
+      <span class="ft-copy">© 2026 Amo Cosméticos. Todos os direitos reservados.</span>
+
+      <div class="ft-payments" aria-label="Formas de pagamento">
+        <span class="ft-pay">Pix</span>
+        <span class="ft-pay">Visa</span>
+        <span class="ft-pay">Master</span>
+        <span class="ft-pay">Elo</span>
+        <span class="ft-pay">Boleto</span>
+      </div>
+
+      <div class="ft-credit">
+        <span class="ft-credit-txt">Desenvolvido por</span>
+        <a href="#" class="ft-credit-link" target="_blank" rel="noopener noreferrer" aria-label="InCode">
+        
+          <img src="assets/logos/logo_incode.png" alt="InCode" class="ft-credit-logo" loading="lazy" decoding="async" draggable="false">
+        </a>
+      </div>
     </div>
-    <div class="footer-col">
-      <h5>Ajuda</h5>
-      <a href="#">Meus pedidos</a>
-      <a href="#">Trocas e devoluções</a>
-      <a href="#">Frete e prazos</a>
-      <a href="#">Fale conosco</a>
-    </div>
-    <div class="footer-col">
-      <h5>Institucional</h5>
-      <a href="/index.html#nossa-historia">Sobre nós</a>
-      <a href="#">Política de privacidade</a>
-      <a href="#">Termos de uso</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span class="footer-copy">© 2026 Amo Cosméticos. Todos os direitos reservados.</span>
-    <div class="footer-payments">
-      <span class="pay-badge">Pix</span>
-      <span class="pay-badge">Visa</span>
-      <span class="pay-badge">Master</span>
-      <span class="pay-badge">Elo</span>
-      <span class="pay-badge">Boleto</span>
-    </div>
+
   </div>
 </footer>
 
 <!-- WHATSAPP -->
-<button class="whatsapp-float" aria-label="Falar no WhatsApp">
+<a class="whatsapp-float" href="https://wa.me/5584981291807?text=Ol%C3%A1%2C%20Amo%20Cosm%C3%A9ticos%21%20%F0%9F%92%9C%20Vim%20pelo%20site%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20os%20produtos." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-</button>
+</a>
 
-<!-- SCRIPTS: script.js (navbar) + cart.js (sacola) + catalogo.js (grade) -->
+<!-- SCRIPTS: produtos.js (base única) PRIMEIRO, depois navbar, sacola, busca, conta e grade -->
+<script src="/js/produtos.js"></script>
 <script src="/js/script.js"></script>
 <script src="/js/cart.js"></script>
+<script src="/js/search.js" defer></script>
+<script src="/js/account.js" defer></script>
 <script src="/js/catalogo.js"></script>
 </body>
 </html>

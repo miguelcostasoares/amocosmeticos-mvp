@@ -8,7 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/cart.css"> 
+<link rel="stylesheet" href="/css/cart.css">
+<link rel="stylesheet" href="/css/card.css">
 <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -478,195 +479,22 @@
   <div class="prod-sub">
     <div class="prod-sub-head">
       <h3 class="prod-sub-title"><span class="prod-sub-ico"><svg class="ico"><use href="#i-award"/></svg></span> Mais vendidos</h3>
-      <a href="#" class="prod-sub-link">Ver todos <svg class="ico"><use href="#i-arrow"/></svg></a>
+      <a href="/catalogo.html" class="prod-sub-link">Ver todos <svg class="ico"><use href="#i-arrow"/></svg></a>
     </div>
-    <div class="prod-grid">
-
-      <article class="pcard">
-        <div class="pcard-frame">
-          <div class="pcard-mat">
-            <div class="pcard-media">
-              <img src="assets/produtos/perfume-capilar.jpeg" alt="Perfume Capilar Encanto" loading="lazy" draggable="false">
-              <span class="pcard-glass" aria-hidden="true"></span>
-              <span class="pcard-tag"><svg class="ico"><use href="#i-award"/></svg>Nº 1</span>
-              <button class="pcard-fav" type="button" aria-label="Favoritar"><svg class="ico"><use href="#i-heart"/></svg></button>
-            </div>
-          </div>
-          <div class="pcard-body">
-            <span class="pcard-brand">New Hair</span>
-            <h4 class="pcard-name">Perfume Capilar Encanto</h4>
-            <p class="pcard-desc">Campeão de recompra: o queridinho que todo mundo volta pra comprar.</p>
-            <div class="pcard-foot">
-              <span class="pcard-price"><span class="now">R$39,90</span></span>
-              <button class="pcard-add" type="button" aria-label="Adicionar à sacola"><svg class="ico"><use href="#i-plus"/></svg></button>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="pcard">
-        <div class="pcard-frame">
-          <div class="pcard-mat">
-            <div class="pcard-media">
-              <img src="assets/produtos/kit-newhair.jpeg" alt="Kit Completo New Hair" loading="lazy" draggable="false">
-              <span class="pcard-glass" aria-hidden="true"></span>
-              <button class="pcard-fav" type="button" aria-label="Favoritar"><svg class="ico"><use href="#i-heart"/></svg></button>
-            </div>
-          </div>
-          <div class="pcard-body">
-            <span class="pcard-brand">New Hair</span>
-            <h4 class="pcard-name">Kit Completo New Hair</h4>
-            <p class="pcard-desc">O kit mais pedido para transformar a rotina capilar de ponta a ponta.</p>
-            <div class="pcard-foot">
-              <span class="pcard-price"><span class="now">R$129,90</span></span>
-              <button class="pcard-add" type="button" aria-label="Adicionar à sacola"><svg class="ico"><use href="#i-plus"/></svg></button>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="pcard">
-        <div class="pcard-frame">
-          <div class="pcard-mat">
-            <div class="pcard-media">
-              <img src="assets/produtos/oleos-newhair.jpeg" alt="Óleo Reparador Noturno" loading="lazy" draggable="false">
-              <span class="pcard-glass" aria-hidden="true"></span>
-              <button class="pcard-fav" type="button" aria-label="Favoritar"><svg class="ico"><use href="#i-heart"/></svg></button>
-            </div>
-          </div>
-          <div class="pcard-body">
-            <span class="pcard-brand">New Hair</span>
-            <h4 class="pcard-name">Óleo Reparador Noturno</h4>
-            <p class="pcard-desc">Tratamento noturno que vira rotina obrigatória de cuidado.</p>
-            <div class="pcard-foot">
-              <span class="pcard-price"><span class="now">R$54,90</span></span>
-              <button class="pcard-add" type="button" aria-label="Adicionar à sacola"><svg class="ico"><use href="#i-plus"/></svg></button>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="pcard">
-        <div class="pcard-frame">
-          <div class="pcard-mat">
-            <div class="pcard-media">
-              <img src="assets/produtos/shampoo-belkit.jpeg" alt="Shampoo Hidratação Intensa" loading="lazy" draggable="false">
-              <span class="pcard-glass" aria-hidden="true"></span>
-              <button class="pcard-fav" type="button" aria-label="Favoritar"><svg class="ico"><use href="#i-heart"/></svg></button>
-            </div>
-          </div>
-          <div class="pcard-body">
-            <span class="pcard-brand">Belkit</span>
-            <h4 class="pcard-name">Shampoo Hidratação Intensa</h4>
-            <p class="pcard-desc">O básico que não pode faltar: limpa e hidrata no mesmo banho.</p>
-            <div class="pcard-foot">
-              <span class="pcard-price"><span class="now">R$32,90</span></span>
-              <button class="pcard-add" type="button" aria-label="Adicionar à sacola"><svg class="ico"><use href="#i-plus"/></svg></button>
-            </div>
-          </div>
-        </div>
-      </article>
-
-    </div>
+    <!-- Cards gerados por js/produtos.js (base única de produtos).
+         Para mudar o que aparece aqui, edite js/produtos.js, não este HTML. -->
+    <div class="prod-grid" data-vitrine="mais-vendidos" data-limit="4"></div>
   </div>
 
   <!-- ░░░ EM OFERTA ░░░ -->
   <div class="prod-sub prod-sub--sale">
     <div class="prod-sub-head">
       <h3 class="prod-sub-title"><span class="prod-sub-ico"><svg class="ico"><use href="#i-tag"/></svg></span> Em oferta</h3>
-      <a href="#" class="prod-sub-link">Ver todas <svg class="ico"><use href="#i-arrow"/></svg></a>
+      <a href="/catalogo.html?ofertas=1" class="prod-sub-link">Ver todas <svg class="ico"><use href="#i-arrow"/></svg></a>
     </div>
-    <div class="prod-grid">
-
-      <article class="pcard pcard--sale">
-        <div class="pcard-frame">
-          <div class="pcard-mat">
-            <div class="pcard-media">
-              <img src="assets/produtos/kit-newhair.jpeg" alt="Kit Completo New Hair" loading="lazy" draggable="false">
-              <span class="pcard-glass" aria-hidden="true"></span>
-              <span class="pcard-tag pcard-tag--sale"><svg class="ico"><use href="#i-tag"/></svg>-32%</span>
-              <button class="pcard-fav" type="button" aria-label="Favoritar"><svg class="ico"><use href="#i-heart"/></svg></button>
-            </div>
-          </div>
-          <div class="pcard-body">
-            <span class="pcard-brand">New Hair</span>
-            <h4 class="pcard-name">Kit Completo New Hair</h4>
-            <p class="pcard-desc">Leve o ritual inteiro pagando bem menos — por tempo limitado.</p>
-            <div class="pcard-foot">
-              <span class="pcard-price"><span class="now">R$129,90</span><span class="old">R$189,90</span></span>
-              <button class="pcard-add" type="button" aria-label="Adicionar à sacola"><svg class="ico"><use href="#i-plus"/></svg></button>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="pcard pcard--sale">
-        <div class="pcard-frame">
-          <div class="pcard-mat">
-            <div class="pcard-media">
-              <img src="assets/produtos/oleos-newhair.jpeg" alt="Óleo Reparador Noturno" loading="lazy" draggable="false">
-              <span class="pcard-glass" aria-hidden="true"></span>
-              <span class="pcard-tag pcard-tag--sale"><svg class="ico"><use href="#i-tag"/></svg>-18%</span>
-              <button class="pcard-fav" type="button" aria-label="Favoritar"><svg class="ico"><use href="#i-heart"/></svg></button>
-            </div>
-          </div>
-          <div class="pcard-body">
-            <span class="pcard-brand">New Hair</span>
-            <h4 class="pcard-name">Óleo Reparador Noturno</h4>
-            <p class="pcard-desc">Nutrição noturna com desconto para você testar sem medo.</p>
-            <div class="pcard-foot">
-              <span class="pcard-price"><span class="now">R$44,90</span><span class="old">R$54,90</span></span>
-              <button class="pcard-add" type="button" aria-label="Adicionar à sacola"><svg class="ico"><use href="#i-plus"/></svg></button>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="pcard pcard--sale">
-        <div class="pcard-frame">
-          <div class="pcard-mat">
-            <div class="pcard-media">
-              <img src="assets/produtos/perfume-capilar.jpeg" alt="Perfume Capilar Encanto" loading="lazy" draggable="false">
-              <span class="pcard-glass" aria-hidden="true"></span>
-              <span class="pcard-tag pcard-tag--sale"><svg class="ico"><use href="#i-tag"/></svg>-13%</span>
-              <button class="pcard-fav" type="button" aria-label="Favoritar"><svg class="ico"><use href="#i-heart"/></svg></button>
-            </div>
-          </div>
-          <div class="pcard-body">
-            <span class="pcard-brand">New Hair</span>
-            <h4 class="pcard-name">Perfume Capilar Encanto</h4>
-            <p class="pcard-desc">O cheirinho favorito das clientes, agora com precinho especial.</p>
-            <div class="pcard-foot">
-              <span class="pcard-price"><span class="now">R$34,90</span><span class="old">R$39,90</span></span>
-              <button class="pcard-add" type="button" aria-label="Adicionar à sacola"><svg class="ico"><use href="#i-plus"/></svg></button>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="pcard pcard--sale">
-        <div class="pcard-frame">
-          <div class="pcard-mat">
-            <div class="pcard-media">
-              <img src="assets/produtos/shampoo-belkit.jpeg" alt="Shampoo Hidratação Intensa" loading="lazy" draggable="false">
-              <span class="pcard-glass" aria-hidden="true"></span>
-              <span class="pcard-tag pcard-tag--sale"><svg class="ico"><use href="#i-tag"/></svg>-15%</span>
-              <button class="pcard-fav" type="button" aria-label="Favoritar"><svg class="ico"><use href="#i-heart"/></svg></button>
-            </div>
-          </div>
-          <div class="pcard-body">
-            <span class="pcard-brand">Belkit</span>
-            <h4 class="pcard-name">Shampoo Hidratação Intensa</h4>
-            <p class="pcard-desc">Reabasteça seu banho gastando menos neste mês.</p>
-            <div class="pcard-foot">
-              <span class="pcard-price"><span class="now">R$27,90</span><span class="old">R$32,90</span></span>
-              <button class="pcard-add" type="button" aria-label="Adicionar à sacola"><svg class="ico"><use href="#i-plus"/></svg></button>
-            </div>
-          </div>
-        </div>
-      </article>
-
-    </div>
+    <!-- Cards gerados por js/produtos.js (base única de produtos).
+         Para mudar o que aparece aqui, edite js/produtos.js, não este HTML. -->
+    <div class="prod-grid" data-vitrine="ofertas" data-limit="4"></div>
   </div>
 </section>
 
@@ -1010,7 +838,7 @@
 
     <!-- Lado texto -->
     <div class="insta-text">
-      <span class="insta-eyebrow" data-insta-reveal style="--d:.05s">No Instagram</span>
+      <span class="insta-eyebrow" data-insta-reveal style="--d:.05s">No Instagram<svg class="insta-eyebrow-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ig-grad"/></svg></span>
       <h2 class="insta-title" id="instaTitle" data-insta-reveal style="--d:.15s">Inspire-se no<br>nosso <i>feed</i></h2>
       <p class="insta-lead" data-insta-reveal style="--d:.25s">Todo dia tem novidade, dica e carinho.</p>
       <p class="insta-body" data-insta-reveal style="--d:.35s">Lançamentos, bastidores e dicas de cabelo em primeira mão — direto do nosso perfil para a sua rotina de cuidados.</p>
@@ -1048,11 +876,11 @@
          FEED DO INSTAGRAM  (3 colunas escalonadas)
 
          Coluna 1:  [REEL 1 — moldura em arco]
-                    [POST 1 — quadrado]
-         Coluna 2:  [POST 2 — quadrado]
+                    [POST 1]
+         Coluna 2:  [POST 2]
                     [REEL 2 — moldura vertical]
-         Coluna 3:  [POST 3 — quadrado]
-                    [POST 4 — quadrado]
+         Coluna 3:  [POST 3]
+                    [POST 4]
 
          COMO EDITAR (em cada item abaixo, só 2 coisas):
            1) href="..."  → LINK da publicação no Instagram
@@ -1060,8 +888,12 @@
          Opcional: o título da legenda (<b>…</b>) e o alt da imagem.
 
          Formato ideal dos prints:
-           • REEL → vertical (4:5 ou 9:16)
-           • POST → quadrado 1:1  (ex.: 1080×1080)
+           • REEL → vertical 9:13  (ex.: 1080×1560)
+                    um print 9:16 também serve, só corta um pouco embaixo
+           • POST → retrato 5:6    (ex.: 1080×1296)
+                    1:1 e 4:5 também servem, só cortam um pouco
+         Quer outra proporção? Mude --insta-ratio-reel e --insta-ratio-post
+         no CSS (bloco ".insta").
          ═══════════════════════════════════════════════════════════ -->
     <div class="insta-feed" id="instaFeed">
 
@@ -1242,51 +1074,81 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-top">
-    <div class="footer-brand">
-      <span class="nav-monogram" style="color:var(--lilas)">Ca</span>
-      <p>Cosméticos selecionados com amor para você. Beleza acessível, de qualidade, entregue na sua porta.</p>
+  <div class="ft-inner">
+
+    <div class="ft-top">
+      <div class="ft-brand">
+        <a href="#" class="ft-logo" aria-label="Amo Cosméticos — ir para o início"></a>
+        <p class="ft-tagline">Cosméticos selecionados com amor para você. Beleza acessível, de qualidade, entregue na sua porta.</p>
+        <a href="https://www.instagram.com/amocosmeticossc/" target="_blank" rel="noopener noreferrer" class="ft-social" aria-label="Instagram @amocosmeticossc (abre em nova aba)">
+          <span class="ft-social-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.1"/><circle class="ft-social-dot" cx="17.3" cy="6.7" r="1.1"/></svg>
+          </span>
+          <span>@amocosmeticossc</span>
+        </a>
+      </div>
+
+      <nav class="ft-col" aria-label="Loja">
+        <h3 class="ft-title">Loja</h3>
+        <ul class="ft-links">
+          <li><a href="#">Todos os produtos</a></li>
+          <li><a href="#">Ofertas</a></li>
+          <li><a href="#">Lançamentos</a></li>
+          <li><a href="#">Kits e combos</a></li>
+        </ul>
+      </nav>
+
+      <nav class="ft-col" aria-label="Ajuda">
+        <h3 class="ft-title">Ajuda</h3>
+        <ul class="ft-links">
+          <li><a href="#">Meus pedidos</a></li>
+          <li><a href="#">Trocas e devoluções</a></li>
+          <li><a href="#">Frete e prazos</a></li>
+          <li><a href="#">Fale conosco</a></li>
+        </ul>
+      </nav>
+
+      <nav class="ft-col" aria-label="Institucional">
+        <h3 class="ft-title">Institucional</h3>
+        <ul class="ft-links">
+          <li><a href="#">Sobre nós</a></li>
+          <li><a href="#">Política de privacidade</a></li>
+          <li><a href="#">Termos de uso</a></li>
+        </ul>
+      </nav>
     </div>
-    <div class="footer-col">
-      <h5>Loja</h5>
-      <a href="#">Todos os produtos</a>
-      <a href="#">Ofertas</a>
-      <a href="#">Lançamentos</a>
-      <a href="#">Kits e combos</a>
+
+    <div class="ft-bottom">
+      <span class="ft-copy">© 2026 Amo Cosméticos. Todos os direitos reservados.</span>
+
+      <div class="ft-payments" aria-label="Formas de pagamento">
+        <span class="ft-pay">Pix</span>
+        <span class="ft-pay">Visa</span>
+        <span class="ft-pay">Master</span>
+        <span class="ft-pay">Elo</span>
+        <span class="ft-pay">Boleto</span>
+      </div>
+
+      <div class="ft-credit">
+        <span class="ft-credit-txt">Desenvolvido por</span>
+        <a href="#" class="ft-credit-link" target="_blank" rel="noopener noreferrer" aria-label="InCode">
+        
+          <img src="assets/logos/logo_incode.png" alt="InCode" class="ft-credit-logo" loading="lazy" decoding="async" draggable="false">
+        </a>
+      </div>
     </div>
-    <div class="footer-col">
-      <h5>Ajuda</h5>
-      <a href="#">Meus pedidos</a>
-      <a href="#">Trocas e devoluções</a>
-      <a href="#">Frete e prazos</a>
-      <a href="#">Fale conosco</a>
-    </div>
-    <div class="footer-col">
-      <h5>Institucional</h5>
-      <a href="#">Sobre nós</a>
-      <a href="#">Política de privacidade</a>
-      <a href="#">Termos de uso</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span class="footer-copy">© 2026 Amo Cosméticos. Todos os direitos reservados.</span>
-    <div class="footer-payments">
-      <span class="pay-badge">Pix</span>
-      <span class="pay-badge">Visa</span>
-      <span class="pay-badge">Master</span>
-      <span class="pay-badge">Elo</span>
-      <span class="pay-badge">Boleto</span>
-    </div>
+
   </div>
 </footer>
 
 <!-- WHATSAPP -->
-<button class="whatsapp-float" aria-label="Falar no WhatsApp">
+<a class="whatsapp-float" href="https://wa.me/5584981291807?text=Ol%C3%A1%2C%20Amo%20Cosm%C3%A9ticos%21%20%F0%9F%92%9C%20Vim%20pelo%20site%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20os%20produtos." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-</button>
+</a>
 
+<script src="/js/produtos.js"></script>
 <script src="/js/script.js"></script>
-<script src="/js/cart.js"></script>  
+<script src="/js/cart.js"></script>
 <script src="/js/search.js" defer></script>
 <script src="/js/account.js" defer></script>
 </body>

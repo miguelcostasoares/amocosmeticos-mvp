@@ -312,23 +312,8 @@
 /* overlay dos filtros: só existe no mobile (não ocupa célula no desktop) */
 .catalog-aside-overlay { display: none; }
 
-/* ── Grid do catálogo (reusa .prod-grid/.pcard) ── */
-.catalog-grid { grid-template-columns: repeat(3, 1fr); row-gap: 56px; }
-
-/* etiqueta de categoria no card */
-.pcard-cat {
-  position: absolute;
-  top: 26px; left: 26px;
-  z-index: 2;
-  font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: .4px;
-  color: var(--lilas-deep);
-  background: rgba(255, 255, 255, .86);
-  backdrop-filter: blur(6px);
-  padding: 5px 11px;
-  border-radius: 20px;
-}
+/* ── Grid do catálogo (card em css/card.css) ── */
+.catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
 /* nenhum resultado */
 .catalog-empty {
@@ -363,8 +348,11 @@
 .catalog-more button:hover { background: var(--lilas); color: var(--white); transform: translateY(-2px); }
 
 /* ── Responsivo ── */
-@media (max-width: 1080px) {
-  .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 1000px) and (min-width: 921px) {
+  .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 920px) and (min-width: 761px) {
+  .catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 920px) {
   .catalog-wrap { grid-template-columns: 1fr; gap: 0; }
@@ -408,17 +396,18 @@
   }
   .catalog-aside-overlay.is-open { opacity: 1; visibility: visible; }
 }
+@media (max-width: 760px) {
+  .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (min-width: 921px) {
   .catalog-aside-head, .catalog-aside-close { display: none; }
 }
 @media (max-width: 560px) {
   .catalog-page { padding-top: 104px; }
-  .catalog-grid { grid-template-columns: repeat(2, 1fr); --pg-gap: 12px; row-gap: 36px; }
   .catalog-wrap { padding: 10px 16px 70px; }
   .catalog-hero { padding: 6px 16px 22px; }
   .catalog-search input { width: 150px; }
   .catalog-search input:focus { width: 170px; }
-  .pcard-cat { top: 14px; left: 14px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

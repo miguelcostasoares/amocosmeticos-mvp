@@ -1,0 +1,207 @@
+/* ══════════════════════════════════════════════
+   AMO COSMÉTICOS — CARD DE PRODUTO (moldura simples)
+   Usado na landing, no catálogo e na página de produto.
+   Carregue DEPOIS de style.css.
+   Estrutura gerada por js/produtos.js → Amo.cardHTML()
+   ══════════════════════════════════════════════ */
+
+/* ── Grid ── */
+.prod-grid {
+  --pg-gap: 22px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 34px var(--pg-gap);
+  align-items: stretch;
+}
+
+/* ── Moldura ── */
+.pcard {
+  --ease: cubic-bezier(.16, 1, .3, 1);
+  --pc-accent: var(--lilas-deep);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 8px;
+  background: var(--white);
+  border: 1px solid var(--lilas-ghost);
+  border-radius: 22px;
+  transition: border-color .3s, box-shadow .3s var(--ease);
+}
+.pcard:hover {
+  border-color: var(--lilas-light);
+  box-shadow: 0 18px 36px -22px rgba(150, 111, 154, .55);
+}
+.pcard:focus-within { border-color: var(--lilas); }
+.pcard--sale { --pc-accent: #a4505b; }
+
+/* ── Foto ── */
+.pcard-media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 15px;
+  background: var(--lilas-whisper);
+}
+.pcard-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .8s var(--ease);
+}
+.pcard:hover .pcard-media img { transform: scale(1.04); }
+.pcard--out .pcard-media img { filter: grayscale(.7); opacity: .6; }
+
+/* selo (Nº 1 / -32% / Esgotado) */
+.pcard-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--plum);
+  background: rgba(255, 255, 255, .94);
+}
+.pcard-tag--sale { color: #fff; background: #b8656f; }
+.pcard-tag--out  { color: #fff; background: var(--plum-soft); }
+
+/* favoritar */
+.pcard-fav {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--ink-secondary);
+  background: rgba(255, 255, 255, .94);
+  transition: color .2s, background .2s, transform .2s;
+}
+.pcard-fav:hover { color: var(--rose); transform: scale(1.08); }
+.pcard-fav.is-fav { color: var(--rose); background: var(--rose-whisper); }
+.pcard-fav.is-fav .ico { fill: var(--rose); }
+
+/* ── Texto ── */
+.pcard-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 14px 8px 6px;
+  text-align: left;
+}
+.pcard-brand {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--lilas-deep);
+  margin-bottom: 3px;
+}
+.pcard-name {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--ink);
+  margin: 0 0 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  
+}
+/* o link do nome cobre o card inteiro */
+.pcard-link { color: inherit; text-decoration: none; }
+.pcard-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+}
+.pcard-link:focus-visible { outline: none; }
+.pcard-link:focus-visible::after { outline: 2px solid var(--lilas-deep); outline-offset: 3px; border-radius: 22px; }
+
+.pcard-desc {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--ink-secondary);
+  margin: 0 0 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Preço + sacola ── */
+.pcard-foot {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 10px;
+}
+.pcard-price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 2px 8px; }
+.pcard-price .now { font-family: var(--serif); font-size: 22px; font-weight: 600; line-height: 1; color: var(--ink); }
+.pcard-price .old { font-size: 12.5px; color: var(--ink-muted); text-decoration: line-through; }
+.pcard--sale .pcard-price .now { color: var(--pc-accent); }
+
+.pcard-add {
+  position: relative;
+  z-index: 2;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #fff;
+  background: var(--plum);
+  transition: background .2s, transform .2s;
+}
+.pcard-add .ico { stroke-width: 2; }
+.pcard-add:hover { background: var(--lilas-deep); transform: translateY(-1px); }
+.pcard-add:disabled { cursor: not-allowed; background: var(--lilas-ghost); color: var(--ink-muted); transform: none; }
+
+.pcard-fav:focus-visible,
+.pcard-add:focus-visible { outline: 2px solid var(--lilas-deep); outline-offset: 2px; }
+
+/* ── Responsivo ── */
+@media (max-width: 1020px) {
+  .prod-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .prod-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); --pg-gap: 12px; row-gap: 16px; }
+}
+@media (max-width: 560px) {
+  .pcard { padding: 6px; border-radius: 18px; }
+  .pcard-media { border-radius: 13px; }
+  .pcard-body { padding: 10px 4px 4px; }
+  .pcard-brand { font-size: 11.5px; }
+  .pcard-name { font-size: 16.5px; }
+  .pcard-desc { display: none; }
+  .pcard-price .now { font-size: 18px; }
+  .pcard-price .old { font-size: 11px; }
+  .pcard-add { width: 34px; height: 34px; border-radius: 10px; font-size: 16px; }
+  .pcard-fav { width: 30px; height: 30px; font-size: 14px; }
+  .pcard-tag { top: 8px; left: 8px; font-size: 10.5px; padding: 4px 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pcard, .pcard-media img, .pcard-add, .pcard-fav { transition: none; }
+  .pcard:hover .pcard-media img { transform: none; }
+}

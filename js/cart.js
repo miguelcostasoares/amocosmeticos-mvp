@@ -28,7 +28,7 @@
     pixDiscount: 0.05,              // 5% no Pix
     maxInstallments: 12,            // parcelas no cartão
     minInstallment: 20,            // valor mínimo da parcela (R$)
-    whatsapp: '5599999999999',      // ►► TROQUE pelo número real (DDI+DDD+numero)
+     whatsapp: '5584981291807',      // ►► TROQUE pelo número real (DDI+DDD+numero)
     // Cupons de exemplo — troque/expanda à vontade:
     coupons: {
       AMO10:       { type: 'percent', value: 10, label: '10% de desconto' },

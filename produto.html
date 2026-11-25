@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- título, descrição e dados estruturados são preenchidos por js/produto.js -->
+<title>Produto — Amo Cosméticos</title>
+<meta name="description" content="Cosméticos selecionados com amor pela Amo Cosméticos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/cart.css">
+<link rel="stylesheet" href="/css/card.css">
+<link rel="stylesheet" href="/css/produto.css">
+<link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+<!-- NAVBAR (igual à da home, com a busca) -->
+<nav class="nav" id="nav">
+  <!-- LOGO: a imagem é definida pela variável --logo-src em css/style.css -->
+  <a href="/index.html" class="nav-brand" aria-label="Amo Cosméticos — ir para o início">
+    <span class="nav-logo" role="img" aria-label="Amo Cosméticos"></span>
+  </a>
+  <ul class="nav-center" id="navCenter">
+    <li><a href="/index.html">Início</a></li>
+    <li><a href="/catalogo.html">Catálogo</a></li>
+    <li><a href="/index.html#categorias">Categorias</a></li>
+    <li><a href="/catalogo.html?ofertas=1">Ofertas</a></li>
+    <li><a href="/index.html#nossa-historia">Sobre nós</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-btn" id="navSearchTrigger" aria-label="Buscar" aria-expanded="false">
+  <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+</button>
+    <button class="nav-btn" id="navAccountTrigger" aria-label="Minha conta">
+  <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+</button>
+    <button class="nav-btn nav-bag" aria-label="Sacola">
+      <svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="nav-bag-count is-zero">0</span>
+    </button>
+    <button class="nav-cta">Comprar</button>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navCenter">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+    <!-- BUSCA EXPANSÍVEL -->
+  <div class="nav-search" id="navSearch" role="search">
+    <svg class="nav-search-ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="search" id="navSearchInput" class="nav-search-input" placeholder="Buscar produtos, categorias, marcas…" aria-label="Buscar" autocomplete="off">
+    <button type="button" class="nav-search-clear" id="navSearchClear" aria-label="Limpar" hidden>
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <button type="button" class="nav-search-close" id="navSearchClose" aria-label="Fechar busca">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <div class="search-panel" id="searchPanel" role="listbox" aria-label="Sugestões de busca"></div>
+  </div>
+</nav>
+
+<main class="pdp" id="pdp">
+
+  <nav class="pdp-crumbs" aria-label="Você está em">
+    <a href="/index.html">Início</a> / <a href="/catalogo.html">Catálogo</a> /
+    <a href="/catalogo.html" id="pdpCrumbCat">Categoria</a> / <span id="pdpCrumbName" aria-current="page"></span>
+  </nav>
+
+  <!-- PRODUTO -->
+  <section class="pdp-main" id="pdpMain" aria-labelledby="pdpName">
+
+    <!-- Galeria -->
+    <div class="pdp-gallery">
+      <div class="pdp-photo">
+        <img id="pdpImg" src="" alt="" draggable="false">
+        <span class="pdp-badge" id="pdpBadge" hidden></span>
+        <button class="pcard-fav pdp-fav" id="pdpFav" type="button" aria-label="Favoritar" aria-pressed="false">
+          <svg class="ico" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="pdp-thumbs" id="pdpThumbs" role="group" aria-label="Fotos do produto"></div>
+    </div>
+
+    <!-- Informações + compra -->
+    <div class="pdp-info">
+      <a class="pdp-brand" id="pdpBrand" href="/catalogo.html"></a>
+      <h1 class="pdp-name" id="pdpName"></h1>
+      <a class="pdp-rating" id="pdpRating" href="#avaliacoes"></a>
+      <p class="pdp-lead" id="pdpLead"></p>
+
+      <div class="pdp-price" aria-live="polite">
+        <div class="pdp-price-row">
+          <span class="pdp-now" id="pdpNow"></span>
+          <span class="pdp-old" id="pdpOld"></span>
+          <span class="pdp-off" id="pdpOff"></span>
+        </div>
+        <p class="pdp-pix" id="pdpPix"></p>
+        <p class="pdp-parc" id="pdpParc"></p>
+      </div>
+
+      <div class="pdp-variants" id="pdpVariants" hidden>
+        <p class="pdp-variants-label" id="pdpVariantsLabel"></p>
+        <div class="pdp-chips" id="pdpChips" role="radiogroup"></div>
+      </div>
+
+      <p class="pdp-stock" id="pdpStock"></p>
+
+      <div class="pdp-buy" id="pdpBuy">
+        <div class="pdp-qty" role="group" aria-label="Quantidade">
+          <button type="button" id="pdpMinus" aria-label="Diminuir quantidade">&minus;</button>
+          <input type="number" id="pdpQty" value="1" min="1" max="10" inputmode="numeric" aria-label="Quantidade">
+          <button type="button" id="pdpPlus" aria-label="Aumentar quantidade">+</button>
+        </div>
+        <button class="pdp-add" id="pdpAdd" type="button">Adicionar à sacola</button>
+      </div>
+      <button class="pdp-now-btn" id="pdpBuyNow" type="button">Comprar agora</button>
+      <a class="pdp-notify" id="pdpNotify" href="#" target="_blank" rel="noopener" hidden>Avise-me pelo WhatsApp quando chegar</a>
+
+      <ul class="pdp-perks">
+        <li><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg><span>Frete grátis acima de <b>R$149</b></span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg><span>Troca grátis em até 7 dias</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span>Produto original e compra segura</span></li>
+      </ul>
+
+      <a class="pdp-wa" id="pdpWa" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.05 2a9.9 9.9 0 0 0-8.5 15l-1.5 5 5.2-1.4A9.9 9.9 0 1 0 12.05 2zm5.4 13.6c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-1.7-.1-1.6-.5-3.6-1.6-5-3.5-.7-.9-1.2-2-1.2-3 0-1.2.6-1.8.9-2.1.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.4.7 1 1.4 1.6 1.9.7.6 1.3.9 1.7 1 .2.1.4.1.5-.1l.7-.9c.2-.2.4-.2.6-.1l1.9.9c.3.1.4.2.4.3.1.1.1.7-.1 1.3z"/></svg>
+        Tirar dúvida pelo WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- DETALHES -->
+  <section class="pdp-details" aria-label="Detalhes do produto">
+    <details class="pdp-acc" open>
+      <summary>Descrição</summary>
+      <div class="pdp-acc-body">
+        <p id="pdpAbout"></p>
+        <ul class="pdp-benefits" id="pdpBenefits"></ul>
+      </div>
+    </details>
+    <details class="pdp-acc">
+      <summary>Como usar</summary>
+      <div class="pdp-acc-body"><p id="pdpHowTo"></p></div>
+    </details>
+    <details class="pdp-acc">
+      <summary>Informações</summary>
+      <div class="pdp-acc-body">
+        <dl class="pdp-spec" id="pdpSpec"></dl>
+      </div>
+    </details>
+  </section>
+
+  <!-- AVALIAÇÕES -->
+  <section class="pdp-reviews" id="avaliacoes" aria-labelledby="pdpRevTitle">
+    <div class="pdp-rev-head">
+      <h2 id="pdpRevTitle">Avaliações</h2>
+      <div class="pdp-rev-score" id="pdpRevScore"></div>
+    </div>
+    <div class="pdp-rev-list" id="pdpRevList"></div>
+
+    <form class="pdp-rev-form" id="pdpRevForm">
+      <h3>Conte como foi a sua experiência</h3>
+      <fieldset class="pdp-rev-stars">
+        <legend>Sua nota</legend>
+        <div class="pdp-stars-pick">
+        <input type="radio" name="nota" id="n5" value="5" checked><label for="n5" title="5 estrelas">★</label>
+        <input type="radio" name="nota" id="n4" value="4"><label for="n4" title="4 estrelas">★</label>
+        <input type="radio" name="nota" id="n3" value="3"><label for="n3" title="3 estrelas">★</label>
+        <input type="radio" name="nota" id="n2" value="2"><label for="n2" title="2 estrelas">★</label>
+        <input type="radio" name="nota" id="n1" value="1"><label for="n1" title="1 estrela">★</label>
+        </div>
+      </fieldset>
+      <label class="pdp-field">Seu nome
+        <input type="text" name="nome" maxlength="40" required autocomplete="given-name">
+      </label>
+      <label class="pdp-field">Comentário
+        <textarea name="texto" rows="3" maxlength="500" required placeholder="O que você achou do produto?"></textarea>
+      </label>
+      <button type="submit" class="pdp-rev-send">Publicar avaliação</button>
+      <p class="pdp-rev-hint" id="pdpRevHint" role="status"></p>
+    </form>
+  </section>
+
+  <!-- RELACIONADOS -->
+  <section class="pdp-related" aria-labelledby="pdpRelTitle">
+    <div class="prod-sub-head">
+      <h2 class="prod-sub-title" id="pdpRelTitle">Você também vai amar</h2>
+      <a href="/catalogo.html" class="prod-sub-link" id="pdpRelLink">Ver mais</a>
+    </div>
+    <div class="prod-grid" id="pdpRelated"></div>
+  </section>
+
+  <!-- PRODUTO NÃO ENCONTRADO -->
+  <div class="pdp-missing" id="pdpMissing" hidden>
+    <h1>Não encontramos este produto</h1>
+    <p>Ele pode ter saído do catálogo ou o endereço está incompleto.</p>
+    <a href="/catalogo.html" class="pdp-add">Ver o catálogo</a>
+  </div>
+</main>
+
+<!-- Barra fixa de compra (celular) -->
+<div class="pdp-bar" id="pdpBar" aria-hidden="true">
+  <div class="pdp-bar-price"><b id="pdpBarNow"></b><span id="pdpBarName"></span></div>
+  <button type="button" class="pdp-add" id="pdpBarAdd" tabindex="-1">Adicionar</button>
+</div>
+
+<!-- dados estruturados (SEO) — preenchido por js/produto.js -->
+<script type="application/ld+json" id="pdpLd">{}</script>
+
+<!-- FOOTER (igual à home) -->
+<footer class="footer">
+  <div class="ft-inner">
+
+    <div class="ft-top">
+      <div class="ft-brand">
+        <a href="/index.html" class="ft-logo" aria-label="Amo Cosméticos — ir para o início"></a>
+        <p class="ft-tagline">Cosméticos selecionados com amor para você. Beleza acessível, de qualidade, entregue na sua porta.</p>
+        <a href="https://www.instagram.com/amocosmeticossc/" target="_blank" rel="noopener noreferrer" class="ft-social" aria-label="Instagram @amocosmeticossc (abre em nova aba)">
+          <span class="ft-social-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.1"/><circle class="ft-social-dot" cx="17.3" cy="6.7" r="1.1"/></svg>
+          </span>
+          <span>@amocosmeticossc</span>
+        </a>
+      </div>
+
+      <nav class="ft-col" aria-label="Loja">
+        <h3 class="ft-title">Loja</h3>
+        <ul class="ft-links">
+          <li><a href="/catalogo.html">Todos os produtos</a></li>
+          <li><a href="/catalogo.html?ofertas=1">Ofertas</a></li>
+          <li><a href="/catalogo.html">Lançamentos</a></li>
+          <li><a href="/catalogo.html?cat=Kits">Kits e combos</a></li>
+        </ul>
+      </nav>
+
+      <nav class="ft-col" aria-label="Ajuda">
+        <h3 class="ft-title">Ajuda</h3>
+        <ul class="ft-links">
+          <li><a href="#">Meus pedidos</a></li>
+          <li><a href="#">Trocas e devoluções</a></li>
+          <li><a href="#">Frete e prazos</a></li>
+          <li><a href="#">Fale conosco</a></li>
+        </ul>
+      </nav>
+
+      <nav class="ft-col" aria-label="Institucional">
+        <h3 class="ft-title">Institucional</h3>
+        <ul class="ft-links">
+          <li><a href="/index.html#nossa-historia">Sobre nós</a></li>
+          <li><a href="#">Política de privacidade</a></li>
+          <li><a href="#">Termos de uso</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="ft-bottom">
+      <span class="ft-copy">© 2026 Amo Cosméticos. Todos os direitos reservados.</span>
+
+      <div class="ft-payments" aria-label="Formas de pagamento">
+        <span class="ft-pay">Pix</span>
+        <span class="ft-pay">Visa</span>
+        <span class="ft-pay">Master</span>
+        <span class="ft-pay">Elo</span>
+        <span class="ft-pay">Boleto</span>
+      </div>
+
+      <div class="ft-credit">
+        <span class="ft-credit-txt">Desenvolvido por</span>
+        <a href="#" class="ft-credit-link" target="_blank" rel="noopener noreferrer" aria-label="InCode">
+        
+          <img src="assets/logos/logo_incode.png" alt="InCode" class="ft-credit-logo" loading="lazy" decoding="async" draggable="false">
+        </a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a class="whatsapp-float" href="https://wa.me/5584981291807?text=Ol%C3%A1%2C%20Amo%20Cosm%C3%A9ticos%21%20%F0%9F%92%9C%20Vim%20pelo%20site%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20os%20produtos." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<!-- SCRIPTS: produtos.js (base única) PRIMEIRO -->
+<script src="/js/produtos.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/cart.js"></script>
+<script src="/js/search.js" defer></script>
+<script src="/js/account.js" defer></script>
+<script src="/js/produto.js"></script>
+</body>
+</html>

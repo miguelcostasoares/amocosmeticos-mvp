@@ -2191,287 +2191,8 @@ body {
 
 
 /* ══════════════════════════════════════════════
-   VITRINES: Mais vendidos / Em oferta
-   Cada produto = um "frasco de perfumaria":
-   ombro em arco, contorno perolado, gota dourada no topo,
-   foto em arco com filete gravado e rótulo centralizado.
+   VITRINES (cards de produto): ficam em css/card.css
    ══════════════════════════════════════════════ */
-.prod-grid {
-  --pg-gap: 26px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 44px var(--pg-gap);             /* espaço para a gota do topo */
-}
-
-.pcard {
-  /* paleta do frasco (o Em oferta troca só estas variáveis) */
-  --pc-edge: conic-gradient(from 200deg, #f3e2b6, var(--gold), var(--rose-soft), var(--lilas-light), #fff 62%, var(--lilas-light), #f3e2b6);
-  --pc-pearl: #fbf7fb;
-  --pc-tint: var(--lilas-whisper);
-  --pc-accent: var(--lilas-deep);
-  --pc-glow: rgba(150, 111, 154, .22);
-  position: relative;
-  cursor: pointer;
-  container-type: inline-size;       /* permite o arco perfeito (50cqw = meia largura) */
-}
-.pcard--sale {
-  --pc-edge: conic-gradient(from 200deg, #f3e2b6, var(--gold), var(--rose), var(--rose-soft), #fff 62%, var(--rose-soft), #f3e2b6);
-  --pc-pearl: #fdf8f8;
-  --pc-tint: var(--rose-whisper);
-  --pc-accent: #b8656f;
-  --pc-glow: rgba(201, 130, 138, .24);
-}
-
-/* ── o frasco ── */
-.pcard-frame {
-  position: relative;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 9px 9px 0;
-  border-radius: 50cqw 50cqw 28px 28px;   /* ombro em arco */
-  background:
-    radial-gradient(120% 60% at 50% 0%, #fff 0%, transparent 70%),
-    linear-gradient(180deg, var(--pc-pearl), #fff 55%, var(--pc-tint));
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, .9) inset,
-    0 18px 40px -18px var(--pc-glow),
-    0 2px 6px rgba(45, 33, 48, .04);
-  transition: transform .5s var(--ease), box-shadow .5s var(--ease);
-}
-/* contorno perolado (madrepérola) */
-.pcard-frame::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
-  border-radius: inherit;
-  padding: 1.5px;
-  background: var(--pc-edge);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-}
-
-.pcard:hover .pcard-frame {
-  transform: translateY(-6px);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, .9) inset,
-    0 30px 50px -20px var(--pc-glow),
-    0 2px 6px rgba(45, 33, 48, .05);
-}
-
-/* ── janela da foto ── */
-.pcard-mat {
-  border-radius: calc(50cqw - 9px) calc(50cqw - 9px) 20px 20px;
-  overflow: hidden;
-}
-.pcard-media {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 4 / 5;
-  border-radius: inherit;
-  background: var(--lilas-ghost);
-}
-.pcard-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 1s var(--ease);
-}
-.pcard:hover .pcard-media img { transform: scale(1.05); }
-
-/* filete gravado no vidro, acompanhando o arco */
-.pcard-media::after {
-  content: "";
-  position: absolute;
-  inset: 9px;
-  z-index: 1;
-  pointer-events: none;
-  border-radius: calc(50cqw - 18px) calc(50cqw - 18px) 13px 13px;
-  border: 1px solid rgba(255, 255, 255, .72);
-  box-shadow: 0 0 0 1px rgba(201, 169, 110, .18);
-}
-
-/* reflexo de vidro + brilho que passa no hover */
-.pcard-glass {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  background:
-    linear-gradient(118deg, rgba(255, 255, 255, .34) 0%, rgba(255, 255, 255, 0) 30%),
-    linear-gradient(0deg, rgba(45, 33, 48, .22), transparent 34%);
-}
-.pcard-glass::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, .45) 50%, transparent 60%);
-  transform: translateX(-130%);
-  transition: transform 1s var(--ease);
-}
-.pcard:hover .pcard-glass::after { transform: translateX(130%); }
-
-/* selo (Nº 1 / -32%) e coração, apoiados na base da foto */
-.pcard-tag {
-  position: absolute;
-  left: 18px;
-  bottom: 18px;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px 6px 9px;
-  border-radius: 999px;
-  font-family: var(--sans);
-  font-size: 11.5px;
-  font-weight: 600;
-  color: var(--plum);
-  background: rgba(255, 255, 255, .92);
-  -webkit-backdrop-filter: blur(6px);
-          backdrop-filter: blur(6px);
-  box-shadow: 0 4px 14px rgba(45, 33, 48, .14);
-}
-.pcard-tag .ico { font-size: 13px; color: var(--gold); }
-.pcard-tag--sale { color: #fff; background: linear-gradient(120deg, var(--rose), #b8656f); }
-.pcard-tag--sale .ico { color: #fff; }
-
-.pcard-fav {
-  position: absolute;
-  right: 18px;
-  bottom: 18px;
-  z-index: 2;
-  width: 34px;
-  height: 34px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  display: grid;
-  place-items: center;
-  font-size: 16px;
-  color: var(--pc-accent);
-  background: rgba(255, 255, 255, .92);
-  -webkit-backdrop-filter: blur(6px);
-          backdrop-filter: blur(6px);
-  box-shadow: 0 4px 14px rgba(45, 33, 48, .14);
-  transition: transform .2s, color .2s, background .2s;
-}
-.pcard-fav:hover { transform: scale(1.1); color: var(--rose); }
-.pcard-fav:focus-visible,
-.pcard-add:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-.pcard-fav.is-fav { color: var(--rose); background: var(--rose-whisper); }
-.pcard-fav.is-fav .ico { fill: var(--rose); }
-
-/* ── rótulo ── */
-.pcard-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1;
-  padding: 18px 12px 16px;
-  text-align: center;
-}
-.pcard-brand {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--pc-accent);
-  margin-bottom: 2px;
-}
-.pcard-name {
-  font-family: var(--serif);
-  font-size: 21px;
-  font-weight: 500;
-  line-height: 1.15;
-  color: var(--ink);
-  margin-bottom: 8px;
-  text-wrap: balance;
-}
-.pcard-desc {
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 300;
-  line-height: 1.55;
-  color: var(--ink-secondary);
-  margin-bottom: 16px;
-  max-width: 30ch;
-}
-.pcard-foot {
-  position: relative;
-  margin-top: auto;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(201, 169, 110, .35);
-}
-/* pequeno losango dourado no centro do filete */
-.pcard-foot::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: 50%;
-  width: 7px;
-  height: 7px;
-  transform: translateX(-50%) rotate(45deg);
-  background: var(--gold);
-  box-shadow: 0 0 0 3px var(--pc-tint);
-}
-.pcard-price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 7px; text-align: left; }
-.pcard-price .now { font-family: var(--serif); font-size: 23px; font-weight: 600; line-height: 1; color: var(--ink); }
-.pcard-price .old { font-family: var(--sans); font-size: 12.5px; color: var(--ink-muted); text-decoration: line-through; }
-.pcard--sale .pcard-price .now { color: #a4505b; }
-
-.pcard-add {
-  flex: none;
-  width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  display: grid;
-  place-items: center;
-  font-size: 18px;
-  color: #fff;
-  background: linear-gradient(140deg, var(--lilas), var(--lilas-deep));
-  box-shadow: 0 6px 16px rgba(150, 111, 154, .32), inset 0 0 0 1px rgba(255, 255, 255, .3);
-  transition: transform .2s, box-shadow .2s;
-}
-.pcard-add .ico { stroke-width: 2; }
-.pcard--sale .pcard-add {
-  background: linear-gradient(140deg, var(--rose), #b8656f);
-  box-shadow: 0 6px 16px rgba(201, 130, 138, .34), inset 0 0 0 1px rgba(255, 255, 255, .3);
-}
-.pcard-add:hover { transform: scale(1.08); }
-
-/* ── responsivo das vitrines ── */
-@media (max-width: 1020px) {
-  .prod-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 560px) {
-  .prod-grid { --pg-gap: 14px; row-gap: 34px; }
-  .pcard-frame { padding: 6px 6px 0; border-radius: 50cqw 50cqw 20px 20px; }
-  .pcard-mat { border-radius: calc(50cqw - 6px) calc(50cqw - 6px) 15px 15px; }
-  .pcard-media::after { inset: 6px; border-radius: calc(50cqw - 12px) calc(50cqw - 12px) 10px 10px; }
-  .pcard-tag { left: 10px; bottom: 10px; font-size: 10.5px; padding: 5px 9px 5px 7px; }
-  .pcard-fav { right: 10px; bottom: 10px; width: 30px; height: 30px; font-size: 14px; }
-  .pcard-body { padding: 14px 6px 12px; }
-  .pcard-brand { font-size: 13.5px; }
-  .pcard-name { font-size: 17px; }
-  .pcard-desc { font-size: 12px; }
-  .pcard-price .now { font-size: 19px; }
-  .pcard-add { width: 34px; height: 34px; font-size: 16px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .pcard-frame, .pcard-frame::after, .pcard-media img, .pcard-frame, .pcard-media img, .pcard-glass::after { transition: none !important; }
-}
 
 
 /* ══════════════════════════════════════════════
@@ -3096,10 +2817,17 @@ body {
   --insta-spring: cubic-bezier(0.34, 1.32, 0.64, 1);
   --insta-gap: clamp(12px, 1.5vw, 20px);
   --insta-stagger: 0.12s;
+
+  /* ►►► PROPORÇÃO DAS MOLDURAS — ajuste aqui se quiser mais alta/baixa ◄◄◄
+     REEL: 9 / 16 = vertical real do Instagram (mais alta)
+     POST: 1 / 1 = quadrado · 4 / 5 = retrato do feed */
+  --insta-ratio-reel: 9 / 13;
+  --insta-ratio-post: 5 / 6;
+
   position: relative;
   isolation: isolate;
   background: var(--white);
-  padding: clamp(16px, 3vw, 48px) clamp(24px, 5vw, 80px) clamp(80px, 10vw, 140px);
+  padding: clamp(16px, 3vw, 48px) clamp(20px, 4.2vw, 72px) clamp(80px, 10vw, 140px);
   overflow-x: clip;
 }
 
@@ -3116,12 +2844,12 @@ body {
 }
 
 .insta-inner {
-  max-width: 1280px;
+  max-width: 1360px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+  grid-template-columns: minmax(0, 0.76fr) minmax(0, 1.24fr);
   align-items: center;
-  gap: clamp(40px, 6vw, 96px);
+  gap: clamp(32px, 4.6vw, 72px);
 }
 
 /* ── Entrada no scroll (ativada via JS) ── */
@@ -3179,7 +2907,9 @@ body {
 
 .insta-eyebrow {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   padding-left: 44px;
   margin-bottom: 22px;
   font-family: var(--sans);
@@ -3188,6 +2918,13 @@ body {
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--lilas-deep);
+}
+
+/* logo do Instagram ao lado do título (gradiente oficial) */
+.insta-eyebrow-ico {
+  flex: none;
+  width: 30px;
+  height: 30px;
 }
 
 .insta-eyebrow::before {
@@ -3599,8 +3336,13 @@ body {
   transition: opacity 0.7s var(--insta-ease);
 }
 
-.insta-post--tall .insta-post-media { aspect-ratio: 4 / 5; }
-.insta-post--sq .insta-post-media   { aspect-ratio: 1 / 1; }
+/* REEL (--tall) = moldura vertical · POST (--sq) = moldura de post
+   (as proporções vêm das variáveis --insta-ratio-* lá no bloco ".insta") */
+.insta-post--tall .insta-post-media { aspect-ratio: var(--insta-ratio-reel); }
+.insta-post--sq .insta-post-media   { aspect-ratio: var(--insta-ratio-post); }
+
+/* reels: foca na parte de cima do print (rostos/produto ficam mais completos) */
+.insta-post--tall .insta-post-media img { object-position: 50% 30%; }
 
 /* cortina lilás que se recolhe na entrada */
 .insta-post-media::before {
@@ -3905,11 +3647,16 @@ body {
   }
 }
 
-/* dispositivos sem hover: legenda sempre visível e compacta */
+/* dispositivos sem hover: legenda sempre visível + feedback ao tocar */
 @media (hover: none) {
   .insta-post-cap {
     opacity: 1;
     transform: none;
+  }
+
+  .insta-post:active {
+    transform: scale(0.985);
+    transition-duration: 0.2s;
   }
 }
 
@@ -3933,7 +3680,7 @@ body {
 
   .insta-feed {
     width: 100%;
-    max-width: 680px;
+    max-width: 760px;
     margin-inline: auto;
   }
 
@@ -3947,12 +3694,25 @@ body {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .insta-col:nth-of-type(3) {
-    display: none;
+  /* mobile: sem parallax; nenhuma publicação some */
+  .insta-col:nth-of-type(n) {
+    translate: none;
   }
 
   .insta-col:nth-of-type(2) {
     margin-top: 40px;
+  }
+
+  /* coluna 3 vira uma linha embaixo, com POST 3 e POST 4 lado a lado */
+  .insta-col:nth-of-type(3) {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    margin-top: 0;
+  }
+
+  .insta-col:nth-of-type(3) .insta-post {
+    flex: 1 1 0;
+    min-width: 0;
   }
 
   .insta-post {
@@ -4380,87 +4140,316 @@ body {
 
 
 .footer {
-  padding: clamp(48px, 6vw, 72px) clamp(24px, 5vw, 80px) 32px;
+  --ft-line: rgba(255, 255, 255, 0.24);
+  --ft-text: rgba(255, 255, 255, 0.92);
+  --ft-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(64px, 7vw, 104px) clamp(24px, 5vw, 80px) 28px;
+  color: var(--white);
+  background: linear-gradient(172deg, var(--lilas) 0%, var(--lilas-deep) 100%);
+  border-radius: clamp(28px, 4vw, 56px) clamp(28px, 4vw, 56px) 0 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(52% 70% at 88% 0%, rgba(255, 255, 255, 0.22), transparent 70%),
+    radial-gradient(40% 55% at 0% 100%, rgba(45, 33, 48, 0.18), transparent 70%);
+}
+
+.footer a:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.ft-inner {
   max-width: 1280px;
   margin: 0 auto;
 }
 
-.footer-top {
+/* ── topo ── */
+.ft-top {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
-  gap: 48px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid var(--lilas-ghost);
+  grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr));
+  gap: clamp(36px, 5vw, 72px);
+  padding-bottom: clamp(40px, 5vw, 64px);
+  border-bottom: 1px solid var(--ft-line);
 }
 
-.footer-brand .nav-monogram {
-  font-size: 32px;
-  margin-bottom: 12px;
+.ft-logo {
   display: block;
+  width: clamp(360px, 36vw, 500px);
+  height: clamp(108px, 10.8vw, 150px);
+  margin-bottom: 20px;
+  background-color: var(--white);
+  -webkit-mask: var(--logo-src) left center / contain no-repeat;
+          mask: var(--logo-src) left center / contain no-repeat;
+  transition: opacity 0.3s;
 }
 
-.footer-brand p {
+.ft-logo:hover {
+  opacity: 0.85;
+}
+
+.ft-tagline {
+  max-width: 340px;
+  margin-bottom: 28px;
   font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 300;
-  color: var(--ink-muted);
-  line-height: 1.6;
-  max-width: 260px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--ft-text);
 }
 
-.footer-col h5 {
-  font-family: var(--sans);
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--ink);
-  margin-bottom: 16px;
-  letter-spacing: 0.3px;
-}
-
-.footer-col a {
-  display: block;
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 300;
-  color: var(--ink-muted);
-  text-decoration: none;
-  margin-bottom: 10px;
-  transition: color 0.2s;
-}
-
-.footer-col a:hover {
-  color: var(--lilas);
-}
-
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
+.ft-social {
+  display: inline-flex;
   align-items: center;
-  padding-top: 24px;
-  flex-wrap: wrap;
-  gap: 16px;
+  gap: 10px;
+  padding: 8px 20px 8px 8px;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-decoration: none;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  transition: background 0.3s var(--ft-ease),
+              color 0.3s var(--ft-ease),
+              transform 0.3s var(--ft-ease);
 }
 
-.footer-copy {
+.ft-social-ico {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: var(--lilas-deep);
+  background: var(--white);
+  transition: background 0.3s var(--ft-ease), color 0.3s var(--ft-ease);
+}
+
+.ft-social-ico svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ft-social-ico .ft-social-dot {
+  fill: currentColor;
+  stroke: none;
+}
+
+.ft-social:hover {
+  color: var(--plum);
+  background: var(--white);
+  transform: translateY(-2px);
+}
+
+.ft-social:hover .ft-social-ico {
+  color: var(--white);
+  background: var(--lilas-deep);
+}
+
+/* ── colunas de links ── */
+.ft-title {
+  position: relative;
+  padding-bottom: 14px;
+  margin-bottom: 22px;
   font-family: var(--sans);
   font-size: 12px;
-  font-weight: 300;
-  color: var(--ink-muted);
+  font-weight: 700;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: var(--white);
 }
 
-.footer-payments {
+.ft-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 24px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #f0dcab, var(--gold));
+}
+
+.ft-links {
   display: flex;
+  flex-direction: column;
+  gap: 13px;
+  list-style: none;
+}
+
+.ft-links a {
+  display: inline-block;
+  padding-bottom: 3px;
+  font-family: var(--sans);
+  font-size: 14.5px;
+  font-weight: 400;
+  line-height: 1.3;
+  text-decoration: none;
+  color: var(--ft-text);
+  background: linear-gradient(currentColor, currentColor) left bottom / 0 1px no-repeat;
+  transition: background-size 0.35s var(--ft-ease),
+              transform 0.35s var(--ft-ease),
+              color 0.25s;
+}
+
+.ft-links a:hover {
+  color: var(--white);
+  background-size: 100% 1px;
+  transform: translateX(3px);
+}
+
+/* ── rodapé inferior ── */
+.ft-bottom {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-areas: "copy pay credit";
+  align-items: center;
+  gap: 20px 32px;
+  padding-top: 28px;
+}
+
+.ft-copy {
+  grid-area: copy;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ft-text);
+}
+
+.ft-payments {
+  grid-area: pay;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 8px;
 }
 
-.pay-badge {
+.ft-pay {
+  padding: 6px 12px;
   font-family: var(--sans);
-  font-size: 10px;
-  font-weight: 500;
-  color: var(--ink-muted);
-  background: var(--lilas-whisper);
-  padding: 5px 10px;
-  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 8px;
+}
+
+.ft-credit {
+  grid-area: credit;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 18px;
+  white-space: nowrap;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+}
+
+.ft-credit-txt {
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  color: var(--ft-text);
+}
+
+.ft-credit-link {
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.3s, transform 0.4s var(--ft-ease);
+}
+
+.ft-credit-link:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.ft-credit-logo {
+  display: block;
+  width: auto;
+  height: 32px;
+  max-width: 160px;
+  object-fit: contain;
+}
+
+/* ── responsivo ── */
+@media (min-width: 721px) and (max-width: 1456px) {
+  .ft-credit {
+    margin-right: 56px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .ft-bottom {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "pay  pay"
+      "copy credit";
+  }
+
+  .ft-payments {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 960px) {
+  .ft-top {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 44px 32px;
+  }
+
+  .ft-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 720px) {
+  .footer {
+    padding-bottom: 96px;
+  }
+
+  .ft-bottom {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "pay"
+      "copy"
+      "credit";
+  }
+
+  .ft-credit {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 560px) {
+  .ft-top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px 24px;
+  }
 }
 
 
@@ -4478,6 +4467,8 @@ body {
   background: #25D366;
   border: none;
   cursor: pointer;
+  text-decoration: none;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4613,9 +4604,7 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .footer-top {
-    grid-template-columns: 1fr 1fr;
-  }
+  
 }
 
 /* Deck encolhe antes de sumir */
@@ -4699,10 +4688,7 @@ body {
     gap: 20px;
   }
 
-  .footer-top {
-    grid-template-columns: 1fr;
-  }
-
+  
   .hero-indicators {
     display: none;
   }
